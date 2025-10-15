@@ -26,6 +26,7 @@
 + 重新连接名为my_session的会话：tmux attach -t my_session
 + 关闭tmux窗口但不退出tmux会话：Ctrl + B，然后松开，再按D
 + 杀死名为my_session的会话：tmux kill-session -t my_session
++ 创建名为my_session的tmux会话：tmux new -s my_session
 
 # tmux配置文件修改
 
