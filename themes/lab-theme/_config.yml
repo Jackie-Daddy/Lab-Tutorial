@@ -9,7 +9,7 @@ menu:
 # Code highlighting
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   wrap: true
   theme: default
 
