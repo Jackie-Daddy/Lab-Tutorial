@@ -180,6 +180,22 @@ main {
   background: var(--c-light-gray) !important;
 }
 
+.github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.5rem !important;
+  margin-left: 0.25rem;
+  border-radius: var(--radius) !important;
+  color: var(--c-dark) !important;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.github-link:hover {
+  color: var(--c-orange) !important;
+  background: var(--c-light-gray) !important;
+}
+
 /* ---------- Post Card (Homepage) ---------- */
 .post-list {
   list-style: none;
