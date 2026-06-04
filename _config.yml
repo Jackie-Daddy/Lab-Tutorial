@@ -12,7 +12,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here.
-url: https://j4ck1e2000.github.io/Lab-Tutorial
+url: https://dual-pointers.github.io/Lab-Tutorial
 root: /Lab-Tutorial/
 permalink: :title/
 permalink_defaults:
@@ -90,5 +90,5 @@ theme: lab-theme
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/J4ck1e2000/Lab-Tutorial.git
+  repo: https://github.com/Dual-Pointers/Lab-Tutorial.git
   branch: gh-pages

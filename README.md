@@ -4,7 +4,7 @@
 
 在共享/远程实验室服务器上干活时攒下的小技巧，每篇都是独立、可直接上手的短教程。
 
-Built with [Hexo](https://hexo.io/) and deployed on [GitHub Pages](https://j4ck1e2000.github.io/Lab-Tutorial/).
+Built with [Hexo](https://hexo.io/) and deployed on [GitHub Pages](https://dual-pointers.github.io/Lab-Tutorial/).
 
 ---
 
@@ -12,10 +12,10 @@ Built with [Hexo](https://hexo.io/) and deployed on [GitHub Pages](https://j4ck1
 
 | # | Tutorial | EN |
 |---|----------|-----|
-| 1 | [如何愉快的配置内网服务器代理上网](https://j4ck1e2000.github.io/Lab-Tutorial/zh/intranet-proxy/) | [Proxy for Intranet Server](https://j4ck1e2000.github.io/Lab-Tutorial/en/intranet-proxy/) |
-| 2 | [如何愉快的使用 tmux 在服务器后台跑任务](https://j4ck1e2000.github.io/Lab-Tutorial/zh/how-to-use-tmux/) | [tmux for Background Tasks](https://j4ck1e2000.github.io/Lab-Tutorial/en/how-to-use-tmux/) |
-| 3 | [VSCode & Cursor & Windsurf 如何远程 debug 代码](https://j4ck1e2000.github.io/Lab-Tutorial/zh/remote-debug/) | [Remote Debug with VSCode/Cursor/Windsurf](https://j4ck1e2000.github.io/Lab-Tutorial/en/remote-debug/) |
-| 4 | [让 Cursor 更聪明](https://j4ck1e2000.github.io/Lab-Tutorial/zh/smarter-cursor/) | [Make Cursor Smarter](https://j4ck1e2000.github.io/Lab-Tutorial/en/smarter-cursor/) |
+| 1 | [如何愉快的配置内网服务器代理上网](https://dual-pointers.github.io/Lab-Tutorial/zh/intranet-proxy/) | [Proxy for Intranet Server](https://dual-pointers.github.io/Lab-Tutorial/en/intranet-proxy/) |
+| 2 | [如何愉快的使用 tmux 在服务器后台跑任务](https://dual-pointers.github.io/Lab-Tutorial/zh/how-to-use-tmux/) | [tmux for Background Tasks](https://dual-pointers.github.io/Lab-Tutorial/en/how-to-use-tmux/) |
+| 3 | [VSCode & Cursor & Windsurf 如何远程 debug 代码](https://dual-pointers.github.io/Lab-Tutorial/zh/remote-debug/) | [Remote Debug with VSCode/Cursor/Windsurf](https://dual-pointers.github.io/Lab-Tutorial/en/remote-debug/) |
+| 4 | [让 Cursor 更聪明](https://dual-pointers.github.io/Lab-Tutorial/zh/smarter-cursor/) | [Make Cursor Smarter](https://dual-pointers.github.io/Lab-Tutorial/en/smarter-cursor/) |
 
 ---
 
