@@ -1,18 +1,16 @@
-<% var currentLang = page.lang || site.config.language || 'zh-CN'; %>
+<% var lang = (page.lang === 'en') ? 'en' : 'zh'; %>
 <header class="site-header">
   <div class="nav-inner">
-    <a class="nav-brand" href="<%- url_for(currentLang === 'zh-CN' || currentLang === 'zh' ? '/zh/' : '/en/') %>">
+    <a class="nav-brand" href="<%- url_for('/' + lang + '/') %>">
       <span class="dot"></span>
       <%- config.title %>
     </a>
     <nav>
       <ul class="nav-links">
-        <% var menu = theme.menu || {}; %>
-        <% for (var key in menu) { %>
-          <li><a href="<%- url_for(menu[key]) %>"><%- __('nav.' + key.toLowerCase()) %></a></li>
-        <% } %>
+        <li><a href="<%- url_for('/' + lang + '/archives/') %>"><%- __('nav.archives') %></a></li>
+        <li><a href="<%- url_for('/about/') %>"><%- __('nav.about') %></a></li>
         <li>
-          <% if (currentLang === 'zh' || currentLang === 'zh-CN') { %>
+          <% if (lang === 'zh') { %>
             <a class="lang-switch" href="<%- url_for('/en/') %>"><%- __('nav.lang_toggle') %></a>
           <% } else { %>
             <a class="lang-switch" href="<%- url_for('/zh/') %>"><%- __('nav.lang_toggle') %></a>
