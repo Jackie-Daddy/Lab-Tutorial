@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="<%= config.language === 'zh-CN' ? 'zh-CN' : 'en' %>">
+<% var pageLang = page.lang === 'en' ? 'en' : 'zh-CN'; %>
+<html lang="<%= pageLang %>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

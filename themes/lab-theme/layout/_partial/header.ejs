@@ -1,6 +1,7 @@
+<% var currentLang = page.lang || site.config.language || 'zh-CN'; %>
 <header class="site-header">
   <div class="nav-inner">
-    <a class="nav-brand" href="<%- url_for('/') %>">
+    <a class="nav-brand" href="<%- url_for(currentLang === 'zh-CN' || currentLang === 'zh' ? '/zh/' : '/en/') %>">
       <span class="dot"></span>
       <%- config.title %>
     </a>
@@ -11,12 +12,10 @@
           <li><a href="<%- url_for(menu[key]) %>"><%- __('nav.' + key.toLowerCase()) %></a></li>
         <% } %>
         <li>
-          <% if (page.lang === 'zh' || page.lang === 'zh-CN') { %>
-            <% var enUrl = url_for(page.path.replace('/zh/', '/en/')); %>
-            <a class="lang-switch" href="<%- enUrl %>"><%- __('nav.lang_toggle') %></a>
+          <% if (currentLang === 'zh' || currentLang === 'zh-CN') { %>
+            <a class="lang-switch" href="<%- url_for('/en/') %>"><%- __('nav.lang_toggle') %></a>
           <% } else { %>
-            <% var zhUrl = url_for(page.path.replace('/en/', '/zh/')); %>
-            <a class="lang-switch" href="<%- zhUrl %>"><%- __('nav.lang_toggle') %></a>
+            <a class="lang-switch" href="<%- url_for('/zh/') %>"><%- __('nav.lang_toggle') %></a>
           <% } %>
         </li>
       </ul>
