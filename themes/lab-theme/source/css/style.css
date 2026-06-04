@@ -17,7 +17,6 @@
   --c-green: #788c5d;
   --c-green-hover: #6a7d50;
 
-  --font-heading: 'Poppins', Arial, sans-serif;
   --font-body: 'Lora', Georgia, serif;
   --font-mono: 'Fira Code', 'SF Mono', Menlo, monospace;
 
@@ -62,7 +61,7 @@ img { max-width: 100%; height: auto; }
 
 /* ---------- Typography ---------- */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 700;
   line-height: 1.3;
   color: var(--c-dark);
@@ -119,7 +118,7 @@ main {
 }
 
 .nav-brand {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: 1.15rem;
   color: var(--c-dark);
@@ -147,7 +146,7 @@ main {
   display: inline-block;
   padding: 0.5rem 0.9rem;
   font-size: 0.9rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 500;
   color: var(--c-dark);
   border-radius: var(--radius);
@@ -206,7 +205,7 @@ main {
 }
 
 .post-card-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -240,7 +239,7 @@ main {
 .tag-pill {
   display: inline-block;
   font-size: 0.75rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 500;
   color: var(--c-dark);
   background: var(--c-light-gray);
@@ -347,7 +346,7 @@ main {
 
 .post-content th {
   background: var(--c-light-gray);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 600;
 }
 
@@ -438,7 +437,7 @@ main {
   }
 
   .toc-sidebar .toc-title {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -485,7 +484,7 @@ main {
 
 /* ---------- Archives ---------- */
 .archive-year {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--c-dark);
