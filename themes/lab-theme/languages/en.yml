@@ -1,0 +1,33 @@
+nav:
+  home: Home
+  archives: Archives
+  about: About
+  lang_toggle: 中文
+
+post:
+  read_more: Read More
+  published: Published on
+  tags: Tags
+  toc: Table of Contents
+  prev: Previous
+  next: Next
+  back: Back to Home
+  minute_read: min read
+
+archive:
+  title: Archives
+  total: "%d posts total"
+
+tag:
+  title: Tags
+
+about:
+  title: About Us
+
+footer:
+  powered: Built with Hexo
+  theme: Lab Theme
+
+not_found:
+  title: "404"
+  message: Page not found

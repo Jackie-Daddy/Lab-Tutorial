@@ -1,0 +1,25 @@
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="nav-brand" href="<%- url_for('/') %>">
+      <span class="dot"></span>
+      <%- config.title %>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <% var menu = theme.menu || {}; %>
+        <% for (var key in menu) { %>
+          <li><a href="<%- url_for(menu[key]) %>"><%- __('nav.' + key.toLowerCase()) %></a></li>
+        <% } %>
+        <li>
+          <% if (page.lang === 'zh' || page.lang === 'zh-CN') { %>
+            <% var enUrl = url_for(page.path.replace('/zh/', '/en/')); %>
+            <a class="lang-switch" href="<%- enUrl %>"><%- __('nav.lang_toggle') %></a>
+          <% } else { %>
+            <% var zhUrl = url_for(page.path.replace('/en/', '/zh/')); %>
+            <a class="lang-switch" href="<%- zhUrl %>"><%- __('nav.lang_toggle') %></a>
+          <% } %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

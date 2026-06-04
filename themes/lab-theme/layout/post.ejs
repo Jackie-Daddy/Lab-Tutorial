@@ -1,0 +1,47 @@
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><%= page.title %></h1>
+    <div class="post-meta">
+      <span><%- __('post.published') %> <%- date(page.date, 'YYYY-MM-DD') %></span>
+      <% if (page.tags && page.tags.length) { %>
+        <span class="separator"></span>
+        <span><%- page.tags.map(function(t){ return t.name; }).join(', ') %></span>
+      <% } %>
+    </div>
+  </header>
+
+  <div class="post-wrapper">
+    <% if (page.toc !== false && page.content.indexOf('</h2>') !== -1) { %>
+      <aside class="toc-sidebar">
+        <div class="toc-title"><%- __('post.toc') %></div>
+        <%- toc(page.content, { list_number: false, max_depth: 2 }) %>
+      </aside>
+    <% } %>
+
+    <div class="post-content">
+      <%- page.content %>
+    </div>
+  </div>
+
+  <% if (page.tags && page.tags.length) { %>
+    <div class="post-tags">
+      <span class="label"><%- __('post.tags') %>:</span>
+      <% page.tags.each(function(tag){ %>
+        <a class="tag-pill" href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <nav class="post-nav">
+    <% if (page.prev) { %>
+      <a href="<%- url_for(page.prev.path) %>">&larr; <%= page.prev.title %></a>
+    <% } else { %>
+      <span></span>
+    <% } %>
+    <% if (page.next) { %>
+      <a href="<%- url_for(page.next.path) %>"><%= page.next.title %> &rarr;</a>
+    <% } else { %>
+      <span></span>
+    <% } %>
+  </nav>
+</article>

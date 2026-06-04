@@ -1,4 +1,12 @@
-# 如何愉快的使用 tmux 在服务器后台跑任务
+---
+title: 如何愉快的使用 tmux 在服务器后台跑任务
+title_en: How to Happily Use tmux for Background Tasks on Servers
+date: 2026-06-04
+tags: [tmux, terminal, server, tutorial]
+lang: zh
+slug: how-to-use-tmux
+description: tmux 把会话和终端窗口解耦——关掉窗口 ≠ 结束任务。从安装到配置文件，30 秒上手。
+---
 
 ## 前言
 
@@ -82,4 +90,3 @@ tmux source-file ~/.tmux.conf
 - **`attach` 报错 `no sessions`？** 说明当前没有任何活动会话，任务可能已经跑完或被杀掉。
 - **任务到底有没有在跑？** attach 进去看输出，或在会话外用 `nvidia-smi` / `ps -ef | grep python` 确认进程还在。
 - **tmux vs nohup？** `nohup python a.py &` 也能后台跑，但看不到实时输出、不能交互。tmux 给你一个完整可重连的终端，更适合需要盯进度或随时介入的任务。
-

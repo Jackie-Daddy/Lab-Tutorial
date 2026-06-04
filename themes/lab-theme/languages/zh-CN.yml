@@ -1,0 +1,33 @@
+nav:
+  home: 首页
+  archives: 归档
+  about: 关于
+  lang_toggle: English
+
+post:
+  read_more: 阅读全文
+  published: 发布于
+  tags: 标签
+  toc: 目录
+  prev: 上一篇
+  next: 下一篇
+  back: 返回首页
+  minute_read: 分钟阅读
+
+archive:
+  title: 归档
+  total: "共 %d 篇文章"
+
+tag:
+  title: 标签
+
+about:
+  title: 关于我们
+
+footer:
+  powered: 基于 Hexo 构建
+  theme: Lab Theme
+
+not_found:
+  title: 404
+  message: 页面未找到
