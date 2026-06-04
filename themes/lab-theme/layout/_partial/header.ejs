@@ -1,4 +1,6 @@
 <% var lang = (page.lang === 'en') ? 'en' : 'zh'; %>
+<% var switchLang = (lang === 'zh') ? 'en' : 'zh'; %>
+<% var switchPath = page.path ? page.path.replace(/^(zh|en)\//, switchLang + '/') : '/' + switchLang + '/'; %>
 <header class="site-header">
   <div class="nav-inner">
     <a class="nav-brand" href="<%- url_for('/' + lang + '/') %>">
@@ -10,11 +12,7 @@
         <li><a href="<%- url_for('/' + lang + '/archives/') %>"><%- __('nav.archives') %></a></li>
         <li><a href="<%- url_for('/about/') %>"><%- __('nav.about') %></a></li>
         <li>
-          <% if (lang === 'zh') { %>
-            <a class="lang-switch" href="<%- url_for('/en/') %>"><%- __('nav.lang_toggle') %></a>
-          <% } else { %>
-            <a class="lang-switch" href="<%- url_for('/zh/') %>"><%- __('nav.lang_toggle') %></a>
-          <% } %>
+          <a class="lang-switch" href="<%- url_for(switchPath) %>"><%- __('nav.lang_toggle') %></a>
         </li>
       </ul>
     </nav>
