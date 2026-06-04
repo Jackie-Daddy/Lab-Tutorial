@@ -25,6 +25,8 @@ description: 告别 print 调试。用 debugpy 在本地编辑器里给服务器
 
 debugpy 在服务器上启动一个调试服务器，本地编辑器通过 SSH 隧道连接上去，实现远程调试。
 
+![远程调试工作原理](/images/debugpy-architecture.svg)
+
 ## 第一步：服务器安装 debugpy
 
 ```bash
@@ -97,12 +99,16 @@ python -m debugpy --listen 0.0.0.0:5678 train.py
 
 Cursor 和 Windsurf 基于 VSCode，配置方式完全一样。直接用上面的 `launch.json`，或者在 Run and Debug 面板中选择 "Python: Remote Attach"。
 
+![launch.json 关键配置](/images/debugpy-vscode-config.svg)
+
 ## 第五步：打断点 & 调试
 
 1. 在本地代码文件的某一行左侧点击，打上红色断点
 2. 按 `F5`（或点击绿色三角形），选择 "Python: Remote Attach"
 3. 代码执行到断点处自动暂停
 4. 现在你可以：查看变量值、单步执行（F10）、跳入函数（F11）、查看调用堆栈
+
+![五步配置远程调试](/images/debugpy-steps.svg)
 
 ## 常见问题
 

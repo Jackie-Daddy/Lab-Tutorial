@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" fill="none">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#141413" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="460" rx="12" fill="#faf9f5"/>
+
+  <!-- Header -->
+  <text x="400" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">MCP (Model Context Protocol) 架构</text>
+
+  <!-- === Claude Code (Top) === -->
+  <rect x="260" y="64" width="280" height="52" rx="8" fill="#d97757" filter="url(#sh)"/>
+  <text x="400" y="95" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="18" font-weight="700" fill="#faf9f5">Claude Code</text>
+
+  <!-- Connectors from Claude Code to MCP Protocol box -->
+  <line x1="400" y1="116" x2="400" y2="135" stroke="#d97757" stroke-width="2"/>
+
+  <!-- MCP Protocol Layer -->
+  <rect x="285" y="135" width="230" height="30" rx="6" fill="#141413" opacity="0.08"/>
+  <text x="400" y="155" text-anchor="middle" font-family="monospace" font-size="12" font-weight="600" fill="#141413">MCP Protocol</text>
+
+  <!-- Diverging lines to MCP servers -->
+  <line x1="400" y1="165" x2="400" y2="178" stroke="#d97757" stroke-width="2"/>
+  <line x1="150" y1="178" x2="650" y2="178" stroke="#d97757" stroke-width="1.5"/>
+  <line x1="150" y1="178" x2="150" y2="198" stroke="#d97757" stroke-width="1.5"/>
+  <line x1="400" y1="178" x2="400" y2="198" stroke="#d97757" stroke-width="1.5"/>
+  <line x1="650" y1="178" x2="650" y2="198" stroke="#d97757" stroke-width="1.5"/>
+
+  <!-- === MCP Servers === -->
+
+  <!-- Codegraph -->
+  <rect x="75" y="200" width="150" height="72" rx="8" fill="#6a9bcc" filter="url(#sh)"/>
+  <text x="150" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">Codegraph</text>
+  <text x="150" y="244" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="rgba(250,249,245,0.8)">代码搜索</text>
+  <text x="150" y="258" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="rgba(250,249,245,0.8)">调用链追踪 · 影响分析</text>
+
+  <!-- GitHub -->
+  <rect x="325" y="200" width="150" height="72" rx="8" fill="#788c5d" filter="url(#sh)"/>
+  <text x="400" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">GitHub</text>
+  <text x="400" y="244" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="rgba(250,249,245,0.8)">PR · Issue · Code Review</text>
+  <text x="400" y="258" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="rgba(250,249,245,0.8)">Push · Branch · Actions</text>
+
+  <!-- Filesystem -->
+  <rect x="575" y="200" width="150" height="72" rx="8" fill="#b0aea5" filter="url(#sh)"/>
+  <text x="650" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">Filesystem</text>
+  <text x="650" y="244" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="rgba(250,249,245,0.8)">文件读写</text>
+  <text x="650" y="258" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="rgba(250,249,245,0.8)">项目浏览</text>
+
+  <!-- Custom (4th server, below Filesystem) -->
+  <line x1="307" y1="178" x2="307" y2="198" stroke="#d97757" stroke-width="1.5"/>
+  <rect x="232" y="200" width="150" height="72" rx="8" fill="transparent" stroke="#d97757" stroke-width="2" filter="url(#sh)"/>
+  <rect x="232" y="200" width="150" height="72" rx="8" fill="#faf9f5"/>
+  <text x="307" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#d97757">Custom</text>
+  <text x="307" y="244" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">自定义工具</text>
+  <text x="307" y="258" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">API 调用</text>
+
+  <!-- Line connecting custom to protocol -->
+  <line x1="307" y1="178" x2="307" y2="180" stroke="#d97757" stroke-width="1.5"/>
+
+  <!-- Right annotation box -->
+  <rect x="75" y="296" width="658" height="50" rx="8" fill="#141413" opacity="0.04"/>
+  <text x="100" y="320" font-family="Lora,Georgia,serif" font-size="13" fill="#141413">MCP 服务器</text>
+  <text x="100" y="338" font-family="Lora,Georgia,serif" font-size="13" fill="#b0aea5">= Claude 的外挂技能 —— 每个服务器提供一组工具，Claude 按需调用</text>
+
+  <!-- Arrow pointing to annotation -->
+  <line x1="307" y1="282" x2="307" y2="296" stroke="#d97757" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Bottom: mcp.json config sample -->
+  <rect x="75" y="364" width="650" height="78" rx="6" fill="#141413"/>
+  <text x="95" y="384" font-family="monospace" font-size="10" fill="#b0aea5">// .mcp.json — project-level MCP config</text>
+  <text x="95" y="400" font-family="monospace" font-size="10" fill="#6a9bcc">"codegraph"</text>
+  <text x="195" y="400" font-family="monospace" font-size="10" fill="#faf9f5">: {</text>
+  <text x="220" y="400" font-family="monospace" font-size="10" fill="#788c5d">"command"</text>
+  <text x="320" y="400" font-family="monospace" font-size="10" fill="#faf9f5">: "codegraph",</text>
+  <text x="95" y="416" font-family="monospace" font-size="10" fill="#6a9bcc">"github"</text>
+  <text x="195" y="416" font-family="monospace" font-size="10" fill="#faf9f5">: {</text>
+  <text x="220" y="416" font-family="monospace" font-size="10" fill="#788c5d">"command"</text>
+  <text x="320" y="416" font-family="monospace" font-size="10" fill="#faf9f5">: "npx",</text>
+  <text x="380" y="416" font-family="monospace" font-size="10" fill="#788c5d">"args"</text>
+  <text x="430" y="416" font-family="monospace" font-size="10" fill="#faf9f5">: ["-y", "@anthropic-ai/mcp-server-github"] },</text>
+  <text x="95" y="432" font-family="monospace" font-size="10" fill="#6a9bcc">"filesystem"</text>
+  <text x="195" y="432" font-family="monospace" font-size="10" fill="#faf9f5">: {</text>
+  <text x="220" y="432" font-family="monospace" font-size="10" fill="#788c5d">"command"</text>
+  <text x="320" y="432" font-family="monospace" font-size="10" fill="#faf9f5">: "npx",</text>
+  <text x="380" y="432" font-family="monospace" font-size="10" fill="#788c5d">"args"</text>
+  <text x="430" y="432" font-family="monospace" font-size="10" fill="#faf9f5">: ["-y", "@anthropic-ai/mcp-server-filesystem", "/home"] }</text>
+</svg>

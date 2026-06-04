@@ -52,20 +52,7 @@ scoop install lazygit
 
 Lazygit 启动后显示 5 个面板（可用数字键 `1`-`5` 切换焦点）：
 
-```
-┌──────────────────────────┐
-│  1. Status / Files       │  ← 查看修改、暂存文件、提交
-│     (Unstaged / Staged)  │
-├──────────────────────────┤
-│  2. Branches             │  ← 切换/新建/删除/合并分支
-├──────────────────────────┤
-│  3. Commits / Log        │  ← 浏览提交历史、cherry-pick、rebase
-├──────────────────────────┤
-│  4. Stash                │  ← 储藏/恢复工作区修改
-├──────────────────────────┤
-│  Diff View (底部)         │  ← 查看选中的 diff
-└──────────────────────────┘
-```
+![Lazygit 5 面板布局](/images/lazygit-panels.svg)
 
 ## 日常操作速查
 
@@ -135,6 +122,8 @@ lazygit                          # 1. 打开 Lazygit
   → P                              # 4. 推送到远程
 ```
 
+![日常提交流程 — 4 步完成 commit & push](/images/lazygit-workflow.svg)
+
 **整理提交历史（Interactive Rebase）**
 
 ```
@@ -146,6 +135,8 @@ lazygit
   → 确认 → 强推（如有需要）
 ```
 
+![交互式变基 — 整理提交历史](/images/lazygit-rebase.svg)
+
 **处理合并冲突**
 
 ```
@@ -156,6 +147,8 @@ lazygit
   → 解决后按 a 暂存
   → c 完成合并提交
 ```
+
+![合并冲突解决 — 3 步搞定](/images/lazygit-conflict.svg)
 
 ## 推荐配置
 

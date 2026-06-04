@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" fill="none">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#141413" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="340" rx="12" fill="#faf9f5"/>
+
+  <!-- Header -->
+  <text x="400" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">日常工作流 — 组合 Slash Commands</text>
+
+  <!-- Step 1: brainstorming -->
+  <rect x="36" y="70" width="110" height="52" rx="26" fill="#d97757" filter="url(#sh)"/>
+  <text x="91" y="100" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#faf9f5">brainstorming</text>
+
+  <!-- Arrow 1 -->
+  <line x1="146" y1="96" x2="178" y2="96" stroke="#b0aea5" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="178,90 188,96 178,102" fill="#b0aea5"/>
+
+  <!-- Step 2: plan -->
+  <rect x="192" y="70" width="110" height="52" rx="26" fill="#6a9bcc" filter="url(#sh)"/>
+  <text x="247" y="100" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#faf9f5">/plan</text>
+
+  <!-- Arrow 2 -->
+  <line x1="302" y1="96" x2="334" y2="96" stroke="#b0aea5" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="334,90 344,96 334,102" fill="#b0aea5"/>
+
+  <!-- Step 3: TDD -->
+  <rect x="348" y="70" width="110" height="52" rx="26" fill="#788c5d" filter="url(#sh)"/>
+  <text x="403" y="100" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#faf9f5">TDD 实现</text>
+
+  <!-- Arrow 3 -->
+  <line x1="458" y1="96" x2="490" y2="96" stroke="#b0aea5" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="490,90 500,96 490,102" fill="#b0aea5"/>
+
+  <!-- Step 4: code-review -->
+  <rect x="504" y="70" width="118" height="52" rx="26" fill="#d97757" filter="url(#sh)"/>
+  <text x="563" y="100" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#faf9f5">/code-review</text>
+
+  <!-- Arrow 4 -->
+  <line x1="622" y1="96" x2="654" y2="96" stroke="#b0aea5" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="654,90 664,96 654,102" fill="#b0aea5"/>
+
+  <!-- Step 5: simplify -->
+  <rect x="668" y="70" width="100" height="52" rx="26" fill="#141413" filter="url(#sh)"/>
+  <text x="718" y="100" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#faf9f5">/simplify</text>
+
+  <!-- Step subtitles -->
+  <text x="91" y="134" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">探索需求</text>
+  <text x="247" y="134" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">生成计划</text>
+  <text x="403" y="134" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">先测试后代码</text>
+  <text x="563" y="134" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">审查变更</text>
+  <text x="718" y="134" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">消除冗余</text>
+
+  <!-- Phase labels above line -->
+  <rect x="36" y="160" width="720" height="2" rx="1" fill="#e8e6dc"/>
+
+  <!-- Phase markers -->
+  <rect x="36" y="176" width="310" height="28" rx="6" fill="#d97757" opacity="0.06"/>
+  <text x="191" y="194" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#d97757" font-weight="600">阶段一：构思与设计</text>
+
+  <rect x="360" y="176" width="210" height="28" rx="6" fill="#788c5d" opacity="0.06"/>
+  <text x="465" y="194" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#788c5d" font-weight="600">阶段二：实现与测试</text>
+
+  <rect x="584" y="176" width="172" height="28" rx="6" fill="#d97757" opacity="0.06"/>
+  <text x="670" y="194" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#d97757" font-weight="600">阶段三：审查与优化</text>
+
+  <!-- Detail callouts -->
+  <!-- Callout 1 -->
+  <rect x="36" y="218" width="225" height="48" rx="6" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1"/>
+  <text x="52" y="236" font-family="monospace" font-size="10" fill="#6a9bcc">/brainstorming</text>
+  <text x="52" y="252" font-family="Lora,Georgia,serif" font-size="10" fill="#141413">Claude 以苏格拉底式提问，帮你</text>
+  <text x="52" y="262" font-family="Lora,Georgia,serif" font-size="10" fill="#141413">把模糊想法转化为明确计划</text>
+
+  <!-- Callout 2 -->
+  <rect x="284" y="218" width="215" height="48" rx="6" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1"/>
+  <text x="300" y="236" font-family="monospace" font-size="10" fill="#6a9bcc">TDD 实现</text>
+  <text x="300" y="252" font-family="Lora,Georgia,serif" font-size="10" fill="#141413">先写测试用例，确保测试失败，</text>
+  <text x="300" y="262" font-family="Lora,Georgia,serif" font-size="10" fill="#141413">再写代码，直到测试全部通过</text>
+
+  <!-- Callout 3 -->
+  <rect x="522" y="218" width="242" height="48" rx="6" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1"/>
+  <text x="538" y="236" font-family="monospace" font-size="10" fill="#6a9bcc">/code-review --fix</text>
+  <text x="538" y="252" font-family="Lora,Georgia,serif" font-size="10" fill="#141413">自动审查 diff 并修复问题，</text>
+  <text x="538" y="262" font-family="Lora,Georgia,serif" font-size="10" fill="#141413">再用 /simplify 消除技术和设计冗余</text>
+
+  <!-- Bottom annotation -->
+  <rect x="36" y="286" width="728" height="34" rx="6" fill="#141413" opacity="0.04"/>
+  <text x="400" y="308" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#141413">
+    从想法到高质量代码的完整流程，每一步都有自动化检查
+  </text>
+</svg>

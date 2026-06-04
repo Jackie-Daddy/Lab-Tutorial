@@ -58,6 +58,8 @@ code review, not a professor lecturing.
 - **Boring code**: Readability > cleverness. You six months from now will thank you.
 - **Surface unknowns**: Makes the AI proactively flag what it's uncertain about rather than silently guessing.
 
+![Prompt Design — 6 Core Principles](/images/cursor-principles.svg)
+
 ## Before and After
 
 | Scenario | Default Response | With the Prompt |
@@ -65,6 +67,8 @@ code review, not a professor lecturing.
 | "Write a singleton pattern for me" | Gives code directly | First asks: are you sure you need a singleton? Do you want global shared state or to limit instances? |
 | "Optimize this code's performance" | Suggests micro-optimizations | First asks: have you profiled it? Where's the bottleneck? Don't prematurely optimize. |
 | "Use Redis for caching" | Gives Redis integration code | First asks: what's your access pattern? Is in-memory caching enough? Adding Redis means managing operational costs too. |
+
+![Before and After — With the Prompt](/images/cursor-before-after.svg)
 
 ## Advanced: Customize Per Project
 
@@ -75,3 +79,5 @@ Different projects need different "personality" styles. For example, you can tun
 - **Teaching projects**: Have the AI explain the *why* more, not just give code
 
 Add these custom instructions to your project's `CLAUDE.md` or Cursor Rules.
+
+![Compatible Tools & Setup](/images/cursor-tools.svg)

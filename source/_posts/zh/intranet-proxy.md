@@ -17,6 +17,8 @@ description: 内网服务器连不上外网？用 http_proxy 配合代理软件�
 - 你有一台能访问外网的电脑，上面运行了代理软件（Clash、V2Ray、Shadowsocks 等）
 - 服务器和这台电脑在同一个局域网内
 
+![](./images/proxy-architecture.svg)
+
 ## 获取代理地址
 
 首先确认代理软件的 HTTP 端口。以 Clash 为例，默认是 `7890`。在你自己的电脑上查看：
@@ -76,12 +78,16 @@ export no_proxy=localhost,127.0.0.1,*.local,10.0.0.0/8,192.168.0.0/16
 source ~/.bashrc
 ```
 
+![](./images/proxy-config.svg)
+
 ## 常见问题排查
 
 - **`curl` 报 `Connection refused`？** 检查代理软件的端口是否开放、防火墙是否拦截。
 - **能 ping 通外网但 curl 不通？** ping 走 ICMP 协议不过代理，用 `curl -v` 看详细连接过程。
 - **pip / git 还是连不上？** 确认 `http_proxy` / `https_proxy` 都设置了。git 也可单独配置：`git config --global http.proxy $http_proxy`。
 - **内网服务变慢了？** 检查 `no_proxy` 是否正确设置了内网 IP 段。
+
+![](./images/proxy-troubleshoot.svg)
 
 ## 快速开关
 

@@ -52,20 +52,7 @@ scoop install lazygit
 
 Lazygit shows 5 panels on launch (use number keys `1`-`5` to switch focus):
 
-```
-┌──────────────────────────┐
-│  1. Status / Files       │  ← View changes, stage files, commit
-│     (Unstaged / Staged)  │
-├──────────────────────────┤
-│  2. Branches             │  ← Switch/create/delete/merge branches
-├──────────────────────────┤
-│  3. Commits / Log        │  ← Browse history, cherry-pick, rebase
-├──────────────────────────┤
-│  4. Stash                │  ← Stash/restore working changes
-├──────────────────────────┤
-│  Diff View (bottom)       │  ← View selected diff
-└──────────────────────────┘
-```
+![Lazygit 5 Panel Layout](/images/lazygit-panels.svg)
 
 ## Quick Reference
 
@@ -135,6 +122,8 @@ lazygit                          # 1. Open Lazygit
   → P                              # 4. Push
 ```
 
+![Daily Commit Workflow — 4 Steps](/images/lazygit-workflow.svg)
+
 **Cleaning up commit history (Interactive Rebase)**
 
 ```
@@ -146,6 +135,8 @@ lazygit
   → Confirm → force push if needed
 ```
 
+![Interactive Rebase — Clean Up History](/images/lazygit-rebase.svg)
+
 **Resolving merge conflicts**
 
 ```
@@ -156,6 +147,8 @@ lazygit
   → Press a to stage after resolving
   → c to complete the merge commit
 ```
+
+![Merge Conflict Resolution — 3 Steps](/images/lazygit-conflict.svg)
 
 ## Recommended Config
 

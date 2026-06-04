@@ -47,6 +47,8 @@ python train.py
 tmux attach -t train
 ```
 
+![](./images/tmux-workflow.svg)
+
 Detach is the soul of tmux: it doesn't end your task, it just separates you from the session. When the task is done and you no longer need the session, just `exit` inside it, or kill it with `tmux kill-session -t train`.
 
 ## Command Reference
@@ -61,6 +63,8 @@ Detach is the soul of tmux: it doesn't end your task, it just separates you from
 | Rename session | `tmux rename-session -t <old> <new>` |
 | Enter scroll mode (view history) | `Ctrl+B, [` then scroll with arrow keys / `PgUp` |
 | Exit scroll mode | `q` |
+
+![](./images/tmux-cheatsheet.svg)
 
 ## Configuration: Make tmux Even Better
 
@@ -77,6 +81,8 @@ set -g mouse on              # Enable mouse: scroll, click to select panes
 setw -g mode-keys vi         # Use vi keybindings in copy mode
 set -g history-limit 10000   # Increase scrollback buffer
 ```
+
+![](./images/tmux-config.svg)
 
 Apply without restarting tmux:
 

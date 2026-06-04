@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420">
+  <defs>
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#141413" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="420" rx="12" fill="#faf9f5"/>
+
+  <!-- Title -->
+  <text x="360" y="42" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="bold" fill="#141413">提示词设计 — 6 条核心原则</text>
+  <line x1="230" y1="52" x2="490" y2="52" stroke="#d97757" stroke-width="2"/>
+
+  <!-- ===== 2x3 GRID ===== -->
+
+  <!-- Row 1, Col 1: Question assumptions -->
+  <rect x="25" y="68" width="215" height="92" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="25" y="68" width="215" height="34" rx="10" fill="#d97757"/>
+  <rect x="25" y="92" width="215" height="10" fill="#d97757"/>
+  <circle cx="48" cy="85" r="11" fill="#fff" fill-opacity="0.3"/>
+  <text x="48" y="89" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#fff">1</text>
+  <text x="68" y="89" font-family="Lora,Georgia,serif" font-size="12" font-weight="bold" fill="#fff">Question assumptions</text>
+  <text x="133" y="120" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">质疑需求，减少无效工作</text>
+  <text x="133" y="138" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5">"你确定这是你要解决的问题？"</text>
+
+  <!-- Row 1, Col 2: Think trade-offs -->
+  <rect x="252" y="68" width="215" height="92" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="252" y="68" width="215" height="34" rx="10" fill="#d97757"/>
+  <rect x="252" y="92" width="215" height="10" fill="#d97757"/>
+  <circle cx="275" cy="85" r="11" fill="#fff" fill-opacity="0.3"/>
+  <text x="275" y="89" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#fff">2</text>
+  <text x="295" y="89" font-family="Lora,Georgia,serif" font-size="12" font-weight="bold" fill="#fff">Think trade-offs</text>
+  <text x="360" y="120" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">没有银弹，明确列出权衡</text>
+  <text x="360" y="138" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5">"我们得到什么，牺牲什么？"</text>
+
+  <!-- Row 1, Col 3: Boring code -->
+  <rect x="479" y="68" width="215" height="92" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="479" y="68" width="215" height="34" rx="10" fill="#d97757"/>
+  <rect x="479" y="92" width="215" height="10" fill="#d97757"/>
+  <circle cx="502" cy="85" r="11" fill="#fff" fill-opacity="0.3"/>
+  <text x="502" y="89" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#fff">3</text>
+  <text x="522" y="89" font-family="Lora,Georgia,serif" font-size="12" font-weight="bold" fill="#fff">Boring code</text>
+  <text x="587" y="120" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">可读性 &gt; 巧妙性</text>
+  <text x="587" y="138" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5">"Junior 也能看懂才算合格"</text>
+
+  <!-- Row 2, Col 1: Full lifecycle -->
+  <rect x="25" y="172" width="215" height="92" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="25" y="172" width="215" height="34" rx="10" fill="#d97757"/>
+  <rect x="25" y="196" width="215" height="10" fill="#d97757"/>
+  <circle cx="48" cy="189" r="11" fill="#fff" fill-opacity="0.3"/>
+  <text x="48" y="193" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#fff">4</text>
+  <text x="68" y="193" font-family="Lora,Georgia,serif" font-size="12" font-weight="bold" fill="#fff">Full lifecycle</text>
+  <text x="133" y="224" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">考虑测试、部署、维护、废弃</text>
+  <text x="133" y="242" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5">"六个月后你会感谢自己"</text>
+
+  <!-- Row 2, Col 2: Concise never vague -->
+  <rect x="252" y="172" width="215" height="92" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="252" y="172" width="215" height="34" rx="10" fill="#d97757"/>
+  <rect x="252" y="196" width="215" height="10" fill="#d97757"/>
+  <circle cx="275" cy="189" r="11" fill="#fff" fill-opacity="0.3"/>
+  <text x="275" y="193" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#fff">5</text>
+  <text x="295" y="193" font-family="Lora,Georgia,serif" font-size="12" font-weight="bold" fill="#fff">Concise never vague</text>
+  <text x="360" y="224" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">直接明确，不模棱两可</text>
+  <text x="360" y="242" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5">"别只说it depends，说清depend on什么"</text>
+
+  <!-- Row 2, Col 3: Surface unknowns -->
+  <rect x="479" y="172" width="215" height="92" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="479" y="172" width="215" height="34" rx="10" fill="#d97757"/>
+  <rect x="479" y="196" width="215" height="10" fill="#d97757"/>
+  <circle cx="502" cy="189" r="11" fill="#fff" fill-opacity="0.3"/>
+  <text x="502" y="193" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#fff">6</text>
+  <text x="522" y="193" font-family="Lora,Georgia,serif" font-size="12" font-weight="bold" fill="#fff">Surface unknowns</text>
+  <text x="587" y="224" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">主动暴露不确定，不自行脑补</text>
+  <text x="587" y="242" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5">"这部分我不确定，请确认"</text>
+
+  <!-- ===== BOTTOM MESSAGE ===== -->
+  <rect x="60" y="280" width="600" height="48" rx="10" fill="#141413" filter="url(#sh)"/>
+  <text x="360" y="303" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#fff">每一条都在对抗 AI 的默认行为模式</text>
+  <text x="360" y="320" text-anchor="middle" font-family="monospace" font-size="10" fill="#b0aea5">AI 默认：套模板、给代码、不质疑、不暴露不确定 → 这段提示词：每条都反着来</text>
+
+  <!-- ===== HOW IT WORKS STRIP ===== -->
+  <rect x="60" y="344" width="600" height="58" rx="8" fill="#e8e6dc" filter="url(#sh)"/>
+
+  <text x="90" y="367" font-family="monospace" font-size="10" font-weight="bold" fill="#141413">提示词起作用的方式：</text>
+
+  <!-- Three steps -->
+  <rect x="100" y="378" width="140" height="16" rx="3" fill="#d97757" fill-opacity="0.2"/>
+  <text x="170" y="390" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757">先拆解问题本质</text>
+
+  <text x="248" y="390" font-family="monospace" font-size="10" fill="#b0aea5">→</text>
+
+  <rect x="262" y="378" width="140" height="16" rx="3" fill="#6a9bcc" fill-opacity="0.2"/>
+  <text x="332" y="390" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a9bcc">再评估工程约束</text>
+
+  <text x="410" y="390" font-family="monospace" font-size="10" fill="#b0aea5">→</text>
+
+  <rect x="424" y="378" width="140" height="16" rx="3" fill="#788c5d" fill-opacity="0.2"/>
+  <text x="494" y="390" text-anchor="middle" font-family="monospace" font-size="9" fill="#788c5d">给出权衡后的方案</text>
+</svg>

@@ -28,6 +28,8 @@ Yazi 是用 Rust 编写的终端文件管理器，对标 ranger/lf。核心卖�
 | 多标签页       | 支持          | 不支持       | 支持（原生）  |
 | 配置复杂度     | 高            | 低           | 低            |
 
+![Yazi vs ranger vs lf 全方位对比](/images/yazi-vs-ranger.svg)
+
 ## 安装
 
 **Linux**
@@ -103,9 +105,13 @@ Yazi 采用 vim 风格快捷键。
 | 跳转上一个匹配 | `N`                            |
 | 切换隐藏文件   | `.`（句号）                    |
 
+![Yazi 快捷键速查](/images/yazi-shortcuts.svg)
+
 ## Nerd Font 图标问题
 
 Yazi 使用 Nerd Font 图标标识文件类型。如果看到菱形问号而不是文件夹/文件图标，说明终端字体不支持 Nerd Font。
+
+![Nerd Font 图标安装前后对比](/images/yazi-nerdfont.svg)
 
 **解决方法：**
 

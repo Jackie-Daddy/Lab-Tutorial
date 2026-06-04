@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" fill="none">
+  <defs>
+    <filter id="sh" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#141413" flood-opacity="0.07"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#d97757"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="460" rx="12" fill="#faf9f5"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">日常提交流程 — 4 步完成 commit &amp; push</text>
+  <text x="400" y="60" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#b0aea5">从打开仓库到推送到远端，全程不离开键盘</text>
+
+  <!-- ====== Step 1: Open ====== -->
+  <rect x="40" y="88" width="158" height="180" rx="10" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="40" y="88" width="158" height="42" rx="10" fill="#141413"/>
+  <rect x="40" y="110" width="158" height="20" fill="#141413"/>
+  <text x="119" y="114" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">① 打开</text>
+
+  <rect x="54" y="140" width="130" height="68" rx="4" fill="#141413"/>
+  <text x="64" y="158" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="74" y="158" font-family="monospace" font-size="10" fill="#faf9f5">lazygit</text>
+  <line x1="64" y1="166" x2="176" y2="166" stroke="#b0aea5" stroke-width="0.5" opacity="0.4"/>
+  <text x="64" y="182" font-family="monospace" font-size="9" fill="#b0aea5">5 panels loaded</text>
+  <text x="64" y="198" font-family="monospace" font-size="9" fill="#788c5d">Files panel active</text>
+
+  <text x="119" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">在仓库目录运行</text>
+  <text x="119" y="245" text-anchor="middle" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">$ lazygit</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="198" y1="178" x2="232" y2="178" stroke="#d97757" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="215" y="168" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="8" fill="#d97757" font-weight="600">Space</text>
+
+  <!-- ====== Step 2: Stage ====== -->
+  <rect x="236" y="88" width="158" height="180" rx="10" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="236" y="88" width="158" height="42" rx="10" fill="#141413"/>
+  <rect x="236" y="110" width="158" height="20" fill="#141413"/>
+  <text x="315" y="114" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">② 暂存</text>
+
+  <rect x="250" y="140" width="130" height="68" rx="4" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1"/>
+  <!-- File list -->
+  <rect x="258" y="148" width="114" height="18" rx="2" fill="#788c5d" opacity="0.12"/>
+  <text x="268" y="161" font-family="monospace" font-size="9" fill="#788c5d">✓ train.py (staged)</text>
+
+  <rect x="258" y="170" width="114" height="18" rx="2" fill="#faf9f5"/>
+  <text x="268" y="183" font-family="monospace" font-size="9" fill="#141413">  config.yaml</text>
+
+  <rect x="258" y="192" width="114" height="10" rx="2" fill="#faf9f5"/>
+  <text x="268" y="201" font-family="monospace" font-size="8" fill="#b0aea5">  README.md (new)</text>
+
+  <text x="315" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">Space 选中文件暂存</text>
+  <text x="315" y="245" text-anchor="middle" font-family="monospace" font-size="10" fill="#788c5d" font-weight="600">a = 暂存全部</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="394" y1="178" x2="428" y2="178" stroke="#d97757" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="411" y="168" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="8" fill="#d97757" font-weight="600">c</text>
+
+  <!-- ====== Step 3: Commit ====== -->
+  <rect x="432" y="88" width="158" height="180" rx="10" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="432" y="88" width="158" height="42" rx="10" fill="#141413"/>
+  <rect x="432" y="110" width="158" height="20" fill="#141413"/>
+  <text x="511" y="114" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">③ 提交</text>
+
+  <rect x="446" y="140" width="130" height="68" rx="4" fill="#141413"/>
+  <text x="456" y="158" font-family="monospace" font-size="10" fill="#b0aea5">Commit message:</text>
+  <text x="456" y="177" font-family="monospace" font-size="10" fill="#faf9f5">feat: add training</text>
+  <text x="456" y="194" font-family="monospace" font-size="10" fill="#faf9f5">script for ResNet-50</text>
+
+  <text x="511" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">输入 message → Enter</text>
+  <text x="511" y="245" text-anchor="middle" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">Shift+A = 修订上次</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="590" y1="178" x2="624" y2="178" stroke="#d97757" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="607" y="168" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="8" fill="#d97757" font-weight="600">P</text>
+
+  <!-- ====== Step 4: Push ====== -->
+  <rect x="628" y="88" width="132" height="180" rx="10" fill="#faf9f5" stroke="#d97757" stroke-width="2" filter="url(#sh)"/>
+  <rect x="628" y="88" width="132" height="42" rx="10" fill="#d97757"/>
+  <rect x="628" y="110" width="132" height="20" fill="#d97757"/>
+  <text x="694" y="114" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">④ 推送</text>
+
+  <rect x="640" y="140" width="108" height="68" rx="4" fill="#141413"/>
+  <text x="650" y="158" font-family="monospace" font-size="10" fill="#b0aea5">Pushing...</text>
+  <text x="650" y="176" font-family="monospace" font-size="10" fill="#faf9f5">main → origin</text>
+  <text x="650" y="196" font-family="monospace" font-size="9" fill="#788c5d">Done ✓</text>
+
+  <text x="694" y="225" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">大写 P 推送到远端</text>
+  <text x="694" y="245" text-anchor="middle" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">完成！</text>
+
+  <!-- Bottom summary -->
+  <rect x="60" y="295" width="680" height="70" rx="8" fill="#141413" opacity="0.04"/>
+
+  <text x="400" y="320" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#141413">完整流程</text>
+
+  <!-- Mini flow bar -->
+  <rect x="160" y="335" width="70" height="22" rx="6" fill="#141413"/>
+  <text x="195" y="350" text-anchor="middle" font-family="monospace" font-size="10" fill="#faf9f5" font-weight="600">lazygit</text>
+
+  <line x1="238" y1="346" x2="270" y2="346" stroke="#d97757" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="278" y="335" width="70" height="22" rx="6" fill="#788c5d" opacity="0.18"/>
+  <text x="313" y="350" text-anchor="middle" font-family="monospace" font-size="10" fill="#788c5d" font-weight="600">Space a</text>
+
+  <line x1="356" y1="346" x2="388" y2="346" stroke="#d97757" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="396" y="335" width="70" height="22" rx="6" fill="#d97757" opacity="0.18"/>
+  <text x="431" y="350" text-anchor="middle" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">c Enter</text>
+
+  <line x1="474" y1="346" x2="506" y2="346" stroke="#d97757" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="514" y="335" width="70" height="22" rx="6" fill="#d97757"/>
+  <text x="549" y="350" text-anchor="middle" font-family="monospace" font-size="10" fill="#faf9f5" font-weight="700">P</text>
+
+  <!-- Bottom annotation -->
+  <rect x="60" y="378" width="680" height="32" rx="6" fill="#141413" opacity="0.04"/>
+  <text x="400" y="398" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="12" fill="#141413">
+    不需要
+    <tspan font-family="monospace" fill="#b0aea5">git add .</tspan>
+    、
+    <tspan font-family="monospace" fill="#b0aea5">git commit -m</tspan>
+    、
+    <tspan font-family="monospace" fill="#b0aea5">git push</tspan>
+     —— 全程
+    <tspan fill="#d97757" font-weight="700">4 个按键</tspan>
+     搞定
+  </text>
+
+  <!-- Shortcut tips floating below main row -->
+  <rect x="100" y="420" width="160" height="28" rx="14" fill="#e8e6dc" opacity="0.6"/>
+  <text x="180" y="438" text-anchor="middle" font-family="monospace" font-size="10" fill="#5a5955">Shift+A = 修改上次提交</text>
+
+  <rect x="310" y="420" width="180" height="28" rx="14" fill="#788c5d" opacity="0.08"/>
+  <text x="400" y="438" text-anchor="middle" font-family="monospace" font-size="10" fill="#788c5d">Ctrl+S = 暂存选中的行 (hunk)</text>
+
+  <rect x="540" y="420" width="180" height="28" rx="14" fill="#6a9bcc" opacity="0.08"/>
+  <text x="630" y="438" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a9bcc">p = 只拉取不推送 (pull)</text>
+</svg>

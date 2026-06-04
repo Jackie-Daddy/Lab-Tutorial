@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" fill="none">
+  <defs>
+    <filter id="s" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#141413" flood-opacity="0.07"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="300" rx="12" fill="#faf9f5"/>
+
+  <!-- Header -->
+  <text x="400" y="36" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">Nerd Font 图标 — 安装前后对比</text>
+
+  <!-- ====== LEFT: Before ====== -->
+  <rect x="36" y="54" width="358" height="198" rx="6" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1" filter="url(#s)"/>
+
+  <!-- Panel label -->
+  <rect x="36" y="54" width="358" height="28" rx="6" fill="#e8e6dc"/>
+  <rect x="36" y="76" width="358" height="6" rx="0" fill="#e8e6dc"/>
+  <text x="215" y="72" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="12" font-weight="600" fill="#b0aea5">安装前</text>
+
+  <!-- Terminal mockup - before -->
+  <rect x="50" y="90" width="330" height="148" rx="4" fill="#141413"/>
+
+  <!-- Terminal title bar -->
+  <rect x="50" y="90" width="330" height="20" rx="4" fill="#141413"/>
+  <rect x="50" y="104" width="330" height="6" rx="0" fill="#141413"/>
+  <circle cx="65" cy="100" r="4" fill="#d97757"/>
+  <circle cx="77" cy="100" r="4" fill="#6a9bcc" opacity="0.6"/>
+  <circle cx="89" cy="100" r="4" fill="#788c5d" opacity="0.7"/>
+  <text x="50" y="90" width="330" height="20" rx="4"/>
+  <text x="215" y="100" text-anchor="middle" font-family="monospace" font-size="9" fill="#faf9f5">yazi ~/projects</text>
+
+  <!-- Diamond question mark icons -->
+  <!-- Diamond shape for folder icon -->
+  <text x="66" y="128" font-family="monospace" font-size="12" fill="#b0aea5">&#x25c6;</text>
+  <text x="82" y="128" font-family="monospace" font-size="12" fill="#faf9f5">src/</text>
+
+  <text x="66" y="148" font-family="monospace" font-size="12" fill="#b0aea5">&#x25c6;</text>
+  <text x="82" y="148" font-family="monospace" font-size="12" fill="#faf9f5">tests/</text>
+
+  <text x="66" y="168" font-family="monospace" font-size="12" fill="#b0aea5">&#x25c6;</text>
+  <text x="82" y="168" font-family="monospace" font-size="12" fill="#faf9f5">app.rs</text>
+
+  <text x="66" y="188" font-family="monospace" font-size="12" fill="#b0aea5">&#x25c6;</text>
+  <text x="82" y="188" font-family="monospace" font-size="12" fill="#faf9f5">config.toml</text>
+
+  <text x="66" y="208" font-family="monospace" font-size="12" fill="#b0aea5">&#x25c6;</text>
+  <text x="82" y="208" font-family="monospace" font-size="12" fill="#faf9f5">README.md</text>
+
+  <text x="66" y="228" font-family="monospace" font-size="12" fill="#b0aea5">&#x25c6;</text>
+  <text x="82" y="228" font-family="monospace" font-size="12" fill="#faf9f5">screenshot.png</text>
+
+  <!-- "diamond Q-mark" annotation -->
+  <rect x="120" y="116" width="80" height="18" rx="9" fill="#d97757" opacity="0.15"/>
+  <text x="160" y="129" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#d97757">&#x2716; 菱形占位符</text>
+
+  <!-- ====== RIGHT: After ====== -->
+  <rect x="406" y="54" width="358" height="198" rx="6" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1" filter="url(#s)"/>
+
+  <!-- Panel label -->
+  <rect x="406" y="54" width="358" height="28" rx="6" fill="#788c5d" opacity="0.12"/>
+  <rect x="406" y="76" width="358" height="6" rx="0" fill="#788c5d" opacity="0.12"/>
+  <text x="585" y="72" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="12" font-weight="600" fill="#788c5d">安装后</text>
+
+  <!-- Terminal mockup - after -->
+  <rect x="420" y="90" width="330" height="148" rx="4" fill="#141413"/>
+
+  <!-- Terminal title bar -->
+  <rect x="420" y="90" width="330" height="20" rx="4" fill="#141413"/>
+  <rect x="420" y="104" width="330" height="6" rx="0" fill="#141413"/>
+  <circle cx="435" cy="100" r="4" fill="#d97757"/>
+  <circle cx="447" cy="100" r="4" fill="#6a9bcc" opacity="0.6"/>
+  <circle cx="459" cy="100" r="4" fill="#788c5d" opacity="0.7"/>
+  <text x="585" y="100" text-anchor="middle" font-family="monospace" font-size="9" fill="#faf9f5">yazi ~/projects</text>
+
+  <!-- Proper Nerd Font icons -->
+  <text x="436" y="128" font-family="monospace" font-size="12" fill="#6a9bcc">&#xee5b;</text>
+  <text x="452" y="128" font-family="monospace" font-size="12" fill="#faf9f5">src/</text>
+
+  <text x="436" y="148" font-family="monospace" font-size="12" fill="#6a9bcc">&#xee5b;</text>
+  <text x="452" y="148" font-family="monospace" font-size="12" fill="#faf9f5">tests/</text>
+
+  <text x="436" y="168" font-family="monospace" font-size="12" fill="#788c5d">&#xee5e;</text>
+  <text x="452" y="168" font-family="monospace" font-size="12" fill="#faf9f5">app.rs</text>
+
+  <text x="436" y="188" font-family="monospace" font-size="12" fill="#d97757">&#xeda6;</text>
+  <text x="452" y="188" font-family="monospace" font-size="12" fill="#faf9f5">config.toml</text>
+
+  <text x="436" y="208" font-family="monospace" font-size="12" fill="#6a9bcc">&#xf48a;</text>
+  <text x="452" y="208" font-family="monospace" font-size="12" fill="#faf9f5">README.md</text>
+
+  <text x="436" y="228" font-family="monospace" font-size="12" fill="#d97757">&#xeba8;</text>
+  <text x="452" y="228" font-family="monospace" font-size="12" fill="#faf9f5">screenshot.png</text>
+
+  <!-- "proper icons" annotation -->
+  <rect x="490" y="116" width="80" height="18" rx="9" fill="#788c5d" opacity="0.15"/>
+  <text x="530" y="129" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#788c5d">&#x2714; 图标正常</text>
+
+  <!-- Arrow connector -->
+  <text x="395" y="153" text-anchor="middle" font-family="monospace" font-size="16" fill="#d97757">&#x2192;</text>
+
+  <!-- ====== Bottom: Install Hint ====== -->
+  <rect x="36" y="260" width="728" height="30" rx="6" fill="#141413" opacity="0.04"/>
+  <text x="60" y="280" font-family="monospace" font-size="11" fill="#6a9bcc">$</text>
+  <text x="76" y="280" font-family="monospace" font-size="11" fill="#141413">wget ...JetBrainsMono.zip</text>
+  <text x="300" y="280" font-family="monospace" font-size="11" fill="#b0aea5">&#x2192;</text>
+  <text x="318" y="280" font-family="monospace" font-size="11" fill="#141413">unzip</text>
+  <text x="370" y="280" font-family="monospace" font-size="11" fill="#b0aea5">&#x2192;</text>
+  <text x="388" y="280" font-family="monospace" font-size="11" fill="#141413">fc-cache -fv</text>
+  <text x="500" y="280" font-family="monospace" font-size="11" fill="#b0aea5">&#x2192;</text>
+  <text x="518" y="280" font-family="monospace" font-size="11" fill="#141413">终端切换字体 &#x2192; 重启</text>
+</svg>

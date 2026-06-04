@@ -47,6 +47,8 @@ python train.py
 tmux attach -t train
 ```
 
+![](./images/tmux-workflow.svg)
+
 `detach`（断开）是 tmux 的灵魂：它不结束任务，只是把你和会话分开。任务跑完、确认不再需要后，在会话里直接 `exit`，或用 `tmux kill-session -t train` 杀掉。
 
 ## 常用命令速查
@@ -61,6 +63,8 @@ tmux attach -t train
 | 重命名会话 | `tmux rename-session -t 旧名 新名` |
 | 进入滚动模式（看历史输出） | `Ctrl+B, [`，用方向键/`PgUp` 翻页 |
 | 退出滚动模式 | `q` |
+
+![](./images/tmux-cheatsheet.svg)
 
 ## 配置文件：让 tmux 更好用
 
@@ -77,6 +81,8 @@ set -g mouse on              # 启用鼠标：可滚轮翻页、可点选窗格
 setw -g mode-keys vi         # 复制模式使用 vi 键位
 set -g history-limit 10000   # 增大历史滚动行数
 ```
+
+![](./images/tmux-config.svg)
 
 保存后让配置生效（无需重启 tmux）：
 
