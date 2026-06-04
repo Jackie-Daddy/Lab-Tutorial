@@ -21,8 +21,8 @@
   --font-body: 'Lora', Georgia, serif;
   --font-mono: 'Fira Code', 'SF Mono', Menlo, monospace;
 
-  --max-width: 860px;
-  --max-width-wide: 1100px;
+  --max-width: none;
+  --content-cap: 1100px;
   --nav-height: 64px;
   --radius: 8px;
   --radius-lg: 12px;
@@ -77,14 +77,14 @@ p { margin-bottom: 1.25rem; }
 
 /* ---------- Layout ---------- */
 .container {
-  width: 100%;
-  max-width: var(--max-width);
+  width: 90%;
+  max-width: var(--content-cap);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 0.5rem;
 }
 
 .container-wide {
-  max-width: var(--max-width-wide);
+  max-width: none;
 }
 
 main {
@@ -108,9 +108,10 @@ main {
 }
 
 .nav-inner {
-  max-width: var(--max-width-wide);
+  width: 94%;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -552,7 +553,8 @@ main {
 }
 
 .site-footer .footer-inner {
-  max-width: var(--max-width-wide);
+  width: 90%;
+  max-width: var(--content-cap);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
