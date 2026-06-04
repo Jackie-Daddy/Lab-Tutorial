@@ -1,7 +1,7 @@
 ---
 title: How to Happily Configure Proxy for Intranet Server Internet Access
 title_en: How to Happily Configure Proxy for Intranet Server Internet Access
-date: 2026-06-04
+date: 2025-09-25
 tags: [proxy, network, server, clash]
 lang: en
 slug: intranet-proxy

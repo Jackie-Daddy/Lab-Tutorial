@@ -1,7 +1,7 @@
 ---
 title: 如何愉快的使用 tmux 在服务器后台跑任务
 title_en: How to Happily Use tmux for Background Tasks on Servers
-date: 2026-06-04
+date: 2025-09-25
 tags: [tmux, terminal, server, tutorial]
 lang: zh
 slug: how-to-use-tmux

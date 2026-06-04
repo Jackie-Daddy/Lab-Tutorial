@@ -1,7 +1,7 @@
 ---
 title: How to Remote Debug Code with VSCode, Cursor & Windsurf
 title_en: How to Remote Debug Code with VSCode, Cursor & Windsurf
-date: 2026-06-04
+date: 2025-09-30
 tags: [vscode, cursor, windsurf, debug, remote, python]
 lang: en
 slug: remote-debug

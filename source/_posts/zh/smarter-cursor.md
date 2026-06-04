@@ -1,7 +1,7 @@
 ---
 title: 让 Cursor 更聪明
 title_en: Make Cursor Smarter — An AI Persona Prompt
-date: 2026-06-04
+date: 2025-10-12
 tags: [cursor, windsurf, claude-code, ai, prompt-engineering]
 lang: zh
 slug: smarter-cursor

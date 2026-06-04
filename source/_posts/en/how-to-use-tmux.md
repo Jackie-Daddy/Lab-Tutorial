@@ -1,7 +1,7 @@
 ---
 title: How to Happily Use tmux for Background Tasks on Servers
 title_en: How to Happily Use tmux for Background Tasks on Servers
-date: 2026-06-04
+date: 2025-09-25
 tags: [tmux, terminal, server, tutorial]
 lang: en
 slug: how-to-use-tmux

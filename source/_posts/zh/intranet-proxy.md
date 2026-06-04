@@ -1,7 +1,7 @@
 ---
 title: 如何愉快的配置内网服务器代理上网
 title_en: How to Happily Configure Proxy for Intranet Server Internet Access
-date: 2026-06-04
+date: 2025-09-25
 tags: [proxy, network, server, clash]
 lang: zh
 slug: intranet-proxy
