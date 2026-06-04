@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" fill="none">
+  <defs>
+    <filter id="sh" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#141413" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="440" rx="12" fill="#faf9f5"/>
+
+  <text x="400" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">窗格操作速成</text>
+  <text x="400" y="60" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#b0aea5">按 Ctrl+O 进入快捷键模式，底部状态栏会显示可选操作</text>
+
+  <!-- ====== Stage 1: One pane ====== -->
+  <rect x="40" y="86" width="340" height="130" rx="0" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5"/>
+  <!-- Title bar -->
+  <rect x="40" y="86" width="340" height="24" fill="#141413"/>
+  <text x="52" y="102" font-family="monospace" font-size="9" fill="#b0aea5">zellij</text>
+
+  <!-- Single pane -->
+  <rect x="56" y="118" width="308" height="88" rx="4" fill="#141413"/>
+  <text x="72" y="140" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="82" y="140" font-family="monospace" font-size="10" fill="#faf9f5">python train.py</text>
+  <text x="72" y="158" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 1/100: loss=0.432</text>
+  <text x="72" y="174" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 2/100: loss=0.318</text>
+  <text x="72" y="190" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 3/100: loss=0.251</text>
+
+  <text x="210" y="238" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="12" fill="#b0aea5">1 个窗格 — 初始状态</text>
+
+  <!-- Arrow -->
+  <text x="395" y="155" text-anchor="middle" font-family="monospace" font-size="24" fill="#d97757" font-weight="700">→</text>
+  <rect x="385" y="170" width="50" height="18" rx="9" fill="#d97757" opacity="0.12"/>
+  <text x="410" y="183" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="700">Ctrl+O D</text>
+
+  <!-- ====== Stage 2: Two panes (split down) ====== -->
+  <rect x="435" y="86" width="325" height="130" rx="0" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5"/>
+  <rect x="435" y="86" width="325" height="24" fill="#141413"/>
+  <text x="447" y="102" font-family="monospace" font-size="9" fill="#b0aea5">zellij  [Ctrl+O D]</text>
+
+  <rect x="451" y="118" width="144" height="88" rx="4" fill="#141413"/>
+  <text x="467" y="140" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="477" y="140" font-family="monospace" font-size="10" fill="#faf9f5">python train.py</text>
+  <text x="467" y="158" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 1/100...</text>
+  <text x="467" y="174" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 2/100...</text>
+  <text x="467" y="190" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 3/100...</text>
+
+  <rect x="600" y="118" width="144" height="88" rx="4" fill="#141413"/>
+  <text x="616" y="140" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="626" y="140" font-family="monospace" font-size="10" fill="#faf9f5">nvidia-smi</text>
+  <text x="616" y="158" font-family="monospace" font-size="10" fill="#788c5d">GPU 0: 92% util</text>
+  <text x="616" y="174" font-family="monospace" font-size="10" fill="#788c5d">GPU 1: 88% util</text>
+  <text x="616" y="190" font-family="monospace" font-size="10" fill="#b0aea5">Mem: 18.2G / 24G</text>
+
+  <text x="597" y="238" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="12" fill="#b0aea5">2 个窗格 — D 向下分屏</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="260" x2="450" y2="295" stroke="#d97757" stroke-width="2"/>
+  <line x1="450" y1="295" x2="400" y2="295" stroke="#d97757" stroke-width="1.5"/>
+  <rect x="310" y="287" width="90" height="18" rx="9" fill="#d97757" opacity="0.12"/>
+  <text x="355" y="300" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="700">Ctrl+O R</text>
+
+  <!-- ====== Stage 3: Three panes (split right on bottom) ====== -->
+  <rect x="40" y="310" width="720" height="120" rx="0" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5"/>
+  <rect x="40" y="310" width="720" height="24" fill="#141413"/>
+  <text x="52" y="326" font-family="monospace" font-size="9" fill="#b0aea5">zellij  [Ctrl+O D,  then focus bottom,  Ctrl+O R]</text>
+
+  <!-- Top pane -->
+  <rect x="56" y="342" width="344" height="40" rx="4" fill="#141413"/>
+  <text x="72" y="358" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="82" y="358" font-family="monospace" font-size="10" fill="#faf9f5">python train.py</text>
+  <text x="72" y="374" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 1/100: loss=0.432, acc=0.78</text>
+
+  <!-- Bottom-left -->
+  <rect x="56" y="386" width="165" height="36" rx="4" fill="#141413"/>
+  <text x="72" y="402" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="82" y="402" font-family="monospace" font-size="10" fill="#faf9f5">nvidia-smi</text>
+  <text x="72" y="416" font-family="monospace" font-size="10" fill="#788c5d">GPU 0: 92%</text>
+
+  <!-- Bottom-right -->
+  <rect x="229" y="386" width="171" height="36" rx="4" fill="#141413"/>
+  <text x="245" y="402" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="255" y="402" font-family="monospace" font-size="10" fill="#faf9f5">claude</text>
+  <text x="245" y="416" font-family="monospace" font-size="10" fill="#d97757">▸ 帮我优化这个模型</text>
+
+  <!-- Label -->
+  <rect x="560" y="350" width="175" height="65" rx="8" fill="#141413" opacity="0.04"/>
+  <text x="647" y="374" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="12" font-weight="700" fill="#141413">焦点切换</text>
+  <line x1="575" y1="382" x2="720" y2="382" stroke="#e8e6dc" stroke-width="1"/>
+  <text x="575" y="398" font-family="Lora,Georgia,serif" font-size="11" fill="#141413">← → ↑ ↓</text>
+  <text x="710" y="398" text-anchor="end" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">方向键</text>
+  <text x="575" y="414" font-family="Lora,Georgia,serif" font-size="11" fill="#141413">h j k l</text>
+  <text x="710" y="414" text-anchor="end" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">vim 风格</text>
+</svg>

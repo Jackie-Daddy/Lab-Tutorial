@@ -58,6 +58,10 @@ Zellij's layered structure:
 
 Zellij uses **modal operation**, like vim. The default prefix key is `Ctrl+O` — press it to enter shortcut mode. The bottom status bar shows available actions.
 
+**The session lifecycle**: understand these four steps, and you understand Zellij's core value:
+
+![Zellij Session Lifecycle](/images/zellij-lifecycle.svg)
+
 ## Basic Operations
 
 ### Session Management
@@ -85,6 +89,10 @@ Press `Ctrl+O` first, then:
 | Toggle fullscreen | `F`                   |
 | Floating pane    | `W`                   |
 | Rename           | `C`                   |
+
+The splitting progression — from one pane to three in just a few keystrokes:
+
+![Zellij Pane Quickstart](/images/zellij-panes.svg)
 
 ### Tab Operations
 
