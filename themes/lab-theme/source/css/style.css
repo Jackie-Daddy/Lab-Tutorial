@@ -21,7 +21,7 @@
   --font-mono: 'Fira Code', 'SF Mono', Menlo, monospace;
 
   --max-width: none;
-  --content-cap: 1100px;
+  --content-cap: 1400px;
   --nav-height: 64px;
   --radius: 8px;
   --radius-lg: 12px;
@@ -108,7 +108,7 @@ main {
 
 .nav-inner {
   width: 94%;
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 0.5rem;
   display: flex;
