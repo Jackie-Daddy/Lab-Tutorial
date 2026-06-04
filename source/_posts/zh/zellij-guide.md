@@ -14,6 +14,8 @@ Zellij 是一个用 Rust 编写的终端多路复用器（Terminal Multiplexer�
 
 **与 tmux 的对比：**
 
+![Zellij vs tmux](/images/zellij-vs-tmux.svg)
+
 | 特性     | tmux                 | Zellij                     |
 | -------- | -------------------- | -------------------------- |
 | 默认配置 | 需要大量配置才能好用 | 开箱即用，底部有快捷键提示 |
@@ -52,12 +54,7 @@ brew install zellij
 
 Zellij 的分层结构：
 
-```
-Session（会话）
-  └── Tab（标签页）× N
-        └── Pane（窗格）× N
-              └── 你的终端程序
-```
+![Zellij 分层架构](/images/zellij-hierarchy.svg)
 
 Zellij 采用**模态操作**，类似 vim。默认的前缀键是 `Ctrl+O`，按下后进入快捷键模式，底部状态栏会显示可选操作。
 
@@ -152,6 +149,8 @@ layout {
 ```
 
 然后 `zellij --layout dev` 即可启动预设布局。
+
+![Zellij 开发布局](/images/zellij-layout.svg)
 
 ## 远程开发
 
