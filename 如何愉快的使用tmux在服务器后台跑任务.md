@@ -1,44 +1,85 @@
-# 前言
+# 如何愉快的使用 tmux 在服务器后台跑任务
 
-我们有的时候想在后台跑任务，但是普通终端关闭了过后任务就中断了，那么如何在可能随便关闭终端和关机的前提下，把任务一直放在服务器上跑？tmux来帮你
+## 前言
 
-# Dive into tmux in 1 minutes
+我们有时想在后台跑任务，但普通终端一旦关闭（断网、关机、SSH 掉线），任务就跟着中断了。tmux 让任务运行在一个**独立于你终端的会话**里：你随时可以「断开」走人，之后再「重新连上」，任务这期间一直在服务器上跑。
 
-## 进入tmux窗口
+一句话理解 tmux：**它把「会话」和「你的终端窗口」解耦了。** 关掉窗口 ≠ 结束任务。
 
-![](./images/tmux_1.png)
+## 安装
 
-## 在tmux窗口中执行python命令/也能执行bash命令
-
-![](./images/tmux_2.png)
-
-## 运行完任务后kill这个tmux进程，对应于普通终端里的关闭
-
-![](./images/tmux_3.png)
-
-现在你已经会最基本的tmux操作了
-
-# tmux相关操作
-
-+ 在tmux上打开滚动模式：Ctrl + B，然后松开，再按[
-+ tmux退出滚动模式：q
-+ 查看已有的tmux对话：tmux ls
-+ 重新连接名为my_session的会话：tmux attach -t my_session
-+ 关闭tmux窗口但不退出tmux会话：Ctrl + B，然后松开，再按D
-+ 杀死名为my_session的会话：tmux kill-session -t my_session
-+ 创建名为my_session的tmux会话：tmux new -s my_session
-+ 重命名tmux对话：tmux rename-session -t old_my_session new_my_session
-
-# tmux配置文件修改
-
-+ 编辑配置文件：vim ~/.tmux.conf
-+ 输入以下内容：
+大多数服务器已经预装，输入 `tmux -V` 能看到版本就说明有了。没有的话：
 
 ```bash
-set -g mouse on                  # 启用鼠标（可滚动、可选中）
-setw -g mode-keys vi             # 复制模式用 vi 键位
-set -g history-limit 10000       # 增加滚动历史行数
+# Ubuntu / Debian
+sudo apt install tmux
+# CentOS / RHEL
+sudo yum install tmux
+# macOS
+brew install tmux
 ```
 
-+ 按:wq保存文件
-+ 输入tmux source-file ~/.tmux.conf生效
+## 一个核心概念：前缀键（prefix）
+
+tmux 的所有快捷键都要先按**前缀键**唤醒，默认是 `Ctrl+B`。本文写作 `Ctrl+B, D` 表示：按住 `Ctrl+B` → 松开 → 再按 `D`。
+
+## 核心工作流（30 秒上手）
+
+```bash
+# 1. 新建一个名为 train 的会话
+tmux new -s train
+
+# 2. 在里面正常跑命令（python、bash 都行）
+python train.py
+
+# 3. 按 Ctrl+B, D 断开会话（detach）
+#    终端回到普通界面，但 train.py 仍在后台运行
+
+# 4. 关掉 SSH、合上电脑都没问题。下次想看进度：
+tmux attach -t train
+```
+
+`detach`（断开）是 tmux 的灵魂：它不结束任务，只是把你和会话分开。任务跑完、确认不再需要后，在会话里直接 `exit`，或用 `tmux kill-session -t train` 杀掉。
+
+## 常用命令速查
+
+| 操作 | 命令 / 快捷键 |
+| --- | --- |
+| 新建会话 | `tmux new -s 名字` |
+| 查看所有会话 | `tmux ls` |
+| 重新连接会话 | `tmux attach -t 名字`（简写 `tmux a -t 名字`） |
+| 断开当前会话（任务继续跑） | `Ctrl+B, D` |
+| 杀死指定会话 | `tmux kill-session -t 名字` |
+| 重命名会话 | `tmux rename-session -t 旧名 新名` |
+| 进入滚动模式（看历史输出） | `Ctrl+B, [`，用方向键/`PgUp` 翻页 |
+| 退出滚动模式 | `q` |
+
+## 配置文件：让 tmux 更好用
+
+默认 tmux 不能用鼠标滚轮翻历史，体验略差。编辑 `~/.tmux.conf`：
+
+```bash
+vim ~/.tmux.conf
+```
+
+写入以下内容：
+
+```bash
+set -g mouse on              # 启用鼠标：可滚轮翻页、可点选窗格
+setw -g mode-keys vi         # 复制模式使用 vi 键位
+set -g history-limit 10000   # 增大历史滚动行数
+```
+
+保存后让配置生效（无需重启 tmux）：
+
+```bash
+tmux source-file ~/.tmux.conf
+```
+
+## 常见疑问
+
+- **会话名忘了怎么办？** `tmux ls` 列出所有会话，找不到想要的名字时，会话很可能已经结束了。
+- **`attach` 报错 `no sessions`？** 说明当前没有任何活动会话，任务可能已经跑完或被杀掉。
+- **任务到底有没有在跑？** attach 进去看输出，或在会话外用 `nvidia-smi` / `ps -ef | grep python` 确认进程还在。
+- **tmux vs nohup？** `nohup python a.py &` 也能后台跑，但看不到实时输出、不能交互。tmux 给你一个完整可重连的终端，更适合需要盯进度或随时介入的任务。
+
