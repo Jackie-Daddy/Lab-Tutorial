@@ -3,7 +3,7 @@ Thumbs.db
 db.json
 *.log
 node_modules/
-public/
+# public/ is VitePress static assets dir — committed
 .deploy*/
 _multiconfig.yml
 .superpowers/

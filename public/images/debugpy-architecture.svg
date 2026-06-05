@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400">
+  <defs>
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#141413" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="sshGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b0aea5"/>
+      <stop offset="50%" stop-color="#b0aea5"/>
+      <stop offset="100%" stop-color="#b0aea5"/>
+    </linearGradient>
+    <marker id="arrowRight" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6a9bcc"/>
+    </marker>
+    <marker id="arrowLeft" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <path d="M8,0 L0,3 L8,6 Z" fill="#d97757"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="400" rx="12" fill="#faf9f5"/>
+
+  <!-- Title -->
+  <text x="360" y="42" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="bold" fill="#141413">远程调试工作原理</text>
+  <line x1="280" y1="52" x2="440" y2="52" stroke="#d97757" stroke-width="2"/>
+
+  <!-- ===== LEFT BOX: Local Editor ===== -->
+  <rect x="30" y="75" width="210" height="220" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="30" y="75" width="210" height="36" rx="10" fill="#6a9bcc"/>
+  <rect x="30" y="101" width="210" height="10" fill="#6a9bcc"/>
+  <text x="135" y="98" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="bold" fill="#fff">本地编辑器</text>
+
+  <!-- Editor icons -->
+  <text x="62" y="135" font-family="monospace" font-size="11" fill="#141413">⚙ VSCode</text>
+  <text x="62" y="154" font-family="monospace" font-size="11" fill="#141413">⚡ Cursor</text>
+  <text x="62" y="173" font-family="monospace" font-size="11" fill="#141413">🌊 Windsurf</text>
+
+  <line x1="48" y1="185" x2="222" y2="185" stroke="#b0aea5" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <text x="135" y="203" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">设置断点</text>
+  <text x="135" y="220" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">查看变量</text>
+  <text x="135" y="237" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">单步执行</text>
+
+  <!-- Debug icons in left box -->
+  <circle cx="60" cy="200" r="3" fill="#d97757"/>
+  <circle cx="60" cy="217" r="3" fill="#d97757"/>
+  <circle cx="60" cy="234" r="3" fill="#d97757"/>
+
+  <!-- ===== MIDDLE: SSH TUNNEL ===== -->
+  <rect x="255" y="100" width="210" height="160" rx="10" fill="#141413" filter="url(#sh)"/>
+  <text x="360" y="128" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#6a9bcc">SSH 隧道</text>
+
+  <line x1="270" y1="140" x2="450" y2="140" stroke="#b0aea5" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <!-- Arrow going right inside tunnel -->
+  <line x1="330" y1="165" x2="410" y2="165" stroke="#6a9bcc" stroke-width="2" marker-end="url(#arrowRight)"/>
+  <text x="355" y="157" text-anchor="middle" font-family="monospace" font-size="8" fill="#b0aea5">连接</text>
+
+  <!-- Arrow going left inside tunnel -->
+  <line x1="390" y1="185" x2="310" y2="185" stroke="#d97757" stroke-width="2" marker-end="url(#arrowLeft)"/>
+  <text x="355" y="197" text-anchor="middle" font-family="monospace" font-size="8" fill="#b0aea5">回传</text>
+
+  <!-- Port labels in tunnel -->
+  <text x="285" y="235" font-family="monospace" font-size="9" fill="#b0aea5">localhost:5678</text>
+  <text x="345" y="235" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5">→</text>
+  <text x="405" y="235" font-family="monospace" font-size="9" fill="#b0aea5">server:5678</text>
+
+  <!-- ===== RIGHT BOX: Remote Server ===== -->
+  <rect x="480" y="75" width="210" height="220" rx="10" fill="#e8e6dc" filter="url(#sh)"/>
+  <rect x="480" y="75" width="210" height="36" rx="10" fill="#d97757"/>
+  <rect x="480" y="101" width="210" height="10" fill="#d97757"/>
+  <text x="585" y="98" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="bold" fill="#fff">远程服务器</text>
+
+  <!-- Server icon -->
+  <text x="585" y="142" text-anchor="middle" font-family="monospace" font-size="22" fill="#d97757">🖥</text>
+
+  <line x1="498" y1="162" x2="672" y2="162" stroke="#b0aea5" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <text x="585" y="183" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">debugpy 监听 5678</text>
+  <text x="585" y="200" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">执行代码</text>
+  <text x="585" y="217" text-anchor="middle" font-family="monospace" font-size="10" fill="#141413">回传状态</text>
+
+  <!-- Status dots in right box -->
+  <circle cx="516" cy="180" r="3" fill="#6a9bcc"/>
+  <circle cx="516" cy="197" r="3" fill="#6a9bcc"/>
+  <circle cx="516" cy="214" r="3" fill="#6a9bcc"/>
+
+  <!-- ===== BIDIRECTIONAL ARROWS BETWEEN BOXES AND TUNNEL ===== -->
+  <!-- Left to Tunnel -->
+  <line x1="240" y1="170" x2="255" y2="170" stroke="#6a9bcc" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <!-- Tunnel to Left (return) -->
+  <line x1="255" y1="200" x2="240" y2="200" stroke="#d97757" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+  <!-- Tunnel to Right -->
+  <line x1="465" y1="170" x2="480" y2="170" stroke="#6a9bcc" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <!-- Right to Tunnel (return) -->
+  <line x1="480" y1="200" x2="465" y2="200" stroke="#d97757" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+
+  <!-- ===== BOTTOM ANNOTATION ===== -->
+  <rect x="80" y="320" width="560" height="48" rx="8" fill="#e8e6dc" filter="url(#sh)"/>
+  <text x="360" y="343" text-anchor="middle" font-family="monospace" font-size="11" fill="#141413">debugpy 在服务器上启动调试服务器，本地编辑器通过 SSH 连接</text>
+  <text x="360" y="360" text-anchor="middle" font-family="monospace" font-size="10" fill="#b0aea5">pip install debugpy 后，一行命令即可启动：</text>
+
+  <!-- Code label -->
+  <rect x="160" y="372" width="400" height="20" rx="4" fill="#141413"/>
+  <text x="360" y="386" text-anchor="middle" font-family="monospace" font-size="10" fill="#788c5d">python -m debugpy --listen 0.0.0.0:5678 --wait-for-client train.py</text>
+</svg>

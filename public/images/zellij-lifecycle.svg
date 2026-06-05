@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <filter id="sh" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#141413" flood-opacity="0.07"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#d97757"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="500" rx="12" fill="#faf9f5"/>
+
+  <text x="400" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">Zellij 会话生命周期</text>
+  <text x="400" y="60" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#b0aea5">理解 detach / attach — Zellij 的灵魂</text>
+
+  <!-- ====== Step 1: Create ====== -->
+  <rect x="48" y="88" width="210" height="170" rx="10" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="48" y="88" width="210" height="42" rx="10" fill="#141413"/>
+  <rect x="48" y="110" width="210" height="20" fill="#141413"/> <!-- cover bottom radius -->
+  <text x="153" y="114" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="15" font-weight="700" fill="#faf9f5">① 创建会话</text>
+
+  <!-- Mini terminal in card -->
+  <rect x="66" y="140" width="172" height="56" rx="4" fill="#141413"/>
+  <text x="74" y="158" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="84" y="158" font-family="monospace" font-size="10" fill="#faf9f5">zellij -s train</text>
+  <text x="74" y="176" font-family="monospace" font-size="10" fill="#b0aea5">Session "train" created</text>
+  <text x="74" y="194" font-family="monospace" font-size="10" fill="#788c5d">[status bar] Tab 1 · train</text>
+
+  <text x="153" y="216" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">启动一个命名会话</text>
+  <text x="153" y="236" text-anchor="middle" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">zellij -s &lt;name&gt;</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="258" y1="170" x2="296" y2="170" stroke="#d97757" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="277" y="162" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#d97757" font-weight="600">运行</text>
+
+  <!-- ====== Step 2: Run ====== -->
+  <rect x="296" y="88" width="210" height="170" rx="10" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="296" y="88" width="210" height="42" rx="10" fill="#141413"/>
+  <rect x="296" y="110" width="210" height="20" fill="#141413"/>
+  <text x="401" y="114" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="15" font-weight="700" fill="#faf9f5">② 跑任务</text>
+
+  <rect x="314" y="140" width="172" height="56" rx="4" fill="#141413"/>
+  <text x="322" y="158" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="332" y="158" font-family="monospace" font-size="10" fill="#faf9f5">python train.py</text>
+  <text x="322" y="176" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 1/100: loss=0.43</text>
+  <text x="322" y="194" font-family="monospace" font-size="10" fill="#b0aea5">Epoch 2/100: loss=0.31</text>
+
+  <text x="401" y="216" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">在会话里正常跑命令</text>
+  <text x="401" y="236" text-anchor="middle" font-family="monospace" font-size="10" fill="#d97757" font-weight="600">python / bash / whatever</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="506" y1="170" x2="544" y2="170" stroke="#d97757" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="525" y="162" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#d97757" font-weight="600">detach</text>
+
+  <!-- ====== Step 3: Detach ====== -->
+  <rect x="544" y="88" width="210" height="170" rx="10" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="544" y="88" width="210" height="42" rx="10" fill="#e8e6dc"/>
+  <rect x="544" y="110" width="210" height="20" fill="#e8e6dc"/>
+  <text x="649" y="114" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="15" font-weight="700" fill="#141413">③ 断开</text>
+
+  <rect x="562" y="140" width="172" height="56" rx="4" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1"/>
+  <!-- Keyboard visualization -->
+  <rect x="580" y="150" width="24" height="18" rx="3" fill="#141413"/>
+  <text x="592" y="163" text-anchor="middle" font-family="monospace" font-size="9" fill="#faf9f5" font-weight="600">Ctrl</text>
+  <text x="610" y="163" font-family="monospace" font-size="12" fill="#141413">+</text>
+  <rect x="622" y="150" width="20" height="18" rx="3" fill="#141413"/>
+  <text x="632" y="163" text-anchor="middle" font-family="monospace" font-size="10" fill="#faf9f5" font-weight="600">O</text>
+  <text x="648" y="163" font-family="monospace" font-size="12" fill="#141413">→</text>
+  <rect x="664" y="150" width="20" height="18" rx="3" fill="#d97757"/>
+  <text x="674" y="163" text-anchor="middle" font-family="monospace" font-size="11" fill="#faf9f5" font-weight="700">D</text>
+
+  <text x="649" y="196" text-anchor="middle" font-family="monospace" font-size="10" fill="#b0aea5">[detached]</text>
+
+  <text x="649" y="216" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">回到普通终端</text>
+  <text x="649" y="236" text-anchor="middle" font-family="monospace" font-size="10" fill="#788c5d" font-weight="600">任务继续在后台跑 ✓</text>
+
+  <!-- ====== Step 4: Reattach (bottom) ====== -->
+  <rect x="250" y="300" width="300" height="100" rx="10" fill="#faf9f5" stroke="#d97757" stroke-width="2" filter="url(#sh)"/>
+
+  <rect x="250" y="300" width="300" height="42" rx="10" fill="#d97757"/>
+  <rect x="250" y="322" width="300" height="20" fill="#d97757"/>
+  <text x="400" y="326" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="15" font-weight="700" fill="#faf9f5">④ 重新连接</text>
+
+  <rect x="268" y="352" width="262" height="36" rx="4" fill="#141413"/>
+  <text x="276" y="368" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="286" y="368" font-family="monospace" font-size="10" fill="#faf9f5">zellij attach -t train</text>
+  <text x="276" y="384" font-family="monospace" font-size="10" fill="#b0aea5">Reattached — 一切都还在！</text>
+
+  <!-- Curved arrow from detach box down to reattach -->
+  <path d="M649,258 C649,275 649,285 400,285 C300,285 300,290 300,300" stroke="#d97757" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arrow)"/>
+
+  <!-- Time annotation -->
+  <rect x="575" y="275" width="130" height="24" rx="12" fill="#141413" opacity="0.06"/>
+  <text x="640" y="291" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">可间隔任意时长</text>
+
+  <!-- ====== Bottom annotation ====== -->
+  <rect x="48" y="435" width="706" height="50" rx="8" fill="#141413" opacity="0.04"/>
+  <text x="400" y="456" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#141413">
+    整个过程中训练任务
+    <tspan fill="#d97757" font-weight="700">从未中断</tspan>
+    —— detach 只是把你和会话分开，
+    <tspan fill="#d97757" font-weight="700">不是结束任务</tspan>
+  </text>
+  <text x="400" y="475" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#b0aea5">关掉 SSH、合上电脑、断网 —— 都不影响</text>
+</svg>

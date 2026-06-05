@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280">
+  <defs>
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#141413" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="280" rx="12" fill="#faf9f5"/>
+
+  <!-- Title -->
+  <text x="320" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="18" font-weight="bold" fill="#141413">launch.json 关键配置</text>
+  <line x1="230" y1="48" x2="410" y2="48" stroke="#d97757" stroke-width="2"/>
+
+  <!-- Code editor visual -->
+  <rect x="20" y="62" width="380" height="195" rx="8" fill="#141413" filter="url(#sh)"/>
+  <rect x="20" y="62" width="380" height="22" rx="8" fill="#2d2d2d"/>
+  <circle cx="34" cy="73" r="4" fill="#d97757"/>
+  <circle cx="46" cy="73" r="4" fill="#b0aea5"/>
+  <circle cx="58" cy="73" r="4" fill="#788c5d"/>
+  <text x="340" y="77" text-anchor="middle" font-family="monospace" font-size="8" fill="#b0aea5">.vscode/launch.json</text>
+
+  <!-- JSON content -->
+  <text x="38" y="102" font-family="monospace" font-size="12" fill="#b0aea5">{</text>
+  <text x="50" y="118" font-family="monospace" font-size="12" fill="#6a9bcc">"version"</text>
+  <text x="110" y="118" font-family="monospace" font-size="12" fill="#fff">:</text>
+  <text x="120" y="118" font-family="monospace" font-size="12" fill="#788c5d">"0.2.0"</text>
+  <text x="162" y="118" font-family="monospace" font-size="12" fill="#fff">,</text>
+  <text x="50" y="136" font-family="monospace" font-size="12" fill="#6a9bcc">"configurations"</text>
+  <text x="168" y="136" font-family="monospace" font-size="12" fill="#fff">:</text>
+  <text x="180" y="136" font-family="monospace" font-size="12" fill="#b0aea5">[</text>
+  <text x="62" y="154" font-family="monospace" font-size="12" fill="#b0aea5">{</text>
+  <!-- HIGHLIGHT LINE 1: type -->
+  <rect x="67" y="142" width="320" height="16" rx="3" fill="#6a9bcc" fill-opacity="0.15"/>
+  <text x="74" y="154" font-family="monospace" font-size="12" fill="#6a9bcc">"type"</text>
+  <text x="126" y="154" font-family="monospace" font-size="12" fill="#fff">:</text>
+  <text x="136" y="154" font-family="monospace" font-size="12" fill="#788c5d">"debugpy"</text>
+
+  <text x="74" y="172" font-family="monospace" font-size="12" fill="#6a9bcc">"request"</text>
+  <text x="146" y="172" font-family="monospace" font-size="12" fill="#fff">:</text>
+  <text x="156" y="172" font-family="monospace" font-size="12" fill="#788c5d">"attach"</text>
+  <text x="192" y="172" font-family="monospace" font-size="12" fill="#fff">,</text>
+
+  <!-- HIGHLIGHT LINE 2: connect -->
+  <rect x="67" y="178" width="320" height="32" rx="3" fill="#d97757" fill-opacity="0.12"/>
+  <text x="74" y="190" font-family="monospace" font-size="12" fill="#6a9bcc">"connect"</text>
+  <text x="146" y="190" font-family="monospace" font-size="12" fill="#fff">:</text>
+  <text x="156" y="190" font-family="monospace" font-size="12" fill="#b0aea5">{</text>
+  <text x="86" y="207" font-family="monospace" font-size="11" fill="#d97757">"host"</text>
+  <text x="142" y="207" font-family="monospace" font-size="11" fill="#fff">:</text>
+  <text x="152" y="207" font-family="monospace" font-size="11" fill="#788c5d">"localhost"</text>
+  <text x="222" y="207" font-family="monospace" font-size="11" fill="#fff">,</text>
+  <text x="232" y="207" font-family="monospace" font-size="11" fill="#d97757">"port"</text>
+  <text x="286" y="207" font-family="monospace" font-size="11" fill="#fff">:</text>
+  <text x="296" y="207" font-family="monospace" font-size="11" fill="#788c5d">5678</text>
+
+  <text x="74" y="226" font-family="monospace" font-size="12" fill="#b0aea5">}</text>
+  <text x="84" y="226" font-family="monospace" font-size="12" fill="#fff">,</text>
+
+  <!-- HIGHLIGHT LINE 3: pathMappings -->
+  <rect x="67" y="230" width="320" height="18" rx="3" fill="#788c5d" fill-opacity="0.12"/>
+  <text x="74" y="244" font-family="monospace" font-size="12" fill="#6a9bcc">"pathMappings"</text>
+  <text x="184" y="244" font-family="monospace" font-size="12" fill="#fff">:</text>
+  <text x="194" y="244" font-family="monospace" font-size="12" fill="#d97757">[...]</text>
+
+  <text x="38" y="256" font-family="monospace" font-size="12" fill="#b0aea5">}</text>
+
+  <!-- ===== CALLOUT ANNOTATIONS ===== -->
+
+  <!-- Callout 1: type: debugpy -->
+  <line x1="400" y1="150" x2="440" y2="92" stroke="#6a9bcc" stroke-width="1.5"/>
+  <circle cx="400" cy="150" r="2.5" fill="#6a9bcc"/>
+  <rect x="442" y="72" width="182" height="40" rx="6" fill="#e8e6dc" filter="url(#sh)"/>
+  <text x="533" y="88" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#6a9bcc">type: "debugpy"</text>
+  <text x="533" y="103" text-anchor="middle" font-family="monospace" font-size="9" fill="#141413">使用 debugpy 调试器</text>
+
+  <!-- Callout 2: host & port -->
+  <line x1="400" y1="205" x2="440" y2="145" stroke="#d97757" stroke-width="1.5"/>
+  <circle cx="400" cy="205" r="2.5" fill="#d97757"/>
+  <rect x="442" y="125" width="182" height="40" rx="6" fill="#e8e6dc" filter="url(#sh)"/>
+  <text x="533" y="141" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#d97757">connect: localhost:5678</text>
+  <text x="533" y="156" text-anchor="middle" font-family="monospace" font-size="9" fill="#141413">通过 SSH 隧道连接</text>
+
+  <!-- Callout 3: pathMappings -->
+  <line x1="400" y1="239" x2="440" y2="208" stroke="#788c5d" stroke-width="1.5"/>
+  <circle cx="400" cy="239" r="2.5" fill="#788c5d"/>
+  <rect x="442" y="188" width="182" height="55" rx="6" fill="#e8e6dc" filter="url(#sh)"/>
+  <text x="533" y="204" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#788c5d">pathMappings</text>
+  <text x="533" y="218" text-anchor="middle" font-family="monospace" font-size="9" fill="#141413">localRoot ↔ remoteRoot</text>
+  <text x="533" y="234" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="bold">最关键！路径映射必须正确</text>
+</svg>

@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <defs>
+    <filter id="sh" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#141413" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="520" rx="12" fill="#faf9f5"/>
+
+  <!-- Header -->
+  <text x="400" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">推荐插件生态</text>
+  <text x="400" y="60" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#b0aea5">Skills + MCP 双层扩展体系</text>
+
+  <!-- Card 1: Superpowers (orange) -->
+  <rect x="40" y="80" width="350" height="148" rx="8" fill="#faf9f5" stroke="#d97757" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="40" y="80" width="350" height="32" rx="8" fill="#d97757" opacity="0.12"/>
+  <circle cx="60" cy="96" r="5" fill="#d97757"/>
+  <text x="74" y="100" font-family="Lora,Georgia,serif" font-size="13" font-weight="700" fill="#d97757">Superpowers</text>
+  <text x="250" y="100" text-anchor="end" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">开发流程元插件</text>
+
+  <!-- Workflow chain -->
+  <rect x="54" y="124" width="68" height="24" rx="12" fill="#d97757" opacity="0.15"/>
+  <text x="88" y="140" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="600">brainstorming</text>
+
+  <text x="126" y="140" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5">→</text>
+
+  <rect x="134" y="124" width="68" height="24" rx="12" fill="#d97757" opacity="0.15"/>
+  <text x="168" y="140" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="600">writing-plans</text>
+
+  <text x="206" y="140" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5">→</text>
+
+  <rect x="214" y="124" width="68" height="24" rx="12" fill="#d97757" opacity="0.15"/>
+  <text x="248" y="140" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="600">TDD</text>
+
+  <text x="286" y="140" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5">→</text>
+
+  <rect x="294" y="124" width="82" height="24" rx="12" fill="#d97757" opacity="0.15"/>
+  <text x="335" y="140" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="600">code-review</text>
+
+  <!-- Sub-descriptions -->
+  <text x="88" y="164" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">构思</text>
+  <text x="168" y="164" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">计划</text>
+  <text x="248" y="164" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">实现</text>
+  <text x="335" y="164" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">审查</text>
+
+  <!-- Bottom row of workflow -->
+  <rect x="74" y="180" width="68" height="24" rx="12" fill="#d97757" opacity="0.15"/>
+  <text x="108" y="196" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="600">simplify</text>
+
+  <text x="146" y="196" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5">→</text>
+
+  <rect x="154" y="180" width="90" height="24" rx="12" fill="#d97757" opacity="0.15"/>
+  <text x="199" y="196" text-anchor="middle" font-family="monospace" font-size="9" fill="#d97757" font-weight="600">verification</text>
+
+  <text x="248" y="196" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5">→</text>
+
+  <rect x="256" y="180" width="68" height="24" rx="12" fill="#788c5d" opacity="0.2"/>
+  <text x="290" y="196" text-anchor="middle" font-family="monospace" font-size="9" fill="#788c5d" font-weight="600">✓ Done</text>
+
+  <text x="108" y="216" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">简化</text>
+  <text x="199" y="216" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">验证</text>
+  <text x="290" y="216" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#788c5d">完成</text>
+
+  <!-- Card 2: Code Review (blue) -->
+  <rect x="410" y="80" width="350" height="148" rx="8" fill="#faf9f5" stroke="#6a9bcc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="410" y="80" width="350" height="32" rx="8" fill="#6a9bcc" opacity="0.12"/>
+  <circle cx="430" cy="96" r="5" fill="#6a9bcc"/>
+  <text x="444" y="100" font-family="Lora,Georgia,serif" font-size="13" font-weight="700" fill="#6a9bcc">Code Review</text>
+  <text x="600" y="100" text-anchor="end" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">代码质量工具</text>
+
+  <!-- Review chain -->
+  <rect x="424" y="124" width="100" height="28" rx="6" fill="#6a9bcc" opacity="0.12"/>
+  <text x="474" y="142" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a9bcc" font-weight="600">/code-review</text>
+
+  <text x="528" y="142" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5">→</text>
+
+  <rect x="540" y="124" width="130" height="28" rx="6" fill="#6a9bcc" opacity="0.18"/>
+  <text x="605" y="142" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a9bcc" font-weight="600">/code-review --fix</text>
+
+  <text x="674" y="142" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5">→</text>
+
+  <rect x="686" y="124" width="64" height="28" rx="6" fill="#6a9bcc" opacity="0.12"/>
+  <text x="718" y="142" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a9bcc" font-weight="600">/simplify</text>
+
+  <!-- Sub-descriptions -->
+  <text x="474" y="166" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">审查 diff</text>
+  <text x="605" y="166" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">审查+自动修复</text>
+  <text x="718" y="166" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">简化重构</text>
+
+  <!-- Review results mock -->
+  <rect x="424" y="178" width="326" height="40" rx="6" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1"/>
+  <text x="438" y="194" font-family="monospace" font-size="9" fill="#141413">✓ Found 3 issues:</text>
+  <text x="438" y="208" font-family="monospace" font-size="9" fill="#788c5d">  [fixed] unused import</text>
+
+  <!-- Card 3: Karpathy Skills (green) -->
+  <rect x="40" y="248" width="350" height="126" rx="8" fill="#faf9f5" stroke="#788c5d" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="40" y="248" width="350" height="32" rx="8" fill="#788c5d" opacity="0.12"/>
+  <circle cx="60" cy="264" r="5" fill="#788c5d"/>
+  <text x="74" y="268" font-family="Lora,Georgia,serif" font-size="13" font-weight="700" fill="#788c5d">Karpathy Skills</text>
+  <text x="230" y="268" text-anchor="end" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">编码准则</text>
+
+  <text x="60" y="298" font-family="Lora,Georgia,serif" font-size="11" fill="#141413">避免过度工程化</text>
+  <text x="250" y="298" font-family="Lora,Georgia,serif" font-size="11" fill="#b0aea5">KISS 原则</text>
+
+  <text x="60" y="320" font-family="Lora,Georgia,serif" font-size="11" fill="#141413">外科手术式修改</text>
+  <text x="250" y="320" font-family="Lora,Georgia,serif" font-size="11" fill="#b0aea5">最小改动范围</text>
+
+  <text x="60" y="342" font-family="Lora,Georgia,serif" font-size="11" fill="#141413">明确暴露假设</text>
+  <text x="250" y="342" font-family="Lora,Georgia,serif" font-size="11" fill="#b0aea5">不要隐藏前提</text>
+
+  <text x="60" y="364" font-family="Lora,Georgia,serif" font-size="11" fill="#141413">定义可验证标准</text>
+  <text x="250" y="364" font-family="Lora,Georgia,serif" font-size="11" fill="#b0aea5">"修好了" = 测试通过</text>
+
+  <!-- Card 4: Academic Research (gray) -->
+  <rect x="410" y="248" width="350" height="126" rx="8" fill="#faf9f5" stroke="#b0aea5" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="410" y="248" width="350" height="32" rx="8" fill="#b0aea5" opacity="0.12"/>
+  <circle cx="430" cy="264" r="5" fill="#b0aea5"/>
+  <text x="444" y="268" font-family="Lora,Georgia,serif" font-size="13" font-weight="700" fill="#b0aea5">Academic Research</text>
+  <text x="610" y="268" text-anchor="end" font-family="Lora,Georgia,serif" font-size="10" fill="#b0aea5">论文写作</text>
+
+  <!-- Pipeline -->
+  <rect x="424" y="288" width="76" height="22" rx="11" fill="#b0aea5" opacity="0.12"/>
+  <text x="462" y="303" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5" font-weight="600">/ars-plan</text>
+
+  <text x="504" y="303" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5" opacity="0.6">→</text>
+
+  <rect x="514" y="288" width="86" height="22" rx="11" fill="#b0aea5" opacity="0.12"/>
+  <text x="557" y="303" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5" font-weight="600">/ars-outline</text>
+
+  <text x="604" y="303" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5" opacity="0.6">→</text>
+
+  <rect x="614" y="288" width="72" height="22" rx="11" fill="#b0aea5" opacity="0.12"/>
+  <text x="650" y="303" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5" font-weight="600">/ars-full</text>
+
+  <text x="690" y="303" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#b0aea5" opacity="0.6">→</text>
+
+  <rect x="698" y="288" width="52" height="22" rx="11" fill="#b0aea5" opacity="0.12"/>
+  <text x="724" y="303" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5" font-weight="600">rev.</text>
+
+  <!-- Second row of pipeline -->
+  <rect x="424" y="316" width="76" height="22" rx="11" fill="#b0aea5" opacity="0.12"/>
+  <text x="462" y="331" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5" font-weight="600">/ars-abstract</text>
+
+  <rect x="514" y="316" width="86" height="22" rx="11" fill="#b0aea5" opacity="0.12"/>
+  <text x="557" y="331" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5" font-weight="600">/ars-citation</text>
+
+  <rect x="614" y="316" width="72" height="22" rx="11" fill="#b0aea5" opacity="0.12"/>
+  <text x="650" y="331" text-anchor="middle" font-family="monospace" font-size="9" fill="#b0aea5" font-weight="600">/ars-revision</text>
+
+  <!-- Sub-description -->
+  <text x="462" y="356" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">规划</text>
+  <text x="557" y="356" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">大纲</text>
+  <text x="650" y="356" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">全流程</text>
+  <text x="724" y="356" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="9" fill="#b0aea5">修订</text>
+
+  <!-- Bottom annotation -->
+  <rect x="40" y="396" width="720" height="34" rx="6" fill="#141413" opacity="0.04"/>
+  <text x="400" y="418" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#141413">
+    每个插件 = 一组特定场景下的系统指令，Claude Code 按需加载和执行
+  </text>
+
+  <!-- Install commands at bottom -->
+  <rect x="40" y="444" width="720" height="62" rx="6" fill="#141413"/>
+  <text x="65" y="464" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="78" y="464" font-family="monospace" font-size="10" fill="#faf9f5">/claude add plugin superpowers@claude-plugins-official</text>
+  <text x="565" y="464" font-family="monospace" font-size="10" fill="#b0aea5"># 开发流程</text>
+  <text x="65" y="482" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="78" y="482" font-family="monospace" font-size="10" fill="#faf9f5">/claude add plugin academic-research-skills@academic-research-skills</text>
+  <text x="565" y="482" font-family="monospace" font-size="10" fill="#b0aea5"># 论文写作</text>
+  <text x="65" y="500" font-family="monospace" font-size="10" fill="#6a9bcc">$</text>
+  <text x="78" y="500" font-family="monospace" font-size="10" fill="#faf9f5">/claude add plugin andrej-karpathy-skills@karpathy-skills</text>
+  <text x="565" y="500" font-family="monospace" font-size="10" fill="#b0aea5"># 编码准则</text>
+</svg>

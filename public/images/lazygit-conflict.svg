@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" fill="none">
+  <defs>
+    <filter id="sh" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#141413" flood-opacity="0.07"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#d97757"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="360" rx="12" fill="#faf9f5"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="20" font-weight="700" fill="#141413">合并冲突解决 — 3 步搞定</text>
+  <text x="400" y="60" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#b0aea5">不用手动编辑 &lt;&lt;&lt;&lt;&lt;&lt; 标记，Lazygit 帮你可视化选择</text>
+
+  <!-- ====== Step 1: Conflict ====== -->
+  <rect x="40" y="85" width="220" height="190" rx="10" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="40" y="85" width="220" height="42" rx="10" fill="#d97757"/>
+  <rect x="40" y="107" width="220" height="20" fill="#d97757"/>
+  <text x="150" y="111" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">① 冲突出现</text>
+
+  <rect x="56" y="140" width="188" height="120" rx="4" fill="#141413"/>
+  <text x="66" y="158" font-family="monospace" font-size="9" fill="#b0aea5">Merging feature → main</text>
+  <text x="66" y="176" font-family="monospace" font-size="9" fill="#d97757">CONFLICT in train.py</text>
+  <line x1="66" y1="184" x2="236" y2="184" stroke="#b0aea5" stroke-width="0.5" opacity="0.3"/>
+  <text x="66" y="201" font-family="monospace" font-size="9" fill="#b0aea5">&lt;&lt;&lt;&lt;&lt;&lt; HEAD</text>
+  <text x="66" y="216" font-family="monospace" font-size="9" fill="#faf9f5">lr = 0.001</text>
+  <text x="66" y="231" font-family="monospace" font-size="9" fill="#b0aea5">=======</text>
+  <text x="66" y="246" font-family="monospace" font-size="9" fill="#faf9f5">learning_rate = 1e-3</text>
+  <text x="66" y="261" font-family="monospace" font-size="9" fill="#b0aea5">&gt;&gt;&gt;&gt;&gt;&gt; feature</text>
+
+  <text x="150" y="292" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#5a5955">合并时自动触发冲突提示</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="260" y1="180" x2="308" y2="180" stroke="#d97757" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="284" y="172" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="8" fill="#d97757" font-weight="600">Enter</text>
+
+  <!-- ====== Step 2: Resolve ====== -->
+  <rect x="312" y="85" width="220" height="190" rx="10" fill="#faf9f5" stroke="#d97757" stroke-width="2" filter="url(#sh)"/>
+  <rect x="312" y="85" width="220" height="42" rx="10" fill="#e8e6dc"/>
+  <rect x="312" y="107" width="220" height="20" fill="#e8e6dc"/>
+  <text x="422" y="111" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#141413">② 选择版本</text>
+
+  <rect x="328" y="140" width="188" height="120" rx="4" fill="#faf9f5" stroke="#e8e6dc" stroke-width="1"/>
+
+  <!-- Ours option -->
+  <rect x="338" y="148" width="168" height="32" rx="4" fill="#6a9bcc" opacity="0.10"/>
+  <text x="348" y="161" font-family="monospace" font-size="9" fill="#5a5955">ours (HEAD)</text>
+  <text x="348" y="174" font-family="monospace" font-size="9" fill="#6a9bcc" font-weight="600">lr = 0.001</text>
+
+  <!-- Theirs option -->
+  <rect x="338" y="186" width="168" height="32" rx="4" fill="#788c5d" opacity="0.08"/>
+  <text x="348" y="199" font-family="monospace" font-size="9" fill="#5a5955">theirs (feature)</text>
+  <text x="348" y="212" font-family="monospace" font-size="9" fill="#788c5d" font-weight="600">learning_rate = 1e-3</text>
+
+  <!-- Both option -->
+  <rect x="338" y="224" width="168" height="28" rx="4" fill="#d97757" opacity="0.08"/>
+  <text x="348" y="243" font-family="monospace" font-size="9" fill="#d97757" font-weight="600">both (保留两者)</text>
+
+  <!-- Space key indicator -->
+  <rect x="370" y="268" width="104" height="20" rx="6" fill="#141413"/>
+  <text x="422" y="282" text-anchor="middle" font-family="monospace" font-size="9" fill="#faf9f5">Space = 选择</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="532" y1="180" x2="580" y2="180" stroke="#d97757" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="556" y="172" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="8" fill="#d97757" font-weight="600">a → c</text>
+
+  <!-- ====== Step 3: Complete ====== -->
+  <rect x="584" y="85" width="176" height="190" rx="10" fill="#faf9f5" stroke="#788c5d" stroke-width="2" filter="url(#sh)"/>
+  <rect x="584" y="85" width="176" height="42" rx="10" fill="#788c5d"/>
+  <rect x="584" y="107" width="176" height="20" fill="#788c5d"/>
+  <text x="672" y="111" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" font-weight="700" fill="#faf9f5">③ 完成合并</text>
+
+  <rect x="598" y="140" width="148" height="120" rx="4" fill="#141413"/>
+  <text x="608" y="158" font-family="monospace" font-size="9" fill="#788c5d">✓ train.py (staged)</text>
+  <line x1="608" y1="166" x2="738" y2="166" stroke="#b0aea5" stroke-width="0.5" opacity="0.3"/>
+  <text x="608" y="183" font-family="monospace" font-size="9" fill="#b0aea5">Merge branch</text>
+  <text x="608" y="198" font-family="monospace" font-size="9" fill="#faf9f5">'feature' into main</text>
+  <line x1="608" y1="208" x2="738" y2="208" stroke="#b0aea5" stroke-width="0.5" opacity="0.3"/>
+  <text x="608" y="225" font-family="monospace" font-size="9" fill="#b0aea5">Conflicts resolved</text>
+
+  <circle cx="662" cy="270" r="14" fill="#788c5d"/>
+  <text x="662" y="275" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="14" fill="#faf9f5">✓</text>
+
+  <!-- Bottom annotation -->
+  <rect x="60" y="300" width="680" height="45" rx="8" fill="#141413" opacity="0.04"/>
+  <text x="400" y="320" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="13" fill="#141413">
+    无需手动编辑冲突标记。按
+    <tspan font-family="monospace" fill="#d97757" font-weight="700">Enter</tspan>
+     进冲突文件 →
+    <tspan font-family="monospace" fill="#d97757" font-weight="700">Space</tspan>
+     选版本 →
+    <tspan font-family="monospace" fill="#788c5d" font-weight="700">a</tspan>
+     暂存 →
+    <tspan font-family="monospace" fill="#d97757" font-weight="700">c</tspan>
+     提交
+  </text>
+  <text x="400" y="338" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="11" fill="#b0aea5">
+    支持 ours / theirs / both 三种策略，每个冲突块单独选择
+  </text>
+</svg>
