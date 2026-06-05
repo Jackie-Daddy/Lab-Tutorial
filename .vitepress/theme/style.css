@@ -1,0 +1,463 @@
+/* ============================================================
+   Lab Theme — Anthropic Brand System (VitePress)
+   Colors: dark #141413 / light #faf9f5 / orange #d97757
+   Typography: Lora (headings + body) / Fira Code (mono)
+   ============================================================ */
+
+/* ---------- VitePress CSS Variable Overrides ---------- */
+:root {
+  --vp-c-bg: #faf9f5;
+  --vp-c-bg-alt: #f0efe8;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f5f4f0;
+  --vp-c-text-1: #141413;
+  --vp-c-text-2: #5a5955;
+  --vp-c-text-3: #b0aea5;
+  --vp-c-brand-1: #d97757;
+  --vp-c-brand-2: #c46545;
+  --vp-c-brand-3: #b05535;
+  --vp-c-brand-soft: rgba(217, 119, 87, 0.14);
+  --vp-font-family-base: 'Lora', Georgia, serif;
+  --vp-font-family-mono: 'Fira Code', 'SF Mono', Menlo, monospace;
+  --vp-nav-height: 64px;
+  --vp-layout-max-width: 1440px;
+  --vp-sidebar-width: 260px;
+
+  /* Custom vars */
+  --c-orange: #d97757;
+  --c-orange-hover: #c46545;
+  --c-blue: #6a9bcc;
+  --c-blue-hover: #5a8ab8;
+  --c-green: #788c5d;
+  --c-light-gray: #e8e6dc;
+  --c-mid: #b0aea5;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+.dark {
+  --vp-c-bg: #141413;
+  --vp-c-bg-alt: #1e1d1c;
+  --vp-c-bg-elv: #252423;
+  --vp-c-bg-soft: #1a1918;
+  --vp-c-text-1: #faf9f5;
+  --vp-c-text-2: #b0aea5;
+  --vp-c-text-3: #6b6a65;
+  --vp-c-brand-1: #e08565;
+  --vp-c-brand-2: #d97757;
+  --vp-c-brand-3: #c46545;
+  --vp-c-brand-soft: rgba(217, 119, 87, 0.18);
+  --vp-c-bg-alt: #1a1918;
+  --vp-c-bg-elv: #252423;
+  --vp-c-bg-soft: #1e1d1c;
+
+  --c-light-gray: #2a2928;
+  --c-mid: #6b6a65;
+}
+
+/* ---------- Global Reset & Base ---------- */
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--vp-font-family-base);
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--c-blue);
+  transition: color 0.15s ease;
+}
+a:hover { color: var(--c-blue-hover); }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--vp-font-family-base);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+h2 { font-size: 1.7rem; letter-spacing: -0.01em; }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.15rem; }
+
+/* ---------- Navbar Overrides ---------- */
+.VPNav {
+  border-bottom: 1px solid var(--c-light-gray) !important;
+}
+
+.VPNavBar {
+  background: rgba(250, 249, 245, 0.88) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.dark .VPNavBar {
+  background: rgba(20, 20, 19, 0.88) !important;
+}
+
+/* Nav brand with orange dot */
+.VPNavBarTitle .title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.VPNavBarTitle .title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--c-orange);
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ---------- Logo ---------- */
+.VPNavBarTitle .VPImage {
+  display: none !important;
+}
+
+/* ---------- Nav links ---------- */
+.VPNavBarMenuLink {
+  font-family: var(--vp-font-family-base) !important;
+  font-weight: 500 !important;
+  color: var(--vp-c-text-1) !important;
+  padding: 0.5rem 0.9rem !important;
+  border-radius: var(--radius) !important;
+  transition: background 0.15s ease !important;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  background: var(--c-light-gray) !important;
+}
+
+/* ---------- Post Card (Homepage) ---------- */
+.post-card {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--c-light-gray);
+}
+
+.post-card:first-child { padding-top: 0; }
+
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--vp-c-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.post-card-meta .accent-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--c-orange);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.post-card-title {
+  font-family: var(--vp-font-family-base);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+}
+
+.post-card-title a {
+  color: var(--vp-c-text-1);
+  transition: color 0.15s ease;
+}
+
+.post-card-title a:hover {
+  color: var(--c-orange);
+}
+
+.post-card-excerpt {
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.post-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-family: var(--vp-font-family-base);
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  background: var(--c-light-gray);
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.tag-pill:hover {
+  background: var(--c-mid);
+}
+
+.post-card-readmore {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--c-orange) !important;
+  transition: color 0.15s ease;
+}
+
+.post-card-readmore:hover {
+  color: var(--c-orange-hover) !important;
+}
+
+/* ---------- Archives ---------- */
+.archive-year {
+  font-family: var(--vp-font-family-base);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--c-orange);
+}
+
+.archive-year:first-child { margin-top: 0; }
+
+.archive-post {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--c-light-gray);
+}
+
+.archive-post-date {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-3);
+  white-space: nowrap;
+  min-width: 5.5rem;
+}
+
+.archive-post-title {
+  font-size: 1rem;
+}
+
+.archive-post-title a {
+  color: var(--vp-c-text-1);
+  transition: color 0.15s ease;
+}
+
+.archive-post-title a:hover {
+  color: var(--c-orange);
+}
+
+/* ---------- Single Post ---------- */
+.post-header {
+  margin-bottom: 2.5rem;
+}
+
+.post-header .title {
+  font-size: 2.2rem !important;
+  margin-bottom: 0.75rem;
+}
+
+.post-header .meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--vp-c-text-3);
+}
+
+.post-header .meta .separator {
+  width: 4px;
+  height: 4px;
+  background: var(--vp-c-text-3);
+  border-radius: 50%;
+}
+
+/* ---------- Post Content ---------- */
+.vp-doc h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--c-light-gray);
+}
+
+.vp-doc h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.vp-doc p {
+  margin-bottom: 1.25rem;
+}
+
+/* Blockquote */
+.vp-doc blockquote {
+  border-left: 3px solid var(--c-orange) !important;
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: rgba(217, 119, 87, 0.06);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--vp-c-text-2);
+}
+
+/* Code blocks */
+.vp-doc code {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.88em;
+}
+
+.vp-doc div[class*='language-'] {
+  margin: 1.5rem 0;
+  border-radius: var(--radius);
+  background: #141413 !important;
+}
+
+.dark .vp-doc div[class*='language-'] {
+  background: #0a0a09 !important;
+}
+
+/* Tables */
+.vp-doc table {
+  width: 100%;
+  font-size: 0.92rem;
+}
+
+.vp-doc th {
+  background: var(--c-light-gray);
+  font-family: var(--vp-font-family-base);
+  font-weight: 600;
+}
+
+.vp-doc td {
+  border-color: var(--c-light-gray);
+}
+
+/* Inline code */
+.vp-doc :not(pre) > code {
+  background: var(--c-light-gray);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  color: var(--vp-c-text-1);
+}
+
+/* Images - SVG centering */
+.vp-doc img[src$=".svg"] {
+  display: block;
+  margin: 2rem auto;
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* ---------- Post Tags (bottom) ---------- */
+.post-tags-section {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--c-light-gray);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.post-tags-section .label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vp-c-text-3);
+  margin-right: 0.25rem;
+}
+
+/* ---------- Post Nav ---------- */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--c-light-gray);
+  font-size: 0.9rem;
+}
+
+.post-nav a {
+  font-weight: 600;
+  max-width: 45%;
+}
+
+/* ---------- About Page ---------- */
+.vp-doc.about-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Page Heading ---------- */
+.page-heading {
+  margin-bottom: 2rem;
+}
+
+.page-heading h1 {
+  font-size: 1.8rem;
+}
+
+/* ---------- Homepage Title ---------- */
+.home-description {
+  font-size: 1rem;
+  color: var(--vp-c-text-2);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* ---------- Lang Switch button styling ---------- */
+.VPNavBarMenuGroup .text {
+  font-family: var(--vp-font-family-base) !important;
+}
+
+/* ---------- 404 ---------- */
+.not-found h1 {
+  font-size: 4rem;
+  color: var(--c-orange);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  html { font-size: 16px; }
+
+  .post-card-title { font-size: 1.25rem; }
+
+  .post-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .post-nav a { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .VPHome .container {
+    padding: 0 1rem;
+  }
+}
+
+/* ---------- Suppress VitePress sidebar on non-doc pages ---------- */
+.no-sidebar .VPSidebar { display: none !important; }
+.no-sidebar .VPContent { padding-left: 0 !important; }
+
+/* ---------- Custom content width for blog pages ---------- */
+.VPDoc.has-aside .content-container {
+  max-width: none !important;
+}

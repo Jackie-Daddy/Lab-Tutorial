@@ -7,3 +7,6 @@ public/
 .deploy*/
 _multiconfig.yml
 .superpowers/
+.vitepress/dist/
+.vitepress/cache/
+*.timestamp-*.mjs
