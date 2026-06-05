@@ -16,6 +16,10 @@ Built with [Hexo](https://hexo.io/) and deployed on [GitHub Pages](https://dual-
 | 2 | [如何愉快的使用 tmux 在服务器后台跑任务](https://dual-pointers.github.io/Lab-Tutorial/zh/how-to-use-tmux/) | [tmux for Background Tasks](https://dual-pointers.github.io/Lab-Tutorial/en/how-to-use-tmux/) |
 | 3 | [VSCode & Cursor & Windsurf 如何远程 debug 代码](https://dual-pointers.github.io/Lab-Tutorial/zh/remote-debug/) | [Remote Debug with VSCode/Cursor/Windsurf](https://dual-pointers.github.io/Lab-Tutorial/en/remote-debug/) |
 | 4 | [让 Cursor 更聪明](https://dual-pointers.github.io/Lab-Tutorial/zh/smarter-cursor/) | [Make Cursor Smarter](https://dual-pointers.github.io/Lab-Tutorial/en/smarter-cursor/) |
+| 5 | [Zellij — 现代化终端多路复用器完全指南](https://dual-pointers.github.io/Lab-Tutorial/zh/zellij-guide/) | [Zellij — The Modern Terminal Multiplexer](https://dual-pointers.github.io/Lab-Tutorial/en/zellij-guide/) |
+| 6 | [Yazi — 现代化终端文件管理器入门](https://dual-pointers.github.io/Lab-Tutorial/zh/yazi-guide/) | [Yazi — Modern Terminal File Manager](https://dual-pointers.github.io/Lab-Tutorial/en/yazi-guide/) |
+| 7 | [Lazygit — 告别手打 Git 命令](https://dual-pointers.github.io/Lab-Tutorial/zh/lazygit-guide/) | [Lazygit — Stop Typing Git Commands](https://dual-pointers.github.io/Lab-Tutorial/en/lazygit-guide/) |
+| 8 | [Claude Code — AI 驱动的终端编程助手完全指南](https://dual-pointers.github.io/Lab-Tutorial/zh/claude-code-guide/) | [Claude Code — The Complete Guide to AI-Powered Terminal Coding](https://dual-pointers.github.io/Lab-Tutorial/en/claude-code-guide/) |
 
 ---
 
