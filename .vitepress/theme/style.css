@@ -148,7 +148,11 @@ h4 { font-size: 1.15rem; }
   font-weight: 500 !important;
   font-size: 0.88rem !important;
   color: var(--vp-c-text-1) !important;
-  padding: 0.35rem 0.65rem !important;
+  /* Keep vertical padding 0 — VitePress scoped line-height fills the bar */
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 0.55rem !important;
+  padding-right: 0.55rem !important;
   border-radius: 0 !important;
   transition: background 0.15s ease !important;
 }
@@ -158,10 +162,15 @@ h4 { font-size: 1.15rem; }
   background: var(--c-light-gray) !important;
 }
 
-/* Tighter language switch */
+/* Tighter language switch — full height */
+
 .VPNavBarMenuGroup .button {
-  padding: 0.35rem 0.55rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 0.45rem !important;
+  padding-right: 0.45rem !important;
   font-size: 0.88rem !important;
+  line-height: var(--vp-nav-height) !important;
 }
 
 /* Tighter social link */
@@ -487,15 +496,29 @@ h4 { font-size: 1.15rem; }
 
 /* ---------- Suppress VitePress sidebar — we don't use it ---------- */
 .VPSidebar { display: none !important; }
-.VPContent { padding-left: 0 !important; }
 
-/* Remove leftover sidebar spacer */
+/* Kill sidebar-induced padding on VPContent */
+.VPContent {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Center the main content container */
 .VPContent .container {
   max-width: var(--vp-layout-max-width) !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* ---------- Custom content width for blog pages ---------- */
+
+/* Override VitePress scoped .content max-width — it constrains our content */
+.VPDoc .content {
+  max-width: 780px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .VPDoc.has-aside .content-container {
   max-width: 720px !important;
 }
@@ -506,7 +529,15 @@ h4 { font-size: 1.15rem; }
   margin: 0 auto !important;
 }
 
-/* Homepage / archives: ensure content is centered */
+/* Homepage / archives: symmetric horizontal padding */
 .VPDoc {
-  padding: 0 2rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+@media (min-width: 768px) {
+  .VPDoc {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
 }
