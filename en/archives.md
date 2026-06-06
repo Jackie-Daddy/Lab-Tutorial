@@ -7,8 +7,9 @@ layout: page
 import { data } from '../.vitepress/theme/loaders/en-posts.data.ts'
 </script>
 
-<div class="page-heading">
-  <h1>Archives</h1>
+<div class="home-container">
+  <div class="page-heading">
+    <h1>Archives</h1>
+  </div>
+  <ArchiveList :posts="data" />
 </div>
-
-<ArchiveList :posts="data" />

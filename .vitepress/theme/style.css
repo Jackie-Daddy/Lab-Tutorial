@@ -494,50 +494,15 @@ h4 { font-size: 1.15rem; }
   }
 }
 
-/* ---------- Suppress VitePress sidebar — we don't use it ---------- */
-.VPSidebar { display: none !important; }
-
-/* Kill sidebar-induced padding on VPContent */
-.VPContent {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+/* ---------- Home & Archive container — local wrapper, no global overrides ---------- */
+.home-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px;
 }
 
-/* Center the main content container */
-.VPContent .container {
-  max-width: var(--vp-layout-max-width) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* ---------- Custom content width for blog pages ---------- */
-
-/* Override VitePress scoped .content max-width — it constrains our content */
-.VPDoc .content {
-  max-width: 780px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.VPDoc.has-aside .content-container {
-  max-width: 720px !important;
-}
-
-/* ---------- Wider content for posts/pages without aside ---------- */
-.VPDoc:not(.has-aside) .content-container {
-  max-width: 780px !important;
-  margin: 0 auto !important;
-}
-
-/* Homepage / archives: symmetric horizontal padding */
-.VPDoc {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-}
-
-@media (min-width: 768px) {
-  .VPDoc {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+@media (max-width: 768px) {
+  .home-container {
+    padding: 24px 16px;
   }
 }
