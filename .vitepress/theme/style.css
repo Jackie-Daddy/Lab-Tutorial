@@ -359,38 +359,15 @@ h4 { font-size: 1.15rem; }
   color: var(--vp-c-text-2);
 }
 
-/* Code blocks — follow theme via CSS variables */
+/* Code blocks — VitePress handles dark/light theming natively */
 .vp-doc code {
   font-family: var(--vp-font-family-mono);
   font-size: 0.88em;
 }
 
-:root {
-  --vp-code-block-bg: #141413;
-  --vp-code-block-color: #faf9f5;
-}
-
-.dark {
-  --vp-code-block-bg: #0a0a09;
-  --vp-code-block-color: #e0dcd5;
-}
-
 .vp-doc div[class*='language-'] {
   margin: 1.5rem 0;
   border-radius: var(--radius);
-  background: var(--vp-code-block-bg) !important;
-}
-
-.vp-doc div[class*='language-'] code {
-  color: var(--vp-code-block-color);
-}
-
-.vp-doc pre {
-  background: var(--vp-code-block-bg) !important;
-}
-
-.vp-doc pre code {
-  color: var(--vp-code-block-color);
 }
 
 /* Tables */
