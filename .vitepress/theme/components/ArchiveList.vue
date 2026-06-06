@@ -22,18 +22,15 @@ const groupedByYear = computed(() => {
 })
 
 function formatDate(dateStr: string): string {
-  if (!dateStr) return ''
-  const d = new Date(dateStr)
-  const m = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${m}-${day}`
+  if (!dateStr || dateStr.length < 10) return ''
+  return dateStr.slice(5, 10) // "MM-DD"
 }
 </script>
 
 <template>
   <div class="archive-list">
     <template v-for="[year, yearPosts] in groupedByYear" :key="year">
-      <h2 class="archive-year">{{ year }} <span style="font-size: 0.9rem; font-weight: 400; color: var(--vp-c-text-3);">({{ yearPosts.length }})</span></h2>
+      <h2 class="archive-year">{{ year }} <span style="font-size:0.9rem;font-weight:400;color:var(--vp-c-text-3)">({{ yearPosts.length }})</span></h2>
       <div v-for="post in yearPosts" :key="post.url" class="archive-post">
         <span class="archive-post-date">{{ formatDate(post.date) }}</span>
         <span class="archive-post-title">

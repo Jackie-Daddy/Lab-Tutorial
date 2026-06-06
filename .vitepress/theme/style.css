@@ -20,8 +20,8 @@
   --vp-font-family-base: 'Lora', Georgia, serif;
   --vp-font-family-mono: 'Fira Code', 'SF Mono', Menlo, monospace;
   --vp-nav-height: 64px;
-  --vp-layout-max-width: 1440px;
-  --vp-sidebar-width: 260px;
+  --vp-layout-max-width: 1152px;
+  --vp-sidebar-width: 240px;
 
   /* Custom vars */
   --c-orange: #d97757;
@@ -101,11 +101,26 @@ h4 { font-size: 1.15rem; }
   background: rgba(20, 20, 19, 0.88) !important;
 }
 
+/* Tighter navbar */
+.VPNavBar > .container {
+  max-width: var(--vp-layout-max-width) !important;
+}
+
+.VPNavBar > .container > .content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* Nav brand with orange dot */
+.VPNavBarTitle {
+  flex-shrink: 0;
+}
+
 .VPNavBarTitle .title {
   display: flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
+  font-size: 1.05rem !important;
 }
 
 .VPNavBarTitle .title::before {
@@ -124,11 +139,16 @@ h4 { font-size: 1.15rem; }
 }
 
 /* ---------- Nav links ---------- */
+.VPNavBarMenu {
+  gap: 0 !important;
+}
+
 .VPNavBarMenuLink {
   font-family: var(--vp-font-family-base) !important;
   font-weight: 500 !important;
+  font-size: 0.88rem !important;
   color: var(--vp-c-text-1) !important;
-  padding: 0.5rem 0.9rem !important;
+  padding: 0.35rem 0.65rem !important;
   border-radius: var(--radius) !important;
   transition: background 0.15s ease !important;
 }
@@ -136,6 +156,18 @@ h4 { font-size: 1.15rem; }
 .VPNavBarMenuLink:hover,
 .VPNavBarMenuLink.active {
   background: var(--c-light-gray) !important;
+}
+
+/* Tighter language switch */
+.VPNavBarMenuGroup .button {
+  padding: 0.35rem 0.55rem !important;
+  font-size: 0.88rem !important;
+}
+
+/* Tighter social link */
+.VPNavBarAppearance,
+.VPNavBarSocialLinks {
+  padding-left: 0.25rem !important;
 }
 
 /* ---------- Post Card (Homepage) ---------- */
@@ -459,5 +491,17 @@ h4 { font-size: 1.15rem; }
 
 /* ---------- Custom content width for blog pages ---------- */
 .VPDoc.has-aside .content-container {
-  max-width: none !important;
+  max-width: 720px !important;
+}
+
+/* ---------- Wider content for posts without aside ---------- */
+.VPDoc:not(.has-aside) .content-container {
+  max-width: 800px !important;
+  margin: 0 auto !important;
+}
+
+/* Post list pages should be wider */
+.post-list-wrapper .VPDoc .content-container,
+.vp-doc.post-list-wrapper {
+  max-width: 780px !important;
 }
