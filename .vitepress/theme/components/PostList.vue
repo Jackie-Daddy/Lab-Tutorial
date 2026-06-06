@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
+
 interface Post {
   url: string
   title: string
@@ -26,13 +28,13 @@ function formatDate(dateStr: string): string {
         <time>{{ formatDate(post.date) }}</time>
       </div>
       <h2 class="post-card-title">
-        <a :href="post.url">{{ post.title }}</a>
+        <a :href="withBase(post.url)">{{ post.title }}</a>
       </h2>
       <p class="post-card-excerpt">{{ post.description }}</p>
       <div class="post-card-tags">
         <span v-for="tag in post.tags" :key="tag" class="tag-pill">{{ tag }}</span>
       </div>
-      <a :href="post.url" class="post-card-readmore">
+      <a :href="withBase(post.url)" class="post-card-readmore">
         {{ lang === 'zh' ? '阅读全文 →' : 'Read more →' }}
       </a>
     </article>

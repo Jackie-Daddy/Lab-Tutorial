@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { withBase } from 'vitepress'
 
 interface Post {
   url: string
@@ -34,7 +35,7 @@ function formatDate(dateStr: string): string {
       <div v-for="post in yearPosts" :key="post.url" class="archive-post">
         <span class="archive-post-date">{{ formatDate(post.date) }}</span>
         <span class="archive-post-title">
-          <a :href="post.url">{{ post.title }}</a>
+          <a :href="withBase(post.url)">{{ post.title }}</a>
         </span>
       </div>
     </template>

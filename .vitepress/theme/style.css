@@ -149,7 +149,7 @@ h4 { font-size: 1.15rem; }
   font-size: 0.88rem !important;
   color: var(--vp-c-text-1) !important;
   padding: 0.35rem 0.65rem !important;
-  border-radius: var(--radius) !important;
+  border-radius: 0 !important;
   transition: background 0.15s ease !important;
 }
 
@@ -485,23 +485,28 @@ h4 { font-size: 1.15rem; }
   }
 }
 
-/* ---------- Suppress VitePress sidebar on non-doc pages ---------- */
-.no-sidebar .VPSidebar { display: none !important; }
-.no-sidebar .VPContent { padding-left: 0 !important; }
+/* ---------- Suppress VitePress sidebar — we don't use it ---------- */
+.VPSidebar { display: none !important; }
+.VPContent { padding-left: 0 !important; }
+
+/* Remove leftover sidebar spacer */
+.VPContent .container {
+  max-width: var(--vp-layout-max-width) !important;
+  margin: 0 auto !important;
+}
 
 /* ---------- Custom content width for blog pages ---------- */
 .VPDoc.has-aside .content-container {
   max-width: 720px !important;
 }
 
-/* ---------- Wider content for posts without aside ---------- */
+/* ---------- Wider content for posts/pages without aside ---------- */
 .VPDoc:not(.has-aside) .content-container {
-  max-width: 800px !important;
+  max-width: 780px !important;
   margin: 0 auto !important;
 }
 
-/* Post list pages should be wider */
-.post-list-wrapper .VPDoc .content-container,
-.vp-doc.post-list-wrapper {
-  max-width: 780px !important;
+/* Homepage / archives: ensure content is centered */
+.VPDoc {
+  padding: 0 2rem !important;
 }
