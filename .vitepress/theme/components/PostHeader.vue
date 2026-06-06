@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useData, useRoute } from 'vitepress'
+import { useData } from 'vitepress'
 import { computed } from 'vue'
 
 const { frontmatter } = useData()
-const route = useRoute()
 
 // Only render for posts (pages with a date in frontmatter)
 const showHeader = computed(() => !!frontmatter.value.date)
@@ -12,11 +11,6 @@ const showHeader = computed(() => !!frontmatter.value.date)
 <template>
   <div v-if="showHeader" class="post-header">
     <h1 class="title">{{ frontmatter.title }}</h1>
-    <div class="meta">
-      <span class="date">{{ frontmatter.date }}</span>
-      <span class="separator" />
-      <span class="reading-time">Lab Tutorial</span>
-    </div>
   </div>
 </template>
 
@@ -31,22 +25,7 @@ const showHeader = computed(() => !!frontmatter.value.date)
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.3;
-  margin-bottom: 0.75rem;
+  margin: 0;
   color: var(--vp-c-text-1);
-}
-
-.post-header .meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.88rem;
-  color: var(--vp-c-text-3);
-}
-
-.post-header .meta .separator {
-  width: 4px;
-  height: 4px;
-  background: var(--vp-c-text-3);
-  border-radius: 50%;
 }
 </style>
