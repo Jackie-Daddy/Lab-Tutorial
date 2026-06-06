@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A team blog built with **VitePress**, hosting short, standalone tutorials ("一些小技巧" / lab tips) for working on shared/remote lab servers. Content is bilingual (Chinese + English). The blog is deployed to GitHub Pages via GitHub Actions.
 
+- **Repository**: [Dual-Pointers/Lab-Tutorial](https://github.com/Dual-Pointers/Lab-Tutorial)
+- **Live site**: <https://dual-pointers.github.io/Lab-Tutorial/>
+- **Base path**: `/Lab-Tutorial/` (configured in `.vitepress/config.mts`, clean URLs enabled)
+
 ## Tech stack
 
 - **Static site generator**: VitePress 1.x (Vue 3 + Vite)
