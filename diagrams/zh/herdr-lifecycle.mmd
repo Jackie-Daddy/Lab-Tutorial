@@ -1,0 +1,16 @@
+flowchart TB
+  accTitle: Herdr 脱离重连与服务重启的区别
+  accDescr: 脱离客户端或断开 SSH 时，只要后台服务与机器保持运行，原进程继续执行，重新连接即可返回。服务停止或机器重启会结束原进程，之后只能恢复布局和符合条件的 Agent 原生会话。
+
+  run["Herdr 后台会话<br/>窗格与任务运行中"]
+  detach["脱离客户端 / SSH 断开<br/>Ctrl+B → q"]
+  live["后台服务存活，机器未休眠<br/>原进程继续执行"]
+  attach["重新连接<br/>herdr 返回原会话"]
+  stop["服务停止 / 机器重启<br/>原进程结束"]
+  restore["再次启动 Herdr<br/>恢复布局和目录"]
+  eligible["符合条件的 Agent<br/>通过集成恢复原生对话"]
+  manual["普通命令与其他窗格<br/>新 shell，按需重新运行任务"]
+  run --> detach --> live --> attach
+  run --> stop --> restore
+  restore --> eligible
+  restore --> manual

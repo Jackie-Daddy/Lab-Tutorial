@@ -1,0 +1,16 @@
+flowchart TB
+  accTitle: Detaching from Herdr versus restarting its server
+  accDescr: Detaching or losing SSH leaves original processes running while the background server and host stay alive and awake. A server stop or host reboot ends those processes. A later start restores layout and eligible native agent conversations.
+
+  run["Herdr background session<br/>Panes and tasks running"]
+  detach["Detach / disconnect SSH<br/>Ctrl+B → q"]
+  live["Server alive, host awake<br/>Original processes continue"]
+  attach["Reconnect<br/>herdr returns to the live session"]
+  stop["Server stop / host reboot<br/>Original processes end"]
+  restore["Start Herdr again<br/>Restore layout and directories"]
+  eligible["Eligible agents<br/>Resume integrated native sessions"]
+  manual["Other commands and panes<br/>New shells; rerun tasks as needed"]
+  run --> detach --> live --> attach
+  run --> stop --> restore
+  restore --> eligible
+  restore --> manual

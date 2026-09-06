@@ -1,0 +1,19 @@
+flowchart TB
+  accTitle: 用 Herdr 组织修改、验证与结果检查
+  accDescr: 明确任务范围和验证命令后启动 Agent。工作时查看其他任务，需要输入时人工处理，完成后检查差异和测试。发现问题则反馈修正，通过后结束任务。
+
+  task["明确任务<br/>修改范围、验证命令、完成条件"]
+  agent["Agent 在窗格中执行"]
+  state{"查看工作状态"}
+  working["working<br/>处理其他任务"]
+  blocked["blocked<br/>打开窗格并回答问题"]
+  inspect["done / idle / unknown<br/>检查实际输出、diff 和测试"]
+  valid{"结果符合要求？"}
+  feedback["反馈具体问题<br/>继续修改和验证"]
+  finish["人工确认结果<br/>提交或交付"]
+  task --> agent --> state
+  state --> working --> state
+  state --> blocked --> agent
+  state --> inspect --> valid
+  valid -->|"否"| feedback --> agent
+  valid -->|"是"| finish

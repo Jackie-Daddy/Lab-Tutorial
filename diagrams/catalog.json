@@ -82,5 +82,14 @@
   },
   "zellij-layout": {
     "post": "zellij-guide"
+  },
+  "herdr-hierarchy": {
+    "post": "herdr-guide"
+  },
+  "herdr-workflow": {
+    "post": "herdr-guide"
+  },
+  "herdr-lifecycle": {
+    "post": "herdr-guide"
   }
 }

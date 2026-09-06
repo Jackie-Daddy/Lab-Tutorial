@@ -1,0 +1,19 @@
+flowchart TB
+  accTitle: Organize edits, validation, and review with Herdr
+  accDescr: Define scope and validation before starting an agent. Work elsewhere while it runs, respond when it needs input, and inspect actual output, diffs, and tests. Return concrete failures for revision and finish after reviewing the results.
+
+  task["Define the task<br/>Scope, checks, completion criteria"]
+  agent["Agent works in a pane"]
+  state{"Check agent status"}
+  working["working<br/>Handle other tasks"]
+  blocked["blocked<br/>Open the pane and respond"]
+  inspect["done / idle / unknown<br/>Inspect output, diff, and tests"]
+  valid{"Meets requirements?"}
+  feedback["Return concrete issues<br/>Revise and validate"]
+  finish["Review the result<br/>Commit or deliver"]
+  task --> agent --> state
+  state --> working --> state
+  state --> blocked --> agent
+  state --> inspect --> valid
+  valid -->|"No"| feedback --> agent
+  valid -->|"Yes"| finish

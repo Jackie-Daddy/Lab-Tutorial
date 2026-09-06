@@ -1,0 +1,18 @@
+flowchart TB
+  accTitle: Herdr sessions, workspaces, tabs, and panes
+  accDescr: A terminal client connects to a background Herdr session. A project workspace contains development and review tabs, whose panes run a coding agent, tests, and Git inspection. A workspace does not isolate the filesystem.
+
+  client["Terminal client<br/>Display and input"]
+  session["Session: background server<br/>Owns panes and processes"]
+  workspace["Workspace: lab project<br/>Organization, no filesystem isolation"]
+  dev["Tab: development"]
+  review["Tab: review"]
+  agent["Pane: coding agent<br/>Edit a scoped module"]
+  tests["Pane: tests<br/>Run existing checks"]
+  diff["Pane: inspect results<br/>git diff and logs"]
+  client --> session --> workspace
+  workspace --> dev
+  workspace --> review
+  dev --> agent
+  dev --> tests
+  review --> diff

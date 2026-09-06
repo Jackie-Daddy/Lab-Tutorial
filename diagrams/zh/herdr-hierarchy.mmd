@@ -1,0 +1,18 @@
+flowchart TB
+  accTitle: Herdr 的会话、工作区、标签页与窗格
+  accDescr: 终端客户端连接 Herdr 后台会话。会话包含项目工作区，工作区包含开发和检查标签页，标签页中的窗格分别运行编程助手、测试和 Git 检查。工作区本身不隔离文件系统。
+
+  client["终端客户端<br/>显示界面并接收输入"]
+  session["Session：后台会话<br/>持有窗格与进程"]
+  workspace["Workspace：实验室项目<br/>按项目组织，文件系统共享"]
+  dev["Tab：开发"]
+  review["Tab：检查"]
+  agent["Pane：编程助手<br/>修改指定模块"]
+  tests["Pane：测试<br/>运行现有验证命令"]
+  diff["Pane：检查结果<br/>git diff 与日志"]
+  client --> session --> workspace
+  workspace --> dev
+  workspace --> review
+  dev --> agent
+  dev --> tests
+  review --> diff
