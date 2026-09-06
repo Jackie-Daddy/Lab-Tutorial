@@ -4,14 +4,21 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
+    "diagrams": "node scripts/render-diagrams.mjs",
+    "check:diagrams": "node scripts/check-diagrams.mjs",
+    "dev": "npm run diagrams && vitepress dev",
+    "build": "npm run diagrams && npm run check:diagrams && vitepress build",
+    "preview": "vitepress preview",
+    "check:pages": "node scripts/check-diagram-pages.mjs"
   },
   "dependencies": {
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@fontsource/noto-sans-sc": "5.3.0",
+    "@mermaid-js/mermaid-cli": "11.17.0",
+    "pngjs": "7.0.0",
+    "puppeteer": "24.43.1",
     "vitepress": "^1.6.0"
   }
 }

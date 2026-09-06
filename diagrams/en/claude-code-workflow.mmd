@@ -1,0 +1,29 @@
+flowchart TB
+  accTitle: A Daily Workflow Combining Claude Code Commands
+  accDescr: Supply project conventions through CLAUDE.md, explore requirements, and plan. Write a failing test before implementation, then edit and run tests. Review and simplify the changes, verify the final result, and complete the task.
+  subgraph design["Stage 1 · Requirements and planning"]
+    direction LR
+    conventions["Supply project conventions<br/>CLAUDE.md"]
+    brainstorm["Explore requirements<br/>/brainstorming"]
+    plan["Create an implementation plan<br/>/plan"]
+    conventions --> brainstorm --> plan
+  end
+  subgraph implementation["Stage 2 · Implementation and tests"]
+    direction LR
+    test["Write a test first<br/>Confirm the expected failure"]
+    code["Implement the behavior<br/>Keep changes focused"]
+    run["Run tests<br/>Fix remaining failures"]
+    test --> code --> run
+    run -->|"Tests fail"| code
+  end
+  subgraph quality["Stage 3 · Review and verification"]
+    direction LR
+    review["Review and fix issues<br/>/code-review --fix"]
+    simplify["Remove duplication<br/>/simplify"]
+    verify["Run verification again<br/>Inspect the final changes"]
+    review --> simplify --> verify
+  end
+  done["Verification passes<br/>Report the result and finish"]
+  design --> implementation
+  implementation -->|"Tests pass"| quality
+  quality --> done

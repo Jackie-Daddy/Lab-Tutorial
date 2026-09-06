@@ -1,0 +1,28 @@
+flowchart TB
+  accTitle: Troubleshoot proxy connections by symptom
+  accDescr: Check four symptoms: a refused connection, different ping and curl results, application failures, and slow internal services. Inspect the proxy port, firewall, proxy variables, and no_proxy. ICMP ping does not validate an HTTP proxy.
+
+subgraph network["Connection and protocol"]
+    direction TB
+    refused["curl reports Connection refused"]
+    port["Check that the proxy port is open<br/>Check whether the firewall blocks it"]
+    retest["Retry curl after correcting the issue"]
+    ping["Ping works but curl does not"]
+    protocol["Ping uses ICMP<br/>It does not use the HTTP proxy"]
+    verbose["Inspect connection details<br/>curl -v https://www.google.com"]
+    refused --> port --> retest
+    retest ~~~ ping
+    ping --> protocol --> verbose
+  end
+  subgraph applications["Applications and internal access"]
+    direction TB
+    app["pip or git still cannot connect"]
+    variables["Check that http_proxy and https_proxy<br/>are both set"]
+    git["Optional Git-specific proxy setting<br/>git config --global http.proxy $http_proxy"]
+    slow["Internal services become slow"]
+    bypass["Check whether no_proxy<br/>includes the internal destination"]
+    direct["Complete the internal bypass list<br/>Then test the internal service again"]
+    app --> variables --> git
+    git ~~~ slow
+    slow --> bypass --> direct
+  end

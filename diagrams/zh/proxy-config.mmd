@@ -1,0 +1,26 @@
+flowchart TB
+  accTitle: 临时与持久代理配置
+  accDescr: 两种配置都需设置 http_proxy 和 https_proxy。临时设置限于当前终端；持久设置写入 shell 配置文件并加载，同时用 no_proxy 排除内网地址，最后用 curl 验证。
+
+address["示例代理地址<br/>http://192.168.1.100:7890"]
+  subgraph temporary["临时配置"]
+    direction TB
+    terminal["在当前终端执行 export"]
+    tempVars["http_proxy 与 https_proxy<br/>都设为示例代理地址"]
+    lifetime["仅当前终端会话有效<br/>关闭终端后需重新设置"]
+    terminal --> tempVars --> lifetime
+  end
+  subgraph persistent["持久配置"]
+    direction TB
+    rc["编辑 ~/.bashrc 或 ~/.zshrc"]
+    savedVars["写入两个代理变量的 export<br/>no_proxy 排除内网地址"]
+    reload["保存并加载对应文件<br/>例如 source ~/.bashrc"]
+    rc --> savedVars --> reload
+  end
+  verify["验证连接<br/>curl -I https://www.google.com"]
+  toggle["可选快捷开关<br/>proxy-on / proxy-off"]
+  address --> temporary
+  address --> persistent
+  temporary --> verify
+  persistent --> verify
+  verify -.->|"按文章添加 alias 后使用"| toggle

@@ -1,0 +1,20 @@
+flowchart TB
+  accTitle: Yazi shortcuts grouped by task
+  accDescr: Group the article’s Yazi shortcuts into navigation, search, file operations, and tabs. Copy or cut first, navigate to the destination, and press p to paste. Trash and permanent deletion are shown separately.
+
+subgraph navigation["Navigation and search"]
+    direction TB
+    move["Move up/down: j / k or arrow keys<br/>Enter directory: l / Enter<br/>Go to parent: h"]
+    jump["Top: g<br/>Bottom: G<br/>Line N: N + G"]
+    search["Search: /, type a keyword, Enter<br/>Next match: n; previous match: N"]
+    hidden["Toggle hidden files<br/>. (period)"]
+    move ~~~ jump ~~~ search ~~~ hidden
+  end
+  subgraph files["Files and tabs"]
+    direction TB
+    transfer["Copy: y; move: x<br/>Navigate to the destination, then p"]
+    edit["Create: a; rename: r<br/>End a new directory name with /"]
+    select["Select: Space; select all: Ctrl+A<br/>Trash: d; permanently delete: D"]
+    tabs["New tab: t; close: Ctrl+C or q<br/>Switch: 1 / 2 / 3<br/>Previous/next tab: [ / ]"]
+    transfer ~~~ edit ~~~ select ~~~ tabs
+  end

@@ -59,7 +59,7 @@ code review, not a professor lecturing.
 - **Boring code**: Readability > cleverness. You six months from now will thank you.
 - **Surface unknowns**: Makes the AI proactively flag what it's uncertain about rather than silently guessing.
 
-![Prompt Design — 6 Core Principles](/images/cursor-principles.svg)
+<TutorialDiagram name="cursor-principles" />
 
 ## Before and After
 
@@ -69,7 +69,7 @@ code review, not a professor lecturing.
 | "Optimize this code's performance" | Suggests micro-optimizations | First asks: have you profiled it? Where's the bottleneck? Don't prematurely optimize. |
 | "Use Redis for caching" | Gives Redis integration code | First asks: what's your access pattern? Is in-memory caching enough? Adding Redis means managing operational costs too. |
 
-![Before and After — With the Prompt](/images/cursor-before-after.svg)
+<TutorialDiagram name="cursor-before-after" />
 
 ## Advanced: Customize Per Project
 
@@ -81,7 +81,7 @@ Different projects need different "personality" styles. For example, you can tun
 
 Add these custom instructions to your project's `CLAUDE.md` or Cursor Rules.
 
-![Compatible Tools & Setup](/images/cursor-tools.svg)
+<TutorialDiagram name="cursor-tools" />
 
 <div class="post-tags-section">
   <span class="label">Tags:</span>

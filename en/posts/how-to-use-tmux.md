@@ -47,7 +47,7 @@ python train.py
 tmux attach -t train
 ```
 
-![](/images/tmux-workflow.svg)
+<TutorialDiagram name="tmux-workflow" />
 
 Detach is the soul of tmux: it doesn't end your task, it just separates you from the session. When the task is done and you no longer need the session, just `exit` inside it, or kill it with `tmux kill-session -t train`.
 
@@ -64,7 +64,7 @@ Detach is the soul of tmux: it doesn't end your task, it just separates you from
 | Enter scroll mode (view history) | `Ctrl+B, [` then scroll with arrow keys / `PgUp` |
 | Exit scroll mode | `q` |
 
-![](/images/tmux-cheatsheet.svg)
+<TutorialDiagram name="tmux-cheatsheet" />
 
 ## Configuration: Make tmux Even Better
 
@@ -82,7 +82,7 @@ setw -g mode-keys vi         # Use vi keybindings in copy mode
 set -g history-limit 10000   # Increase scrollback buffer
 ```
 
-![](/images/tmux-config.svg)
+<TutorialDiagram name="tmux-config" />
 
 Apply without restarting tmux:
 

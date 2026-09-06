@@ -1,0 +1,20 @@
+flowchart TB
+  accTitle: An intranet server reaches the internet through a LAN proxy
+  accDescr: The server and proxy computer share a local network. Server applications use http_proxy and https_proxy to reach the computer at its LAN address. The proxy allows LAN connections and forwards requests to the internet.
+
+subgraph lan["Shared local network"]
+    direction TB
+    server["Intranet server<br/>Applications such as git, pip, and curl"]
+    env["Set http_proxy and https_proxy<br/>Use the proxy computer's LAN address"]
+    endpoint["Example HTTP proxy endpoint<br/>http://192.168.1.100:7890"]
+    computer["Computer with internet access<br/>Proxy running with LAN access enabled"]
+    server --> env --> endpoint --> computer
+  end
+  internet["Proxy forwards requests to the internet"]
+  github["GitHub<br/>Fetch code"]
+  packages["Package repositories<br/>Download dependencies"]
+  models["Hugging Face<br/>Download models"]
+  computer --> internet
+  internet --> github
+  internet --> packages
+  internet --> models

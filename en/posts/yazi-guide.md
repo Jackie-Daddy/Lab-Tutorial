@@ -30,7 +30,7 @@ Yazi is a terminal file manager written in Rust, designed as a modern alternativ
 | Multi-tab      | Supported       | Not supported   | Supported (native) |
 | Config complexity | High         | Low             | Low              |
 
-![Yazi vs ranger vs lf — comprehensive comparison](/images/yazi-vs-ranger.svg)
+<TutorialDiagram name="yazi-vs-ranger" />
 
 ## Installation
 
@@ -107,13 +107,13 @@ Yazi uses vim-style keybindings throughout.
 | Previous match    | `N`                            |
 | Toggle hidden     | `.` (period)                   |
 
-![Yazi shortcut quick reference](/images/yazi-shortcuts.svg)
+<TutorialDiagram name="yazi-shortcuts" />
 
 ## Nerd Font Icons
 
 Yazi uses Nerd Font icons to identify file types. If you see diamond question marks `�` instead of icons, your terminal font doesn't support Nerd Fonts.
 
-![Nerd Font icons — before and after comparison](/images/yazi-nerdfont.svg)
+<TutorialDiagram name="yazi-nerdfont" />
 
 **Fix:**
 

@@ -1,0 +1,20 @@
+flowchart TB
+  accTitle: Yazi 常用快捷键分类速查
+  accDescr: 将文章中的 Yazi 快捷键按导航、搜索、文件操作和标签页分类。复制与移动都先选择操作，导航到目标目录后按 p 粘贴；删除操作区分回收站与永久删除。
+
+subgraph navigation["导航与搜索"]
+    direction TB
+    move["上下移动：j / k 或方向键<br/>进入目录：l / Enter<br/>返回上级：h"]
+    jump["跳转顶部：g<br/>跳转底部：G<br/>第 N 行：N + G"]
+    search["搜索：/，输入关键词，Enter<br/>下个匹配：n；上个匹配：N"]
+    hidden["显示或隐藏隐藏文件<br/>.（句号）"]
+    move ~~~ jump ~~~ search ~~~ hidden
+  end
+  subgraph files["文件与标签页"]
+    direction TB
+    transfer["复制：y；移动：x<br/>导航到目标后按 p"]
+    edit["新建：a；重命名：r<br/>新目录名以 / 结尾"]
+    select["多选：Space；全选：Ctrl+A<br/>回收站：d；永久删除：D"]
+    tabs["新标签：t；关闭：Ctrl+C 或 q<br/>切换：1 / 2 / 3<br/>前后标签：[ / ]"]
+    transfer ~~~ edit ~~~ select ~~~ tabs
+  end

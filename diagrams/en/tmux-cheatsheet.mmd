@@ -1,0 +1,25 @@
+flowchart TB
+  accTitle: tmux sessions and scrollback reference
+  accDescr: Commands are grouped into session management, connection control, and scrollback. For prefix shortcuts, press and release Ctrl+B before pressing the next key.
+
+subgraph manage["Create and manage"]
+    direction TB
+    new["Create a session<br/>tmux new -s NAME"]
+    list["List sessions<br/>tmux ls"]
+    rename["Rename a session<br/>tmux rename-session -t OLD NEW"]
+    new ~~~ list ~~~ rename
+  end
+  subgraph connection["Connect and end"]
+    direction TB
+    attach["Reattach<br/>tmux attach -t NAME"]
+    detach["Detach and keep the task running<br/>Ctrl+B, then D"]
+    kill["End a named session<br/>tmux kill-session -t NAME"]
+    attach ~~~ detach ~~~ kill
+  end
+  subgraph history["Read scrollback"]
+    direction TB
+    scroll["Enter scroll mode<br/>Ctrl+B, then ["]
+    move["Browse history<br/>Arrow keys or PgUp"]
+    leave["Exit scroll mode<br/>q"]
+    scroll --> move --> leave
+  end

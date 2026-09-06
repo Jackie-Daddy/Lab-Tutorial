@@ -1,0 +1,17 @@
+flowchart TB
+  accTitle: Three tmux settings and live reload
+  accDescr: Enable mouse interaction, vi keys in copy mode, and 10,000 lines of history in ~/.tmux.conf. Save the file and reload it with source-file without restarting tmux.
+
+file["Edit the configuration file<br/>vim ~/.tmux.conf"]
+  mouse["Mouse interaction<br/>set -g mouse on"]
+  mouseEffect["Scroll through history<br/>Click to select panes"]
+  vi["Copy-mode keys<br/>setw -g mode-keys vi"]
+  viEffect["Use vi keybindings<br/>inside copy mode"]
+  history["Scrollback capacity<br/>set -g history-limit 10000"]
+  historyEffect["Keep more historical output<br/>Up to 10,000 lines"]
+  save["Save ~/.tmux.conf"]
+  reload["Reload without restarting<br/>tmux source-file ~/.tmux.conf"]
+  file --> mouse --> mouseEffect --> save
+  file --> vi --> viEffect --> save
+  file --> history --> historyEffect --> save
+  save --> reload

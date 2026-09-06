@@ -1,0 +1,28 @@
+flowchart TB
+  accTitle: 按症状排查代理连接
+  accDescr: 按连接拒绝、ping 与 curl 表现不同、应用无法连接、内网变慢四种症状检查端口、防火墙、代理变量及 no_proxy。ping 使用 ICMP，不能用来验证 HTTP 代理。
+
+subgraph network["连接与协议"]
+    direction TB
+    refused["curl 报 Connection refused"]
+    port["检查代理端口是否开放<br/>检查防火墙是否拦截"]
+    retest["修正后重新用 curl 验证"]
+    ping["ping 能通，curl 不通"]
+    protocol["ping 使用 ICMP<br/>不经过 HTTP 代理"]
+    verbose["查看详细连接过程<br/>curl -v https://www.google.com"]
+    refused --> port --> retest
+    retest ~~~ ping
+    ping --> protocol --> verbose
+  end
+  subgraph applications["应用与内网访问"]
+    direction TB
+    app["pip 或 git 仍无法连接"]
+    variables["确认 http_proxy 和 https_proxy<br/>均已设置"]
+    git["git 可单独设置代理<br/>git config --global http.proxy $http_proxy"]
+    slow["内网服务访问变慢"]
+    bypass["检查 no_proxy<br/>是否包含目标内网地址"]
+    direct["补全内网排除项<br/>再验证内网服务"]
+    app --> variables --> git
+    git ~~~ slow
+    slow --> bypass --> direct
+  end

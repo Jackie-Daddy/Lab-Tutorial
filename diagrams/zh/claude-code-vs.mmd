@@ -1,0 +1,28 @@
+flowchart TB
+  accTitle: 三种 AI 编程交互方式
+  accDescr: 教程以 GitHub Copilot 的编辑器补全、Cursor 的 IDE 对话和 Claude Code 的终端代理说明三种交互方式；它们可用于不同工作环节，此图不表示产品能力上限或排名。
+  modes["从工作入口理解<br/>三种交互方式"]
+  subgraph copilot["GitHub Copilot · 编辑器补全"]
+    direction TB
+    edit["在编辑器中<br/>编写代码"]
+    suggest["查看内联建议<br/>延续当前思路"]
+    accept["接受或修改建议<br/>继续编辑"]
+    edit --> suggest --> accept
+  end
+  subgraph cursor["Cursor · IDE 对话"]
+    direction TB
+    project["打开项目<br/>结合代码提问"]
+    chat["在 IDE 中对话<br/>探索实现思路"]
+    iterate["查看修改结果<br/>继续交互调整"]
+    project --> chat --> iterate
+  end
+  subgraph claude["Claude Code · 终端代理"]
+    direction TB
+    task["在终端描述任务<br/>claude"]
+    context["理解仓库上下文<br/>按需调用 MCP 工具"]
+    execute["跨文件修改<br/>运行命令与测试"]
+    task --> context --> execute
+  end
+  modes --> copilot
+  modes --> cursor
+  modes --> claude

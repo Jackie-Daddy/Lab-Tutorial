@@ -59,7 +59,7 @@ code review, not a professor lecturing.
 - **代码要无聊（boring code）**：可读性 > 巧妙性。六个月后的你自己会感谢现在的你。
 - **声纳未知（Surface unknowns）**：让 AI 主动暴露它不确定的地方，而不是自行脑补。
 
-![提示词设计 — 6 条核心原则](/images/cursor-principles.svg)
+<TutorialDiagram name="cursor-principles" />
 
 ## 效果对比
 
@@ -69,7 +69,7 @@ code review, not a professor lecturing.
 | "优化这段代码性能" | 给一堆微优化 | 先问：你 profiled 了吗？瓶颈在哪里？不要过早优化。 |
 | "用 Redis 做缓存" | 给 Redis 集成代码 | 先问：你的访问模式是什么？内存缓存够不够？加了 Redis 还要管运维成本。 |
 
-![效果对比 — 加上提示词前后](/images/cursor-before-after.svg)
+<TutorialDiagram name="cursor-before-after" />
 
 ## 进阶：按项目定制
 
@@ -81,7 +81,7 @@ code review, not a professor lecturing.
 
 把定制的指令加到项目根目录的 `CLAUDE.md` 或 Cursor Rules 中即可。
 
-![适用工具 & 配置方式](/images/cursor-tools.svg)
+<TutorialDiagram name="cursor-tools" />
 
 <div class="post-tags-section">
   <span class="label">标签:</span>

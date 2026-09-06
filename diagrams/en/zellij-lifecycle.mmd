@@ -1,0 +1,16 @@
+flowchart TB
+  accTitle: Run, detach, and restore a Zellij session
+  accDescr: Create a named session and run a task. Detach using the session controls shown in the status bar. The server session stays running; reconnect over SSH, list sessions, and restore one with zellij attach.
+
+create["Create a named session<br/>zellij -s project-name"]
+  run["Run a task in a pane<br/>Use normal terminal commands"]
+  detach["Detach the client<br/>Use the status bar's session controls"]
+  background["The server session stays running<br/>Tasks continue inside its panes"]
+  close["You can close the local terminal<br/>or disconnect SSH"]
+  reconnect["Return to the server later<br/>Establish an SSH connection"]
+  list["Inspect existing sessions<br/>zellij list-sessions"]
+  attach["Restore a session<br/>zellij attach"]
+  inspect["Return to the existing panes<br/>Inspect task output"]
+  create --> run --> detach --> background --> close
+  close --> reconnect --> list --> attach --> inspect
+  inspect -->|"Leave again"| detach

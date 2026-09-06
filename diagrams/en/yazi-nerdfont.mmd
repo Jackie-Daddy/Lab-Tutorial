@@ -1,0 +1,17 @@
+flowchart TB
+  accTitle: Fix Nerd Font icons in Yazi
+  accDescr: If icons appear as missing glyphs or question marks, install a Nerd Font on the local client that renders the terminal and select it in terminal settings. SSH and VS Code Remote still render fonts locally.
+
+missing["Before installation<br/>File icons appear as missing glyphs"]
+  local["Choose the installation location<br/>The local client rendering the terminal"]
+  install["Download and install a Nerd Font<br/>Article example: JetBrainsMono"]
+  cache["Refresh the font cache on Linux<br/>fc-cache -fv"]
+  choose["Select this font in terminal settings<br/>JetBrainsMono Nerd Font Mono"]
+  terminal["Terminal application<br/>Update its font setting"]
+  vscode["VS Code integrated terminal<br/>Set terminal.integrated.fontFamily"]
+  icons["After installing and selecting the font<br/>Folder and file-type icons render correctly"]
+  missing --> local --> install
+  install -->|"Linux"| cache --> choose
+  install -->|"Other systems: install locally"| choose
+  choose --> terminal --> icons
+  choose --> vscode --> icons

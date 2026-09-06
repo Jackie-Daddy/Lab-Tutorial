@@ -27,7 +27,7 @@ Local Editor (VSCode/Cursor/Windsurf)    ←→    debugpy (running on server)
 
 debugpy starts a debug server on the remote machine. Your local editor connects to it (typically through an SSH tunnel) for full remote debugging.
 
-![Remote Debugging Architecture](/images/debugpy-architecture.svg)
+<TutorialDiagram name="debugpy-architecture" />
 
 ## Step 1: Install debugpy on the Server
 
@@ -101,7 +101,7 @@ Add to `.vscode/launch.json`:
 
 Cursor and Windsurf are built on VSCode, so the configuration is identical. Use the same `launch.json`, or select "Python: Remote Attach" from the Run and Debug panel.
 
-![launch.json Key Configuration](/images/debugpy-vscode-config.svg)
+<TutorialDiagram name="debugpy-vscode-config" />
 
 ## Step 5: Set Breakpoints & Debug
 
@@ -110,7 +110,7 @@ Cursor and Windsurf are built on VSCode, so the configuration is identical. Use 
 3. Code execution pauses automatically at your breakpoint
 4. Now you can: inspect variable values, step over (F10), step into (F11), view the call stack
 
-![Five Steps to Configure Remote Debugging](/images/debugpy-steps.svg)
+<TutorialDiagram name="debugpy-steps" />
 
 ## FAQ
 

@@ -17,7 +17,7 @@ Lab intranet servers often can't directly access the internet — can't pull fro
 - A computer with internet access running proxy software (Clash, V2Ray, Shadowsocks, etc.)
 - The server is on the same local network as that computer
 
-![](/images/proxy-architecture.svg)
+<TutorialDiagram name="proxy-architecture" />
 
 ## Getting the Proxy Address
 
@@ -78,7 +78,7 @@ Apply the changes:
 source ~/.bashrc
 ```
 
-![](/images/proxy-config.svg)
+<TutorialDiagram name="proxy-config" />
 
 ## Troubleshooting
 
@@ -87,7 +87,7 @@ source ~/.bashrc
 - **pip / git still can't connect?** Make sure both `http_proxy` and `https_proxy` are set. Git can also be configured separately: `git config --global http.proxy $http_proxy`.
 - **Internal services are slow?** Check if `no_proxy` includes your internal IP ranges.
 
-![](/images/proxy-troubleshoot.svg)
+<TutorialDiagram name="proxy-troubleshoot" />
 
 ## Quick Toggle
 

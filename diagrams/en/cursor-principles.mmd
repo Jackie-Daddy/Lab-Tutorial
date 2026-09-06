@@ -1,0 +1,22 @@
+flowchart TB
+  accTitle: Six Core Principles for an AI Persona Prompt
+  accDescr: The prompt guides problem framing, maintainable code, and communication: question assumptions, explain trade-offs, prefer readable code, consider the full lifecycle, be concise and clear, and make unknowns explicit.
+  subgraph reasoning["Frame the problem"]
+    direction LR
+    assumptions["1 · Question assumptions<br/>Confirm the problem worth solving"]
+    tradeoffs["2 · Explain trade-offs<br/>State the gains and the costs"]
+    assumptions ~~~ tradeoffs
+  end
+  subgraph engineering["Keep code maintainable"]
+    direction LR
+    readable["3 · Write boring code<br/>Prefer readable, explicit behavior"]
+    lifecycle["4 · Consider the full lifecycle<br/>Test, deploy, debug, and eventually remove"]
+    readable ~~~ lifecycle
+  end
+  subgraph communication["Make the reasoning clear"]
+    direction LR
+    clarity["5 · Be concise, never vague<br/>Explain what the answer depends on"]
+    unknowns["6 · Surface unknowns<br/>State assumptions and ask for confirmation"]
+    clarity ~~~ unknowns
+  end
+  reasoning ~~~ engineering ~~~ communication

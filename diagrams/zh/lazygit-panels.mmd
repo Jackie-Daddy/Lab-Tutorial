@@ -1,0 +1,24 @@
+flowchart TB
+  accTitle: Lazygit 面板与常用快捷键
+  accDescr: Lazygit 在同一界面中展示文件、分支、提交、储藏和 diff。文件面板可暂存并查看差异，分支和提交面板用于管理历史，储藏面板保存临时修改；全局快捷键用于切换面板、移动、撤销、刷新和退出。
+  subgraph working["查看工作区修改"]
+    direction LR
+    files["Files · 文件状态<br/>Space 暂存 · a 暂存全部<br/>c 提交 · Shift+A 修订上次提交"]
+    diff["Diff · 差异预览<br/>查看增加与删除的内容<br/>进入 diff 后用 Space 选块暂存"]
+    files -->|"Enter 查看差异"| diff
+  end
+  subgraph history["管理仓库历史"]
+    direction LR
+    branches["Branches · 分支<br/>Space 切换 · n 新建<br/>M 合并 · r 变基"]
+    commits["Commits · 提交<br/>Enter 查看 · i 交互式变基<br/>c 复制提交 · v 粘贴"]
+    stash["Stash · 储藏<br/>s 储藏 · g 应用<br/>P 弹出 · d 删除"]
+    branches ~~~ commits ~~~ stash
+  end
+  subgraph global["全局操作"]
+    direction LR
+    navigation["面板与移动<br/>Tab / Shift+Tab 切换<br/>j / k 或方向键移动"]
+    undo["恢复操作<br/>z 撤销<br/>Ctrl+Z 重做"]
+    session["会话操作<br/>R 刷新<br/>q 退出"]
+    navigation ~~~ undo ~~~ session
+  end
+  working ~~~ history ~~~ global

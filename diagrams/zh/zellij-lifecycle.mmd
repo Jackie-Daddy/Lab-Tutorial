@@ -1,0 +1,16 @@
+flowchart TB
+  accTitle: Zellij 会话的运行、断开与恢复
+  accDescr: 创建命名会话并运行任务，使用状态栏中的会话操作断开。服务器上的会话保持运行，重新连接 SSH 后列出会话并使用 zellij attach 恢复。
+
+create["创建命名会话<br/>zellij -s project-name"]
+  run["在窗格中运行任务<br/>正常执行终端命令"]
+  detach["断开客户端<br/>使用状态栏提示的会话操作"]
+  background["服务器上的会话保持运行<br/>窗格内任务继续执行"]
+  close["此时可以关闭本地终端<br/>或断开 SSH"]
+  reconnect["稍后重新连接服务器<br/>建立 SSH 连接"]
+  list["查看已有会话<br/>zellij list-sessions"]
+  attach["恢复会话<br/>zellij attach"]
+  inspect["回到已有窗格<br/>查看任务输出"]
+  create --> run --> detach --> background --> close
+  close --> reconnect --> list --> attach --> inspect
+  inspect -->|"再次离开"| detach

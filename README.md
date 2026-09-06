@@ -27,8 +27,8 @@ Built with [VitePress](https://vitepress.dev/) and deployed on [GitHub Pages](ht
 
 ```bash
 npm install
-npm run dev          # Preview at http://localhost:5173
-npm run build        # Build to .vitepress/dist/
+npm run dev          # Generate diagrams, then start the local preview
+npm run build        # Generate/check diagrams, build to .vitepress/dist/
 npm run preview      # Preview built site locally
 ```
 
@@ -53,6 +53,25 @@ description: 一句话描述
 ```
 
 Posts are automatically picked up by the data loaders (`.vitepress/theme/loaders/`) and appear on the homepage and archives. Language is determined by directory path (`zh/` or `en/`).
+
+## Tutorial Diagrams / 教程配图
+
+All tutorial illustrations are authored in Mermaid. Matching sources live in `diagrams/zh/` and `diagrams/en/`; `diagrams/catalog.json` maps each diagram to its article. Edit both language versions and keep `accTitle` and `accDescr` localized. Keep labels short and use `<br/>` for deliberate line breaks.
+
+教程图统一使用 Mermaid，中英文源文件分别位于 `diagrams/zh/` 和 `diagrams/en/`。修改后运行 `npm run diagrams` 重新生成；配图通过 `<TutorialDiagram name="tmux-workflow" />` 插入文章，自动选择文章语言和网站明暗主题。
+
+```bash
+npm run diagrams        # Render/cache 2× PNGs for both languages and themes
+npm run check:diagrams  # Check source, article-reference, and generated-image coverage
+npm run build           # Run both steps and build the complete site
+npm run check:pages     # Start a preview and check languages, themes, and mobile views
+```
+
+The renderer bundles Noto Sans SC for consistent Chinese/English typography. PNGs and the metadata manifest are generated locally and in CI, and are not committed. A first render takes longer; unchanged images are cached on subsequent builds. When editing a diagram with the dev server already running, run `npm run diagrams` again.
+
+Puppeteer downloads Chrome during `npm ci`; on macOS the renderer can use an installed Google Chrome. Set `PUPPETEER_EXECUTABLE_PATH` to use another Chrome installation. Narrow screens can scroll diagrams horizontally, and clicking an image opens the full-resolution PNG. Source images have light/dark variants to follow the VitePress theme toggle.
+
+To add a diagram, create the same `.mmd` filename in both source directories, register its article slug in `diagrams/catalog.json`, and insert the component in both articles. Validate with `npm run build` and inspect both languages and themes before pushing. `main` pushes run this same build in GitHub Actions before publishing to GitHub Pages.
 
 ## 🤝 Contributing
 

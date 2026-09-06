@@ -15,7 +15,7 @@ A team blog built with **VitePress**, hosting short, standalone tutorials ("一�
 - **Static site generator**: VitePress 1.x (Vue 3 + Vite)
 - **Theme**: Custom Anthropic brand theme (Lora + Fira Code fonts, dark/light mode, bilingual support)
 - **Deployment**: GitHub Actions → `gh-pages` branch → GitHub Pages
-- **No build system, no tests, no lint tooling** — this is a static site, not an application.
+- **Build**: Mermaid sources → generated light/dark PNGs → VitePress. Diagram coverage checks run before production builds; no unit-test framework or lint tooling is configured.
 
 ## Structure
 
@@ -82,9 +82,15 @@ npm run build        # Build to .vitepress/dist/
 npm run preview      # Preview built site locally
 ```
 
+## Tutorial diagrams
+
+Edit matching Mermaid sources in `diagrams/zh/` and `diagrams/en/`. Each source needs localized `accTitle` and `accDescr`; `diagrams/catalog.json` maps names to article slugs. Articles use `<TutorialDiagram name="tmux-workflow" />`. The component selects the article language and site theme, includes alternative text, and supports horizontal scrolling and full-size links.
+
+Run `npm run diagrams` after source edits, or `npm run build` to generate, validate, and build everything. Rendering uses the official Mermaid CLI API, Puppeteer, and bundled Noto Sans SC fonts. Generated PNGs under `public/images/diagrams/` and `.vitepress/theme/diagrams.generated.json` are ignored by Git and rebuilt in CI. Keep raw diagram sources and contributor/planning documents excluded from VitePress pages.
+
 ## Deployment
 
-Push to `main` triggers GitHub Actions (`deploy.yml`), which runs `vitepress build` and pushes `.vitepress/dist/` to the `gh-pages` branch. GitHub Pages serves from that branch.
+Push to `main` triggers GitHub Actions (`deploy.yml`), which runs `npm run build` and pushes `.vitepress/dist/` to the `gh-pages` branch. GitHub Pages serves from that branch.
 
 To set up a new machine: go to repo Settings → Pages → Source: "Deploy from a branch" → Branch: `gh-pages`, `/ (root)`.
 

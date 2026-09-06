@@ -4,6 +4,7 @@ import PostList from './components/PostList.vue'
 import ArchiveList from './components/ArchiveList.vue'
 import PostNav from './components/PostNav.vue'
 import PostHeader from './components/PostHeader.vue'
+import TutorialDiagram from './components/TutorialDiagram.vue'
 import './style.css'
 
 export default {
@@ -17,5 +18,6 @@ export default {
     app.component('PostList', PostList)
     app.component('ArchiveList', ArchiveList)
     app.component('PostNav', PostNav)
+    app.component('TutorialDiagram', TutorialDiagram)
   },
 }

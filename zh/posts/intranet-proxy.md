@@ -17,7 +17,7 @@ description: 内网服务器连不上外网？用 http_proxy 配合代理软件�
 - 你有一台能访问外网的电脑，上面运行了代理软件（Clash、V2Ray、Shadowsocks 等）
 - 服务器和这台电脑在同一个局域网内
 
-![](/images/proxy-architecture.svg)
+<TutorialDiagram name="proxy-architecture" />
 
 ## 获取代理地址
 
@@ -78,7 +78,7 @@ export no_proxy=localhost,127.0.0.1,*.local,10.0.0.0/8,192.168.0.0/16
 source ~/.bashrc
 ```
 
-![](/images/proxy-config.svg)
+<TutorialDiagram name="proxy-config" />
 
 ## 常见问题排查
 
@@ -87,7 +87,7 @@ source ~/.bashrc
 - **pip / git 还是连不上？** 确认 `http_proxy` / `https_proxy` 都设置了。git 也可单独配置：`git config --global http.proxy $http_proxy`。
 - **内网服务变慢了？** 检查 `no_proxy` 是否正确设置了内网 IP 段。
 
-![](/images/proxy-troubleshoot.svg)
+<TutorialDiagram name="proxy-troubleshoot" />
 
 ## 快速开关
 

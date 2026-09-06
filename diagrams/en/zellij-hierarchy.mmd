@@ -1,0 +1,19 @@
+flowchart TB
+  accTitle: Zellij sessions, tabs, and panes
+  accDescr: A Zellij session contains tabs, and each tab contains panes. Each pane runs its own terminal program. Detaching the client leaves the server session running.
+
+client["Terminal client<br/>Detach and reconnect as needed"]
+  session["Session<br/>zellij -s project-name"]
+  tabDev["Tab<br/>Example development workspace"]
+  tabLogs["Tab<br/>Example monitoring workspace"]
+  files["Pane<br/>File browser"]
+  shell["Pane<br/>Interactive shell"]
+  logs["Pane<br/>Log viewer"]
+  monitor["Pane<br/>Monitoring command"]
+  client -->|"Connects to"| session
+  session -->|"Contains"| tabDev
+  session -->|"Contains"| tabLogs
+  tabDev --> files
+  tabDev --> shell
+  tabLogs --> logs
+  tabLogs --> monitor

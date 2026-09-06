@@ -1,0 +1,16 @@
+flowchart TB
+  accTitle: 五步配置远程 Python 调试
+  accDescr: 先在服务器安装 debugpy，再配置本地 SSH 端口转发并连接服务器。启动等待客户端的调试进程，设置编辑器的附加连接和路径映射，最后打断点并按 F5 连接，使用单步与变量检查功能。
+  install["1 · 服务器安装<br/>pip install debugpy"]
+  ssh["2 · 本地配置 SSH 隧道<br/>在 ~/.ssh/config 中设置<br/>LocalForward 5678 localhost:5678"]
+  start["3 · 服务器启动调试进程<br/>python -m debugpy<br/>--listen 0.0.0.0:5678<br/>--wait-for-client train.py"]
+  config["4 · 配置 .vscode/launch.json<br/>type: debugpy · request: attach<br/>connect: localhost:5678<br/>核对 localRoot 与 remoteRoot"]
+  attach["5 · 设置断点并连接<br/>F5 → Python: Remote Attach"]
+  install --> ssh --> start --> config --> attach
+  subgraph inspection["代码暂停后可以"]
+    direction LR
+    variables["检查变量值<br/>查看调用堆栈"]
+    stepping["F10 · 单步跳过<br/>F11 · 跳入函数"]
+    variables ~~~ stepping
+  end
+  attach --> inspection

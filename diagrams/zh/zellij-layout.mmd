@@ -1,0 +1,17 @@
+flowchart TB
+  accTitle: 从 KDL 模板加载 Zellij 布局
+  accDescr: 文章的 dev.kdl 示例创建名为 editor 的标签页，其中包含一行无边框状态栏、运行 Yazi 的窗格，以及 vertical 容器内的 Shell 窗格。通过 zellij --layout dev 启动。
+
+directory["布局模板目录<br/>~/.config/zellij/layouts/"]
+  file["创建 dev.kdl<br/>写入文章中的布局定义"]
+  launch["启动预设布局<br/>zellij --layout dev"]
+  tab["标签页：editor"]
+  status["状态栏插件<br/>zellij:status-bar<br/>高度 1 行，无边框"]
+  yazi["文件浏览窗格<br/>启动命令：yazi"]
+  vertical["窗格容器<br/>split_direction：vertical"]
+  shell["容器内的窗格<br/>默认 Shell"]
+  directory --> file --> launch --> tab
+  tab -->|"包含"| status
+  tab -->|"包含"| yazi
+  tab -->|"包含"| vertical
+  vertical --> shell

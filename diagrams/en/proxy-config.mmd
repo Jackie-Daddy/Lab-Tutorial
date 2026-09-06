@@ -1,0 +1,26 @@
+flowchart TB
+  accTitle: Temporary and persistent proxy configuration
+  accDescr: Both approaches set http_proxy and https_proxy. Temporary exports affect the current terminal. Persistent exports go in the shell configuration, with no_proxy for internal addresses. Reload the file and verify with curl.
+
+address["Example proxy endpoint<br/>http://192.168.1.100:7890"]
+  subgraph temporary["Temporary configuration"]
+    direction TB
+    terminal["Run export in the current terminal"]
+    tempVars["Set both http_proxy and https_proxy<br/>to the example proxy endpoint"]
+    lifetime["Applies to this terminal session<br/>Set again after closing the terminal"]
+    terminal --> tempVars --> lifetime
+  end
+  subgraph persistent["Persistent configuration"]
+    direction TB
+    rc["Edit ~/.bashrc or ~/.zshrc"]
+    savedVars["Add exports for both proxy variables<br/>Use no_proxy for internal addresses"]
+    reload["Save and reload the matching file<br/>For example: source ~/.bashrc"]
+    rc --> savedVars --> reload
+  end
+  verify["Verify the connection<br/>curl -I https://www.google.com"]
+  toggle["Optional quick toggles<br/>proxy-on / proxy-off"]
+  address --> temporary
+  address --> persistent
+  temporary --> verify
+  persistent --> verify
+  verify -.->|"After adding the article's aliases"| toggle

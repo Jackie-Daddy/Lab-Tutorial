@@ -10,3 +10,6 @@ _multiconfig.yml
 .vitepress/dist/
 .vitepress/cache/
 *.timestamp-*.mjs
+public/images/diagrams/
+.vitepress/theme/diagrams.generated.json
+.vitepress/theme/diagrams.generated.json.tmp

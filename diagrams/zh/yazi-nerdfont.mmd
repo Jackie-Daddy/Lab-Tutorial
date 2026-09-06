@@ -1,0 +1,17 @@
+flowchart TB
+  accTitle: 修复 Yazi 的 Nerd Font 图标显示
+  accDescr: 出现菱形问号或缺失图标时，在负责渲染的本地客户端安装 Nerd Font，并在终端设置中选择该字体。SSH 和 VS Code Remote 的字体渲染仍发生在本地。
+
+missing["安装前<br/>文件类型图标显示为菱形问号"]
+  local["确认安装位置<br/>负责显示终端的本地客户端"]
+  install["下载并安装 Nerd Font<br/>文章示例：JetBrainsMono"]
+  cache["Linux 安装后刷新字体缓存<br/>fc-cache -fv"]
+  choose["在终端设置中选择<br/>JetBrainsMono Nerd Font Mono"]
+  terminal["普通终端<br/>修改对应的字体选项"]
+  vscode["VS Code 集成终端<br/>设置 terminal.integrated.fontFamily"]
+  icons["安装并选择字体后<br/>文件夹与文件类型图标正常显示"]
+  missing --> local --> install
+  install -->|"Linux"| cache --> choose
+  install -->|"其他系统按本地方式安装"| choose
+  choose --> terminal --> icons
+  choose --> vscode --> icons

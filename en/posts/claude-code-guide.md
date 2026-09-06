@@ -32,7 +32,7 @@ Claude Code is Anthropic's command-line AI coding assistant. Unlike GitHub Copil
 | Plugin system | None                | None           | Skills + MCP dual-layer     |
 | Best for      | Writing new code    | Interactive dev| Complex refactors, debugging |
 
-![Claude Code vs Copilot vs Cursor](/images/claude-code-vs.svg)
+<TutorialDiagram name="claude-code-vs" />
 
 ## Installation
 
@@ -71,7 +71,7 @@ claude --project /path/to/project
 
 **MCP (Model Context Protocol)** is Claude Code's extension mechanism. Think of it as Claude's "plugin skills" — MCP servers let Claude call external tools.
 
-![MCP Architecture](/images/claude-code-mcp.svg)
+<TutorialDiagram name="claude-code-mcp" />
 
 ### Codegraph — Code Intelligence Graph
 
@@ -126,7 +126,7 @@ Install:
 /claude add plugin superpowers@claude-plugins-official
 ```
 
-![Plugin Ecosystem](/images/claude-code-plugins.svg)
+<TutorialDiagram name="claude-code-plugins" />
 
 ### Code Review & Simplifier
 
@@ -225,7 +225,7 @@ Video anomaly detection research project.
 4. **Use MCP for code archaeology**: `claude "Trace how this bug was introduced, starting from the failing function"`
 5. **Batch edits with Claude**: `claude "Replace all print() calls with logging throughout the project"`
 
-![Daily Workflow](/images/claude-code-workflow.svg)
+<TutorialDiagram name="claude-code-workflow" />
 
 ## FAQ
 

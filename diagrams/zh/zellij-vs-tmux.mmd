@@ -1,0 +1,20 @@
+flowchart TB
+  accTitle: tmux 与 Zellij 的使用方式对比
+  accDescr: 对比两种终端多路复用器的操作提示、配置、布局和扩展方式。tmux 通过 tmux.conf 和脚本定制；Zellij 提供状态栏提示、KDL 布局与 WASM 插件。
+
+subgraph tmux["tmux"]
+    direction TB
+    tControls["操作方式<br/>前缀快捷键与命令"]
+    tConfig["配置与状态栏<br/>通过 ~/.tmux.conf 定制"]
+    tLayout["窗格布局<br/>通过操作和配置组织"]
+    tExtend["扩展方式<br/>第三方脚本"]
+    tControls ~~~ tConfig ~~~ tLayout ~~~ tExtend
+  end
+  subgraph zellij["Zellij"]
+    direction TB
+    zControls["操作方式<br/>模态操作与底部快捷键提示"]
+    zConfig["配置与状态栏<br/>KDL 配置，内置状态栏"]
+    zLayout["窗格布局<br/>KDL 模板，浮动与嵌入窗格"]
+    zExtend["扩展与共享<br/>WASM 插件，多用户会话"]
+    zControls ~~~ zConfig ~~~ zLayout ~~~ zExtend
+  end

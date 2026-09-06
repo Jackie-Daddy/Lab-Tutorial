@@ -1,0 +1,15 @@
+flowchart TB
+  accTitle: tmux 会话的创建、断开与重连
+  accDescr: 在服务器上创建 train 会话并运行任务，断开后任务继续运行。重新连接 SSH，再用 attach 回到同一个会话查看进度。
+
+connect["连接服务器<br/>进入 SSH 终端"]
+  create["新建命名会话<br/>tmux new -s train"]
+  run["在会话内启动任务<br/>python train.py"]
+  detach["断开会话<br/>Ctrl+B，松开，再按 D"]
+  background["回到普通终端<br/>服务器中的任务继续运行"]
+  return["下次查看进度<br/>重新连接 SSH"]
+  attach["重连已有会话<br/>tmux attach -t train"]
+  inspect["查看实时输出<br/>继续与任务交互"]
+  connect --> create --> run --> detach --> background
+  background --> return --> attach --> inspect
+  inspect -->|"需要离开时"| detach

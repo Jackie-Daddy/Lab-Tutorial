@@ -1,0 +1,27 @@
+flowchart TB
+  accTitle: Claude Code 如何通过 MCP 调用外部工具
+  accDescr: 项目根目录的 .mcp.json 配置 MCP 服务器。Claude Code 根据任务调用服务器提供的工具，教程展示 Codegraph 的代码搜索与影响分析，以及 GitHub 的 Issue、PR 和评论操作。
+  request["描述开发任务<br/>需要哪些外部信息或操作"]
+  config["配置项目服务器<br/>项目根目录 .mcp.json"]
+  agent["Claude Code<br/>根据任务选择工具"]
+  protocol["MCP<br/>连接外部工具服务器"]
+  request --> agent
+  config -.-> agent
+  agent --> protocol
+  subgraph codegraph["Codegraph · 代码智能图谱"]
+    direction TB
+    index["索引项目代码<br/>codegraph init"]
+    search["搜索符号定义<br/>与引用位置"]
+    impact["追踪调用链<br/>分析修改影响"]
+    index --> search --> impact
+  end
+  subgraph github["GitHub · 仓库协作"]
+    direction TB
+    server["连接 GitHub<br/>提供仓库操作工具"]
+    issues["查看 Issue<br/>了解问题背景"]
+    changes["创建 PR<br/>回复评论"]
+    server --> issues
+    server --> changes
+  end
+  protocol --> codegraph
+  protocol --> github

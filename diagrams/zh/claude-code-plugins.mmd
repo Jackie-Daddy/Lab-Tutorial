@@ -1,0 +1,32 @@
+flowchart TB
+  accTitle: 教程中的四组 Claude Code 插件与 Skills
+  accDescr: Superpowers 组织设计、实现和验证流程；Code Review 与 Simplifier 用于审查和简化；Karpathy Skills 强调最小改动与明确假设；Academic Research Skills 覆盖论文规划、写作、修订和引文检查。
+  subgraph workflow["Superpowers · 开发流程"]
+    direction LR
+    design["构思需求<br/>编写实施计划"]
+    develop["先测试后实现<br/>结构化调试"]
+    verify["运行验证<br/>再声明完成"]
+    design --> develop --> verify
+  end
+  subgraph quality["Code Review & Simplifier · 代码质量"]
+    direction LR
+    review["审查当前 diff<br/>/code-review"]
+    fix["审查并修复<br/>/code-review --fix"]
+    simplify["简化重复与逻辑<br/>/simplify"]
+    review --> fix --> simplify
+  end
+  subgraph principles["Karpathy Skills · 编码准则"]
+    direction LR
+    simple["避免过度工程化<br/>保持实现简单"]
+    scope["限定修改范围<br/>坚持最小改动"]
+    explicit["暴露假设<br/>定义可验证标准"]
+    simple ~~~ scope ~~~ explicit
+  end
+  subgraph research["Academic Research Skills · 论文工作"]
+    direction LR
+    plan["规划与大纲<br/>/ars-plan · /ars-outline"]
+    write["全文与摘要<br/>/ars-full · /ars-abstract"]
+    revise["/ars-revision<br/>/ars-citation-check"]
+    plan --> write --> revise
+  end
+  workflow ~~~ quality ~~~ principles ~~~ research

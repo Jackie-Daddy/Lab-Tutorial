@@ -1,0 +1,28 @@
+flowchart TB
+  accTitle: 示例回答对比：加入提示词前后
+  accDescr: 三个示例展示提示词希望引导的回答变化：单例需求先澄清共享状态与实例限制，性能优化先确认测量结果，Redis 缓存先评估访问模式、内存缓存和运维成本。这是示例而非效果保证。
+  subgraph singleton["场景一 · 写单例模式"]
+    direction TB
+    singletonTask["帮我写一个单例模式"]
+    singletonDefault["默认示例<br/>直接给出单例代码"]
+    singletonPrompt["加入提示词后的示例<br/>需要共享状态，还是限制实例数？"]
+    singletonTask --> singletonDefault
+    singletonTask --> singletonPrompt
+  end
+  subgraph performance["场景二 · 优化性能"]
+    direction TB
+    performanceTask["优化这段代码的性能"]
+    performanceDefault["默认示例<br/>建议一系列微优化"]
+    performancePrompt["加入提示词后的示例<br/>测量过了吗？瓶颈在哪里？"]
+    performanceTask --> performanceDefault
+    performanceTask --> performancePrompt
+  end
+  subgraph caching["场景三 · 使用 Redis 缓存"]
+    direction TB
+    cachingTask["用 Redis 做缓存"]
+    cachingDefault["默认示例<br/>直接提供 Redis 集成代码"]
+    cachingPrompt["加入提示词后的示例<br/>访问模式是什么？内存缓存够吗？<br/>是否接受额外运维成本？"]
+    cachingTask --> cachingDefault
+    cachingTask --> cachingPrompt
+  end
+  singleton ~~~ performance ~~~ caching

@@ -1,0 +1,22 @@
+flowchart TB
+  accTitle: 在编程工具中配置并定制提示词
+  accDescr: 将同一段提示词加入 Cursor 的 Rules for AI、Windsurf 的 AI Rules 或项目根目录的 CLAUDE.md，再按研究、生产或教学项目的需要补充指令。界面路径沿用教程中的示例。
+  prompt["复制教程中的人格提示词"]
+  subgraph tools["选择所用工具"]
+    direction LR
+    cursor["Cursor<br/>Settings → Rules for AI<br/>粘贴提示词"]
+    windsurf["Windsurf<br/>Settings → AI Rules<br/>粘贴提示词"]
+    claude["Claude Code<br/>项目根目录 CLAUDE.md<br/>粘贴提示词"]
+    cursor ~~~ windsurf ~~~ claude
+  end
+  prompt --> tools
+  customize["补充项目专属指令<br/>写入 CLAUDE.md 或 Cursor Rules"]
+  tools --> customize
+  subgraph projects["按项目目标调整"]
+    direction LR
+    research["研究与探索<br/>更积极地提方案<br/>优先迭代速度"]
+    production["生产系统<br/>优先向后兼容<br/>完善错误处理"]
+    teaching["教学项目<br/>解释选择的原因<br/>帮助理解实现"]
+    research ~~~ production ~~~ teaching
+  end
+  customize --> projects

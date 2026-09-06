@@ -53,7 +53,7 @@ scoop install lazygit
 
 Lazygit shows 5 panels on launch (use number keys `1`-`5` to switch focus):
 
-![Lazygit 5 Panel Layout](/images/lazygit-panels.svg)
+<TutorialDiagram name="lazygit-panels" />
 
 ## Quick Reference
 
@@ -123,7 +123,7 @@ lazygit                          # 1. Open Lazygit
   → P                              # 4. Push
 ```
 
-![Daily Commit Workflow — 4 Steps](/images/lazygit-workflow.svg)
+<TutorialDiagram name="lazygit-workflow" />
 
 **Cleaning up commit history (Interactive Rebase)**
 
@@ -136,7 +136,7 @@ lazygit
   → Confirm → force push if needed
 ```
 
-![Interactive Rebase — Clean Up History](/images/lazygit-rebase.svg)
+<TutorialDiagram name="lazygit-rebase" />
 
 **Resolving merge conflicts**
 
@@ -149,7 +149,7 @@ lazygit
   → c to complete the merge commit
 ```
 
-![Merge Conflict Resolution — 3 Steps](/images/lazygit-conflict.svg)
+<TutorialDiagram name="lazygit-conflict" />
 
 ## Recommended Config
 

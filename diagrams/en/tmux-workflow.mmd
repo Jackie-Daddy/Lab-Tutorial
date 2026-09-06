@@ -1,0 +1,15 @@
+flowchart TB
+  accTitle: Create, detach, and reattach a tmux session
+  accDescr: Create a train session on the server and run a task. Detaching leaves the task running. Reconnect over SSH and attach to the same session to inspect its progress.
+
+connect["Connect to the server<br/>Open an SSH terminal"]
+  create["Create a named session<br/>tmux new -s train"]
+  run["Start the task inside the session<br/>python train.py"]
+  detach["Detach from the session<br/>Ctrl+B, release, then D"]
+  background["Return to the regular terminal<br/>The task keeps running on the server"]
+  return["Check progress later<br/>Reconnect over SSH"]
+  attach["Reattach to the existing session<br/>tmux attach -t train"]
+  inspect["View live output<br/>Interact with the task again"]
+  connect --> create --> run --> detach --> background
+  background --> return --> attach --> inspect
+  inspect -->|"When you need to leave"| detach

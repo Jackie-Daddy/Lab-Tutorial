@@ -1,0 +1,28 @@
+flowchart TB
+  accTitle: Compare ranger, lf, and Yazi
+  accDescr: Compare the three terminal file managers using the article’s categories: language and I/O, image previews, extensions, tabs, and configuration complexity. Each column presents these categories in the same order.
+
+subgraph ranger["ranger"]
+    direction TB
+    rRuntime["Language and I/O<br/>Python, synchronous I/O"]
+    rImages["Image previews<br/>External scripts"]
+    rFeatures["Extensions and tabs<br/>Python scripts, multiple tabs"]
+    rConfig["Configuration complexity<br/>Higher"]
+    rRuntime ~~~ rImages ~~~ rFeatures ~~~ rConfig
+  end
+  subgraph lf["lf"]
+    direction TB
+    lRuntime["Language and speed<br/>Go, fast"]
+    lImages["Image previews<br/>External scripts"]
+    lFeatures["Extensions and tabs<br/>No plugin system or multiple tabs"]
+    lConfig["Configuration complexity<br/>Lower"]
+    lRuntime ~~~ lImages ~~~ lFeatures ~~~ lConfig
+  end
+  subgraph yazi["Yazi"]
+    direction TB
+    yRuntime["Language and I/O<br/>Rust, asynchronous I/O"]
+    yImages["Image previews<br/>Built-in image protocol support"]
+    yFeatures["Extensions and tabs<br/>Lua plugins, native multiple tabs"]
+    yConfig["Configuration complexity<br/>Lower"]
+    yRuntime ~~~ yImages ~~~ yFeatures ~~~ yConfig
+  end

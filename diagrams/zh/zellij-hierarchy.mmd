@@ -1,0 +1,19 @@
+flowchart TB
+  accTitle: Zellij 的会话、标签页与窗格
+  accDescr: 一个 Zellij 会话可以包含多个标签页，每个标签页又包含多个窗格。窗格内运行各自的终端程序；断开客户端连接不会结束服务器上的会话。
+
+client["终端客户端<br/>可断开，也可重新连接"]
+  session["会话 Session<br/>zellij -s project-name"]
+  tabDev["标签页 Tab<br/>开发工作区示例"]
+  tabLogs["标签页 Tab<br/>监控工作区示例"]
+  files["窗格 Pane<br/>文件浏览程序"]
+  shell["窗格 Pane<br/>交互式 Shell"]
+  logs["窗格 Pane<br/>日志查看程序"]
+  monitor["窗格 Pane<br/>监控命令"]
+  client -->|"连接"| session
+  session -->|"包含"| tabDev
+  session -->|"包含"| tabLogs
+  tabDev --> files
+  tabDev --> shell
+  tabLogs --> logs
+  tabLogs --> monitor

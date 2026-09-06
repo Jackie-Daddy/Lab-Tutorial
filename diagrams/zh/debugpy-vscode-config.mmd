@@ -1,0 +1,21 @@
+flowchart TB
+  accTitle: launch.json 的远程调试关键配置
+  accDescr: VSCode、Cursor 和 Windsurf 使用同一份 .vscode/launch.json。远程附加配置指定 debugpy、attach 和 localhost:5678；pathMappings 将本地工作目录映射到服务器上的真实代码目录，以正确对应断点。
+  config[".vscode/launch.json<br/>VSCode / Cursor / Windsurf 通用"]
+  subgraph connection["连接调试服务"]
+    direction TB
+    adapter["调试配置<br/>name: Python: Remote Attach<br/>type: debugpy · request: attach"]
+    target["connect<br/>host: localhost · port: 5678"]
+    tunnel["SSH 端口转发<br/>本地 5678 → 服务器 5678"]
+    adapter --> target --> tunnel
+  end
+  subgraph paths["对应本地与服务器文件"]
+    direction TB
+    mapping["pathMappings<br/>对应同一份代码<br/>的本地与服务器路径"]
+    localPath["localRoot<br/>${workspaceFolder}"]
+    remotePath["remoteRoot<br/>/path/to/your/code/on/server"]
+    mapping --- localPath
+    localPath <-->|"同一份代码"| remotePath
+  end
+  config --> connection
+  config --> paths

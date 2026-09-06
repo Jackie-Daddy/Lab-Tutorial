@@ -32,7 +32,7 @@ Claude Code 是 Anthropic 推出的命令行 AI 编程助手。与 GitHub Copilo
 | 插件系统   | 无             | 无         | Skills + MCP 双层扩展  |
 | 适用场景   | 写新代码       | 交互式编程 | 复杂重构、调试、自动化 |
 
-![Claude Code vs Copilot vs Cursor](/images/claude-code-vs.svg)
+<TutorialDiagram name="claude-code-vs" />
 
 ## 安装
 
@@ -71,7 +71,7 @@ claude --project /path/to/project
 
 **MCP（Model Context Protocol）** 是 Claude Code 的扩展机制，让它能调用外部工具。简单说：MCP 服务器 = Claude 的"外挂技能"。
 
-![MCP 架构](/images/claude-code-mcp.svg)
+<TutorialDiagram name="claude-code-mcp" />
 
 ### Codegraph — 代码智能图谱
 
@@ -126,7 +126,7 @@ echo '{
 /claude add plugin superpowers@claude-plugins-official
 ```
 
-![推荐插件生态](/images/claude-code-plugins.svg)
+<TutorialDiagram name="claude-code-plugins" />
 
 ### Code Review & Simplifier
 
@@ -225,7 +225,7 @@ echo '{
 4. **利用 MCP 做代码考古**：`claude "追溯这个 bug 是怎么引入的，从出错函数往回追踪"`
 5. **批量修改用 Claude**：`claude "把整个项目里的 print 改成 logging"`
 
-![日常工作流](/images/claude-code-workflow.svg)
+<TutorialDiagram name="claude-code-workflow" />
 
 ## 常见问题
 

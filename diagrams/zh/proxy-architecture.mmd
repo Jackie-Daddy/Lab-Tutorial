@@ -1,0 +1,20 @@
+flowchart TB
+  accTitle: 内网服务器经局域网代理访问互联网
+  accDescr: 服务器和代理电脑在同一局域网内。服务器应用通过 http_proxy 和 https_proxy 指向电脑的局域网地址，代理允许局域网连接后转发到互联网。
+
+subgraph lan["同一局域网"]
+    direction TB
+    server["内网服务器<br/>git、pip、curl 等应用"]
+    env["设置 http_proxy 与 https_proxy<br/>使用代理电脑的局域网地址"]
+    endpoint["示例 HTTP 代理地址<br/>http://192.168.1.100:7890"]
+    computer["可访问外网的电脑<br/>运行代理软件并允许局域网连接"]
+    server --> env --> endpoint --> computer
+  end
+  internet["代理转发到互联网"]
+  github["GitHub<br/>获取代码"]
+  packages["软件包站点<br/>下载依赖"]
+  models["Hugging Face<br/>下载模型"]
+  computer --> internet
+  internet --> github
+  internet --> packages
+  internet --> models

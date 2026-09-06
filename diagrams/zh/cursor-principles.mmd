@@ -1,0 +1,22 @@
+flowchart TB
+  accTitle: 提示词设计的六条核心原则
+  accDescr: 提示词从问题判断、代码维护和沟通方式三个方面约束编程助手：质疑假设、解释权衡、优先可读性、考虑完整生命周期、表达简洁明确，并主动说明未知信息。
+  subgraph reasoning["先判断问题"]
+    direction LR
+    assumptions["1 · 质疑假设<br/>先确认真正要解决的问题"]
+    tradeoffs["2 · 说明权衡<br/>明确获得什么、付出什么"]
+    assumptions ~~~ tradeoffs
+  end
+  subgraph engineering["让代码易于维护"]
+    direction LR
+    readable["3 · 写直白的代码<br/>优先可读性与显式表达"]
+    lifecycle["4 · 考虑完整生命周期<br/>测试 · 部署<br/>调试 · 移除"]
+    readable ~~~ lifecycle
+  end
+  subgraph communication["把判断说清楚"]
+    direction LR
+    clarity["5 · 简洁但不含糊<br/>说清方案取决于哪些条件"]
+    unknowns["6 · 主动说明未知<br/>列出假设，请用户确认"]
+    clarity ~~~ unknowns
+  end
+  reasoning ~~~ engineering ~~~ communication

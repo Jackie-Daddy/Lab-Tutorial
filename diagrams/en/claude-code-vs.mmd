@@ -1,0 +1,28 @@
+flowchart TB
+  accTitle: Three AI Coding Interaction Modes
+  accDescr: The tutorial illustrates editor completions with GitHub Copilot, IDE conversations with Cursor, and a terminal agent with Claude Code. These modes serve different parts of a workflow; this diagram does not rank products or define their capability limits.
+  modes["Understand three modes<br/>by where work begins"]
+  subgraph copilot["GitHub Copilot · Editor completions"]
+    direction TB
+    edit["Write code<br/>in the editor"]
+    suggest["Read inline suggestions<br/>as you type"]
+    accept["Accept or adapt a suggestion<br/>and keep editing"]
+    edit --> suggest --> accept
+  end
+  subgraph cursor["Cursor · IDE conversations"]
+    direction TB
+    project["Open a project<br/>and ask about the code"]
+    chat["Discuss implementation<br/>inside the IDE"]
+    iterate["Inspect the changes<br/>and iterate in conversation"]
+    project --> chat --> iterate
+  end
+  subgraph claude["Claude Code · Terminal agent"]
+    direction TB
+    task["Describe a terminal task<br/>claude"]
+    context["Use repository context<br/>and MCP tools as needed"]
+    execute["Edit across files<br/>and run commands and tests"]
+    task --> context --> execute
+  end
+  modes --> copilot
+  modes --> cursor
+  modes --> claude

@@ -1,0 +1,17 @@
+flowchart TB
+  accTitle: 三项 tmux 配置与立即加载
+  accDescr: 在 ~/.tmux.conf 中启用鼠标、vi 复制模式键位和一万行历史记录，保存后执行 source-file，无需重启 tmux。
+
+file["编辑配置文件<br/>vim ~/.tmux.conf"]
+  mouse["鼠标操作<br/>set -g mouse on"]
+  mouseEffect["滚轮翻历史<br/>点击选择窗格"]
+  vi["复制模式键位<br/>setw -g mode-keys vi"]
+  viEffect["在复制模式中<br/>使用 vi 键位"]
+  history["历史记录容量<br/>set -g history-limit 10000"]
+  historyEffect["保留更多历史输出<br/>最多 10000 行"]
+  save["保存 ~/.tmux.conf"]
+  reload["立即加载，无需重启<br/>tmux source-file ~/.tmux.conf"]
+  file --> mouse --> mouseEffect --> save
+  file --> vi --> viEffect --> save
+  file --> history --> historyEffect --> save
+  save --> reload

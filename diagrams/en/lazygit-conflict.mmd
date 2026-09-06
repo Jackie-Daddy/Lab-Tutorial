@@ -1,0 +1,20 @@
+flowchart TB
+  accTitle: Resolve Merge Conflicts in Lazygit
+  accDescr: After a merge conflict, Lazygit lists the conflicted files. Press Enter to open a file and use Space for each conflict block to keep ours, theirs, or both. Once every block is resolved, stage the files with a and complete the merge commit with c.
+  conflict["1 · A merge produces conflicts<br/>Files lists the conflicted files"]
+  open["Enter · Open a conflicted file"]
+  choose["2 · Resolve each conflict block<br/>Space to choose what to keep"]
+  subgraph versions["Available versions"]
+    direction LR
+    ours["ours<br/>Current version"]
+    theirs["theirs<br/>Incoming version"]
+    both["both<br/>Keep both versions"]
+    ours ~~~ theirs ~~~ both
+  end
+  resolved["Every conflict block is resolved"]
+  stage["3 · a to stage resolved files"]
+  commit["c · Complete the merge commit"]
+  conflict --> open --> choose
+  choose --> versions
+  versions --> resolved
+  resolved --> stage --> commit

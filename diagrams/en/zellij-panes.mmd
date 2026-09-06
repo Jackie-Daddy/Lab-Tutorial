@@ -1,0 +1,18 @@
+flowchart TB
+  accTitle: From one Zellij pane to three
+  accDescr: Split a pane downward, focus the lower pane, and split it to the right to make three panes. Follow the current status-bar hints for pane mode and actions so session controls are not confused with pane controls.
+
+hints["Read the bottom status bar<br/>Choose pane mode and an available action"]
+  one["Start with one pane<br/>Keep the current task running"]
+  down["Split downward"]
+  two["Two panes<br/>Original task above, new terminal below"]
+  focus["Move focus to the lower pane"]
+  right["Split the lower pane to the right"]
+  three["Three independent panes"]
+  task["Upper pane<br/>Keep the original task"]
+  lowerLeft["Lower left pane<br/>Run a monitoring command"]
+  lowerRight["Lower right pane<br/>Run another terminal program"]
+  hints --> one --> down --> two --> focus --> right --> three
+  three --> task
+  three --> lowerLeft
+  three --> lowerRight

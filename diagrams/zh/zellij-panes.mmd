@@ -1,0 +1,18 @@
+flowchart TB
+  accTitle: 从一个 Zellij 窗格到三个窗格
+  accDescr: 通过向下分屏、切换到下方窗格、再向右分屏，将一个窗格扩展成三个。按当前状态栏提示选择窗格模式与操作，避免混淆会话和窗格快捷键。
+
+hints["查看底部状态栏<br/>选择窗格模式与可用操作"]
+  one["起点：一个窗格<br/>运行当前任务"]
+  down["向下分屏"]
+  two["现在有两个窗格<br/>上方原任务，下方新终端"]
+  focus["将焦点移到下方窗格"]
+  right["将下方窗格向右分屏"]
+  three["得到三个独立窗格"]
+  task["上方窗格<br/>保留原任务"]
+  lowerLeft["下方左侧<br/>运行监控命令"]
+  lowerRight["下方右侧<br/>运行另一终端程序"]
+  hints --> one --> down --> two --> focus --> right --> three
+  three --> task
+  three --> lowerLeft
+  three --> lowerRight

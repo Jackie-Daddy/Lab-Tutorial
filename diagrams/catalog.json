@@ -1,0 +1,86 @@
+{
+  "claude-code-vs": {
+    "post": "claude-code-guide"
+  },
+  "claude-code-mcp": {
+    "post": "claude-code-guide"
+  },
+  "claude-code-plugins": {
+    "post": "claude-code-guide"
+  },
+  "claude-code-workflow": {
+    "post": "claude-code-guide"
+  },
+  "tmux-workflow": {
+    "post": "how-to-use-tmux"
+  },
+  "tmux-cheatsheet": {
+    "post": "how-to-use-tmux"
+  },
+  "tmux-config": {
+    "post": "how-to-use-tmux"
+  },
+  "proxy-architecture": {
+    "post": "intranet-proxy"
+  },
+  "proxy-config": {
+    "post": "intranet-proxy"
+  },
+  "proxy-troubleshoot": {
+    "post": "intranet-proxy"
+  },
+  "lazygit-panels": {
+    "post": "lazygit-guide"
+  },
+  "lazygit-workflow": {
+    "post": "lazygit-guide"
+  },
+  "lazygit-rebase": {
+    "post": "lazygit-guide"
+  },
+  "lazygit-conflict": {
+    "post": "lazygit-guide"
+  },
+  "debugpy-architecture": {
+    "post": "remote-debug"
+  },
+  "debugpy-vscode-config": {
+    "post": "remote-debug"
+  },
+  "debugpy-steps": {
+    "post": "remote-debug"
+  },
+  "cursor-principles": {
+    "post": "smarter-cursor"
+  },
+  "cursor-before-after": {
+    "post": "smarter-cursor"
+  },
+  "cursor-tools": {
+    "post": "smarter-cursor"
+  },
+  "yazi-vs-ranger": {
+    "post": "yazi-guide"
+  },
+  "yazi-shortcuts": {
+    "post": "yazi-guide"
+  },
+  "yazi-nerdfont": {
+    "post": "yazi-guide"
+  },
+  "zellij-vs-tmux": {
+    "post": "zellij-guide"
+  },
+  "zellij-hierarchy": {
+    "post": "zellij-guide"
+  },
+  "zellij-lifecycle": {
+    "post": "zellij-guide"
+  },
+  "zellij-panes": {
+    "post": "zellij-guide"
+  },
+  "zellij-layout": {
+    "post": "zellij-guide"
+  }
+}

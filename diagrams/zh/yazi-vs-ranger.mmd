@@ -1,0 +1,28 @@
+flowchart TB
+  accTitle: ranger、lf 与 Yazi 的功能对比
+  accDescr: 按照文章表格比较三个终端文件管理器的语言与 I/O、图片预览、扩展方式、多标签页和配置复杂度。各列使用相同顺序，便于横向阅读。
+
+subgraph ranger["ranger"]
+    direction TB
+    rRuntime["语言与 I/O<br/>Python，同步 I/O"]
+    rImages["图片预览<br/>使用外部脚本"]
+    rFeatures["扩展与标签页<br/>Python 脚本，支持多标签"]
+    rConfig["配置复杂度<br/>较高"]
+    rRuntime ~~~ rImages ~~~ rFeatures ~~~ rConfig
+  end
+  subgraph lf["lf"]
+    direction TB
+    lRuntime["语言与速度<br/>Go，速度快"]
+    lImages["图片预览<br/>使用外部脚本"]
+    lFeatures["扩展与标签页<br/>无插件系统，无多标签"]
+    lConfig["配置复杂度<br/>较低"]
+    lRuntime ~~~ lImages ~~~ lFeatures ~~~ lConfig
+  end
+  subgraph yazi["Yazi"]
+    direction TB
+    yRuntime["语言与 I/O<br/>Rust，异步 I/O"]
+    yImages["图片预览<br/>内置多种图片协议支持"]
+    yFeatures["扩展与标签页<br/>Lua 插件，原生多标签"]
+    yConfig["配置复杂度<br/>较低"]
+    yRuntime ~~~ yImages ~~~ yFeatures ~~~ yConfig
+  end

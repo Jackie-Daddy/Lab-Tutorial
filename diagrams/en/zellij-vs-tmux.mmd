@@ -1,0 +1,20 @@
+flowchart TB
+  accTitle: Working with tmux and Zellij
+  accDescr: Compare the tools through their controls, configuration, layouts, and extensions. tmux is customized through tmux.conf and scripts. Zellij provides status-bar hints, KDL layouts, and WASM plugins.
+
+subgraph tmux["tmux"]
+    direction TB
+    tControls["Controls<br/>Prefix shortcuts and commands"]
+    tConfig["Configuration and status bar<br/>Customize through ~/.tmux.conf"]
+    tLayout["Pane layouts<br/>Organize through commands and configuration"]
+    tExtend["Extensions<br/>Third-party scripts"]
+    tControls ~~~ tConfig ~~~ tLayout ~~~ tExtend
+  end
+  subgraph zellij["Zellij"]
+    direction TB
+    zControls["Controls<br/>Modes with shortcut hints in the status bar"]
+    zConfig["Configuration and status bar<br/>KDL configuration and a built-in status bar"]
+    zLayout["Pane layouts<br/>KDL templates, floating and embedded panes"]
+    zExtend["Extensions and sharing<br/>WASM plugins and multi-user sessions"]
+    zControls ~~~ zConfig ~~~ zLayout ~~~ zExtend
+  end

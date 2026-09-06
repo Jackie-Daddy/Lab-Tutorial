@@ -1,0 +1,25 @@
+flowchart TB
+  accTitle: tmux 会话与历史输出速查
+  accDescr: 按创建与管理、连接与退出、历史输出三类列出文章中的常用命令。前缀快捷键需先按 Ctrl+B 并松开，再按下一键。
+
+subgraph manage["创建与管理"]
+    direction TB
+    new["新建会话<br/>tmux new -s NAME"]
+    list["列出会话<br/>tmux ls"]
+    rename["重命名会话<br/>tmux rename-session -t OLD NEW"]
+    new ~~~ list ~~~ rename
+  end
+  subgraph connection["连接与结束"]
+    direction TB
+    attach["重新连接<br/>tmux attach -t NAME"]
+    detach["断开，保留任务<br/>Ctrl+B，然后 D"]
+    kill["结束指定会话<br/>tmux kill-session -t NAME"]
+    attach ~~~ detach ~~~ kill
+  end
+  subgraph history["查看历史输出"]
+    direction TB
+    scroll["进入滚动模式<br/>Ctrl+B，然后 ["]
+    move["浏览历史<br/>方向键或 PgUp"]
+    leave["退出滚动模式<br/>q"]
+    scroll --> move --> leave
+  end

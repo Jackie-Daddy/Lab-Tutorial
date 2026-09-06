@@ -15,7 +15,7 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#141413"/><circle cx="16" cy="16" r="6" fill="#d97757"/></svg>')}` }],
   ],
 
-  srcExclude: ['source/**', 'themes/**', 'scaffolds/**', '_config.yml', 'CLAUDE.md', 'README.md', 'node_modules/**'],
+  srcExclude: ['source/**', 'themes/**', 'scaffolds/**', 'diagrams/**', 'scripts/**', 'docs/**', '_config.yml', 'AGENTS.md', 'CLAUDE.md', 'README.md', 'node_modules/**'],
 
   locales: {
     zh: {

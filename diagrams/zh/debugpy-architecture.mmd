@@ -1,0 +1,22 @@
+flowchart TB
+  accTitle: 通过 SSH 隧道进行远程 Python 调试
+  accDescr: 本地编辑器连接 localhost:5678，经 SSH 隧道转发到服务器上监听 5678 的 debugpy。Python 程序遇到断点暂停后，编辑器可以查看变量和调用堆栈，并控制单步执行。
+  subgraph local["本地电脑"]
+    direction TB
+    editor["VSCode / Cursor / Windsurf<br/>Python: Remote Attach"]
+    controls["设置断点 · 单步执行<br/>查看变量 · 查看调用堆栈"]
+    endpoint["本地连接端点<br/>localhost:5678"]
+    controls <--> editor
+    editor <--> endpoint
+  end
+  tunnel["SSH 隧道<br/>LocalForward 5678 localhost:5678"]
+  subgraph remote["远程服务器"]
+    direction TB
+    debugpy["debugpy<br/>监听服务器端口 5678"]
+    program["Python 程序<br/>例如 train.py"]
+    paused["命中断点后暂停<br/>检查当前运行状态"]
+    debugpy <--> program
+    program --> paused
+  end
+  local <-->|"调试请求与状态"| tunnel
+  tunnel <--> remote

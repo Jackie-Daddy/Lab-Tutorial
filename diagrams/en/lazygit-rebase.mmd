@@ -1,0 +1,19 @@
+flowchart TB
+  accTitle: Clean Up Commit History with Interactive Rebase
+  accDescr: In the Commits panel, select the earliest commit to combine and press i for interactive rebase. Squash subsequent commits while keeping their messages, or use fixup to combine changes and discard those messages. Confirm the result and force push only if needed to update published history.
+  before["Before cleanup<br/>A feature commit plus WIP and fix commits"]
+  select["In the Commits panel<br/>Select the earliest commit to combine"]
+  rebase["i · Start interactive rebase"]
+  subgraph actions["Choose an action for subsequent commits"]
+    direction LR
+    squash["s · squash<br/>Combine changes<br/>Keep commit messages"]
+    fixup["f · fixup<br/>Combine changes<br/>Discard that commit's message"]
+    squash ~~~ fixup
+  end
+  confirm["Confirm the history cleanup"]
+  after["After cleanup<br/>Related changes form clear commits"]
+  published["If updating already published history<br/>Force push only when needed"]
+  before --> select --> rebase
+  rebase --> actions
+  actions --> confirm
+  confirm --> after --> published

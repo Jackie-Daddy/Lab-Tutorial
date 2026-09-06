@@ -1,0 +1,24 @@
+flowchart TB
+  accTitle: Lazygit Panels and Common Shortcuts
+  accDescr: Lazygit presents files, branches, commits, stashes, and diffs in one interface. Stage and inspect changes from Files, manage history through Branches and Commits, and store temporary work with Stash. Global keys control focus, movement, undo, refresh, and exit.
+  subgraph working["Inspect working tree changes"]
+    direction LR
+    files["Files<br/>Space to stage · a to stage all<br/>c to commit · Shift+A to amend"]
+    diff["Diff preview<br/>Inspect added and removed lines<br/>Use Space to stage a hunk in the diff"]
+    files -->|"Enter to view diff"| diff
+  end
+  subgraph history["Manage repository history"]
+    direction LR
+    branches["Branches<br/>Space to switch · n to create<br/>M to merge · r to rebase"]
+    commits["Commits<br/>Enter to inspect · i to rebase<br/>c to copy commits · v to paste"]
+    stash["Stash<br/>s to stash · g to apply<br/>P to pop · d to drop"]
+    branches ~~~ commits ~~~ stash
+  end
+  subgraph global["Global controls"]
+    direction LR
+    navigation["Focus and movement<br/>Tab / Shift+Tab to switch panels<br/>j / k or arrow keys to move"]
+    undo["Recover actions<br/>z to undo<br/>Ctrl+Z to redo"]
+    session["Session controls<br/>R to refresh<br/>q to quit"]
+    navigation ~~~ undo ~~~ session
+  end
+  working ~~~ history ~~~ global

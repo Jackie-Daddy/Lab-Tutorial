@@ -16,7 +16,7 @@ Zellij is a terminal multiplexer written in Rust. If you've used tmux, think of 
 
 **Zellij vs tmux:**
 
-![Zellij vs tmux](/images/zellij-vs-tmux.svg)
+<TutorialDiagram name="zellij-vs-tmux" />
 
 | Feature          | tmux                        | Zellij                              |
 | ---------------- | --------------------------- | ----------------------------------- |
@@ -56,13 +56,13 @@ brew install zellij
 
 Zellij's layered structure:
 
-![Zellij Hierarchy](/images/zellij-hierarchy.svg)
+<TutorialDiagram name="zellij-hierarchy" />
 
 Zellij uses **modal operation**, like vim. The default prefix key is `Ctrl+O` — press it to enter shortcut mode. The bottom status bar shows available actions.
 
 **The session lifecycle**: understand these four steps, and you understand Zellij's core value:
 
-![Zellij Session Lifecycle](/images/zellij-lifecycle.svg)
+<TutorialDiagram name="zellij-lifecycle" />
 
 ## Basic Operations
 
@@ -94,7 +94,7 @@ Press `Ctrl+O` first, then:
 
 The splitting progression — from one pane to three in just a few keystrokes:
 
-![Zellij Pane Quickstart](/images/zellij-panes.svg)
+<TutorialDiagram name="zellij-panes" />
 
 ### Tab Operations
 
@@ -160,7 +160,7 @@ layout {
 
 Then launch with: `zellij --layout dev`
 
-![Zellij Dev Layout](/images/zellij-layout.svg)
+<TutorialDiagram name="zellij-layout" />
 
 ## Remote Development
 

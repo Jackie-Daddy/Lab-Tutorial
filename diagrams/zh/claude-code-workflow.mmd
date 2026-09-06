@@ -1,0 +1,29 @@
+flowchart TB
+  accTitle: 组合 Claude Code 命令的日常开发流程
+  accDescr: 先用 CLAUDE.md 提供项目约定，再构思并制定计划。实现阶段先写失败测试，再修改代码并运行测试；随后审查和简化变更，重新验证后完成任务。
+  subgraph design["阶段一 · 明确需求与计划"]
+    direction LR
+    conventions["提供项目约定<br/>CLAUDE.md"]
+    brainstorm["探索需求<br/>/brainstorming"]
+    plan["制定实施计划<br/>/plan"]
+    conventions --> brainstorm --> plan
+  end
+  subgraph implementation["阶段二 · 实现与测试"]
+    direction LR
+    test["先写测试<br/>确认预期失败"]
+    code["实现所需行为<br/>保持修改聚焦"]
+    run["运行测试<br/>失败则继续修正"]
+    test --> code --> run
+    run -->|"测试未通过"| code
+  end
+  subgraph quality["阶段三 · 审查与验证"]
+    direction LR
+    review["审查并修复问题<br/>/code-review --fix"]
+    simplify["消除冗余<br/>/simplify"]
+    verify["重新运行验证<br/>检查最终修改"]
+    review --> simplify --> verify
+  end
+  done["验证通过<br/>说明结果并完成任务"]
+  design --> implementation
+  implementation -->|"测试通过"| quality
+  quality --> done
