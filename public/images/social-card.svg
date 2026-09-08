@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#faf9f5"/>
+  <rect x="54" y="54" width="1092" height="522" rx="18" fill="none" stroke="#dedad0" stroke-width="2"/>
+  <circle cx="116" cy="138" r="12" fill="#d97757"/>
+  <text x="150" y="150" fill="#5a5955" font-family="Arial, sans-serif" font-size="26" letter-spacing="3">PRACTICAL LAB GUIDES</text>
+  <text x="98" y="298" fill="#141413" font-family="Georgia, serif" font-size="88" font-weight="700">Lab Tutorial</text>
+  <text x="102" y="373" fill="#5a5955" font-family="Arial, sans-serif" font-size="32">Terminal tools · Remote development · AI coding</text>
+  <path d="M102 420H1098" stroke="#dedad0" stroke-width="2"/>
+  <text x="102" y="492" fill="#9b4a32" font-family="Arial, sans-serif" font-size="25">Hands-on tutorials in Chinese and English</text>
+  <text x="1098" y="501" text-anchor="end" fill="#d97757" font-family="Arial, sans-serif" font-size="52">↗</text>
+</svg>

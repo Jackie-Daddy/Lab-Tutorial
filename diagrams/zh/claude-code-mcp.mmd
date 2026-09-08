@@ -1,27 +1,15 @@
 flowchart TB
-  accTitle: Claude Code 如何通过 MCP 调用外部工具
-  accDescr: 项目根目录的 .mcp.json 配置 MCP 服务器。Claude Code 根据任务调用服务器提供的工具，教程展示 Codegraph 的代码搜索与影响分析，以及 GitHub 的 Issue、PR 和评论操作。
-  request["描述开发任务<br/>需要哪些外部信息或操作"]
-  config["配置项目服务器<br/>项目根目录 .mcp.json"]
-  agent["Claude Code<br/>根据任务选择工具"]
-  protocol["MCP<br/>连接外部工具服务器"]
-  request --> agent
-  config -.-> agent
-  agent --> protocol
-  subgraph codegraph["Codegraph · 代码智能图谱"]
-    direction TB
-    index["索引项目代码<br/>codegraph init"]
-    search["搜索符号定义<br/>与引用位置"]
-    impact["追踪调用链<br/>分析修改影响"]
-    index --> search --> impact
-  end
-  subgraph github["GitHub · 仓库协作"]
-    direction TB
-    server["连接 GitHub<br/>提供仓库操作工具"]
-    issues["查看 Issue<br/>了解问题背景"]
-    changes["创建 PR<br/>回复评论"]
-    server --> issues
-    server --> changes
-  end
-  protocol --> codegraph
-  protocol --> github
+  accTitle: Claude Code 连接官方 GitHub MCP
+  accDescr: 项目 .mcp.json 配置 GitHub HTTP 服务；令牌通过环境变量提供。Claude Code 连接后按权限读取仓库或执行已授权操作，其他 MCP 服务器需要单独核对维护者和接口。
+
+config["项目配置 .mcp.json<br/>GitHub HTTP MCP"]
+  token["环境变量 GITHUB_PAT<br/>按需授予仓库权限"]
+  claude["Claude Code<br/>用 /mcp 检查连接"]
+  server["官方 GitHub MCP<br/>api.githubcopilot.com/mcp/"]
+  read["读取仓库与 Issue<br/>收集任务上下文"]
+  write["创建 PR 等写入操作<br/>核对权限与用户授权"]
+  config --> claude
+  token --> claude
+  claude --> server
+  server --> read
+  server --> write

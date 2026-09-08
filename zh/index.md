@@ -1,6 +1,6 @@
 ---
 title: Lab Tutorial
-description: 一些小技巧 · Lab Tips
+description: 终端工具、远程开发与 AI 编程的实用教程，按主题查找，从安装配置到验证逐步上手。
 layout: page
 ---
 
@@ -8,6 +8,6 @@ layout: page
 import { data } from '../.vitepress/theme/loaders/zh-posts.data.ts'
 </script>
 
-<div class="home-container">
+<main class="home-container">
   <PostList :posts="data" lang="zh" />
-</div>
+</main>

@@ -1,23 +1,23 @@
 flowchart TB
-  accTitle: Lazygit Panels and Common Shortcuts
-  accDescr: Lazygit presents files, branches, commits, stashes, and diffs in one interface. Stage and inspect changes from Files, manage history through Branches and Commits, and store temporary work with Stash. Global keys control focus, movement, undo, refresh, and exit.
+  accTitle: Lazygit 0.65.0 panels and common bindings
+  accDescr: Keys 1 through 5 focus status, files, branches, commits, and stash. Space toggles staging, C and V copy and paste commits, and stashes use Space to apply or g to pop. z undoes and Z redoes.
   subgraph working["Inspect working tree changes"]
     direction LR
-    files["Files<br/>Space to stage · a to stage all<br/>c to commit · Shift+A to amend"]
+    files["2 · Files<br/>Space stages / unstages<br/>c commits · A amends"]
     diff["Diff preview<br/>Inspect added and removed lines<br/>Use Space to stage a hunk in the diff"]
     files -->|"Enter to view diff"| diff
   end
   subgraph history["Manage repository history"]
     direction LR
-    branches["Branches<br/>Space to switch · n to create<br/>M to merge · r to rebase"]
-    commits["Commits<br/>Enter to inspect · i to rebase<br/>c to copy commits · v to paste"]
-    stash["Stash<br/>s to stash · g to apply<br/>P to pop · d to drop"]
+    branches["3 · Branches<br/>Space checks out · n creates<br/>M merges · r rebases"]
+    commits["4 · Commits<br/>i rebases the current branch<br/>C copies · V cherry-picks"]
+    stash["5 · Stash<br/>Space applies · g pops<br/>d drops"]
     branches ~~~ commits ~~~ stash
   end
   subgraph global["Global controls"]
     direction LR
-    navigation["Focus and movement<br/>Tab / Shift+Tab to switch panels<br/>j / k or arrow keys to move"]
-    undo["Recover actions<br/>z to undo<br/>Ctrl+Z to redo"]
+    navigation["Panels and navigation<br/>1 status; 2–5 other panels<br/>Tab switches · j / k moves"]
+    undo["Undo supported Git operations<br/>z undo · Z redo<br/>Not a backup of uncommitted files"]
     session["Session controls<br/>R to refresh<br/>q to quit"]
     navigation ~~~ undo ~~~ session
   end

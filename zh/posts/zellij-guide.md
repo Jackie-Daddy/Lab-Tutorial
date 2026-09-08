@@ -9,48 +9,53 @@ tags:
   - server
   - tutorial
 description: 比 tmux 更开箱即用的终端多路复用器。分屏、标签页、浮动窗格、会话保持，一个工具搞定所有终端需求。
+reviewed: 2026-09-07
+scope: Zellij 0.45.1 默认键位；Linux、macOS 与 WSL
 ---
+
 ## 什么是 Zellij？
 
-Zellij 是一个用 Rust 编写的终端多路复用器（Terminal Multiplexer）。如果你用过 tmux，可以把它看作"开箱即用的现代化 tmux"。如果你没用过 tmux——简单说，Zellij 让你在一个终端窗口里同时运行多个终端会话，还能让它们在后台保持运行。
+Zellij 是用 Rust 编写的终端多路复用器。一个会话中可以组织多个标签页和窗格，分别运行编辑器、Shell 与监控命令；客户端脱离后，会话可以继续在原机器上运行。
 
-**与 tmux 的对比：**
+**与 tmux 的使用方式对比：**
 
 <TutorialDiagram name="zellij-vs-tmux" />
 
-| 特性     | tmux                 | Zellij                     |
-| -------- | -------------------- | -------------------------- |
-| 默认配置 | 需要大量配置才能好用 | 开箱即用，底部有快捷键提示 |
-| 浮动窗格 | 不支持               | 原生支持浮动/嵌入窗格      |
-| 布局系统 | 手动管理             | 支持布局模板（KDL 格式）   |
-| 插件系统 | 第三方脚本           | 原生 WASM 插件             |
-| 协作编辑 | 不内置               | 原生多用户会话共享         |
-| 状态栏   | 需要配置             | 默认美观，支持自定义       |
-| 配置语言 | tmux.conf            | KDL（可读性更好）          |
+| 特性 | tmux | Zellij |
+| --- | --- | --- |
+| 操作提示 | 前缀键、命令与键位帮助 | 多种操作模式、底部快捷键提示 |
+| 浮动界面 | `display-popup` 弹出窗口 | 可浮动、嵌入的窗格 |
+| 布局 | 内置布局、命令与脚本 | KDL 布局文件 |
+| 扩展 | 命令、脚本与第三方插件 | WASM 插件 |
+| 会话共享 | 多个客户端连接同一会话 | 多个客户端连接同一会话 |
+| 配置 | `tmux.conf` | `config.kdl` |
+
+两者都能直接使用，也都支持状态栏与会话共享；选择取决于操作习惯和现有工作流。参见 [tmux 入门文档](https://github.com/tmux/tmux/wiki/Getting-Started) 与 [Zellij 文档](https://zellij.dev/documentation/)。
 
 ## 安装
 
-**Linux**
+**Linux / WSL：以下二进制示例仅适用于 x86_64。** 先用 `uname -m` 确认架构；ARM64 等其他架构请在 [0.45.1 发布页](https://github.com/zellij-org/zellij/releases/tag/v0.45.1) 选择对应资产。需要已安装 `curl`、`tar`。
 
 ```bash
-# 方法 1：直接下载预编译二进制（推荐，无需 root 权限）
-wget https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz
-tar -xzf zellij-x86_64-unknown-linux-musl.tar.gz
-mv zellij ~/.local/bin/
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-
-# 方法 2：使用包管理器（需要 sudo）
-sudo apt install zellij          # Ubuntu/Debian
-sudo dnf install zellij          # Fedora
+mkdir -p "$HOME/.local/bin"
+zellij_tmp=$(mktemp -d)
+curl -fL https://github.com/zellij-org/zellij/releases/download/v0.45.1/zellij-x86_64-unknown-linux-musl.tar.gz -o "$zellij_tmp/zellij.tar.gz"
+tar -xzf "$zellij_tmp/zellij.tar.gz" -C "$zellij_tmp"
+install -m 755 "$zellij_tmp/zellij" "$HOME/.local/bin/zellij"
+export PATH="$HOME/.local/bin:$PATH"
+zellij --version
 ```
 
-**macOS**
+`export` 只影响当前 Shell。需要长期使用时，将这一行加入实际使用的 Bash/Zsh 启动文件。WSL 中安装的是 Linux 程序。
+
+**macOS（已安装 Homebrew）：**
 
 ```bash
 brew install zellij
+zellij --version
 ```
 
-**Windows (WSL)**：在 WSL 内部使用 Linux 的安装方法即可。
+已有 Rust 工具链时，也可以选择 `cargo install --locked zellij`。包管理器版本可能与本文不同；不要假设所有 Ubuntu/Debian 仓库都包含 Zellij。其他方式见[官方安装说明](https://zellij.dev/documentation/installation)。
 
 ## 核心概念
 
@@ -58,9 +63,11 @@ Zellij 的分层结构：
 
 <TutorialDiagram name="zellij-hierarchy" />
 
-Zellij 采用**模态操作**，类似 vim。默认的前缀键是 `Ctrl+O`，按下后进入快捷键模式，底部状态栏会显示可选操作。
+Zellij 使用**模态操作**。本文按 **0.45.1 默认键位、Normal 模式起步**说明：`Ctrl+P` 进入窗格模式，`Ctrl+T` 进入标签页模式，`Ctrl+O` 只进入会话模式。它们是不同模式的入口。
 
-**会话生命周期**：理解下面这四步，你就理解了 Zellij 的核心价值：
+`Ctrl+P` → `r` 表示先按组合键、松开，再按小写 `r`。大小写有区别；自定义键位或其他预设以当前状态栏为准。[0.45.1 默认键位](https://github.com/zellij-org/zellij/blob/v0.45.1/zellij-utils/assets/config/default.kdl)
+
+**会话生命周期：**
 
 <TutorialDiagram name="zellij-lifecycle" />
 
@@ -68,117 +75,121 @@ Zellij 采用**模态操作**，类似 vim。默认的前缀键是 `Ctrl+O`，�
 
 ### 会话管理
 
-| 操作                 | 命令 / 快捷键                     |
-| -------------------- | --------------------------------- |
-| 新建会话             | `zellij`                        |
-| 以指定名称新建       | `zellij -s project-name`        |
-| 脱离会话（后台运行） | `Ctrl+O` → `D`               |
-| 重新连接             | `zellij attach` 或 `zellij a` |
-| 列出所有会话         | `zellij list-sessions`          |
-| 删除会话             | `zellij delete-session <name>`  |
-| 彻底退出             | `Ctrl+O` → 输入 `quit` 回车  |
+| 操作 | 命令 / 快捷键 |
+| --- | --- |
+| 新建会话 | `zellij` |
+| 创建命名会话 | `zellij -s project-name` |
+| 脱离，保持后台运行 | `Ctrl+O` → `d` |
+| 连接指定会话 | `zellij attach project-name` |
+| 查看会话列表 | `zellij list-sessions` |
+| 结束当前会话及其窗格 | `Ctrl+Q`（非 Locked 模式） |
+| 结束指定运行中的会话 | `zellij kill-session project-name` |
+| 删除已退出会话的恢复记录 | `zellij delete-session project-name` |
+
+离开前希望任务继续运行时，应使用 **detach**。`Ctrl+Q` 和 `kill-session` 会结束会话；`delete-session` 清除恢复记录，和断开客户端用途不同。未指定名称的 `attach` 行为取决于已有会话数量。[CLI 命令](https://zellij.dev/documentation/commands)、[会话恢复与删除](https://zellij.dev/documentation/session-resurrection)
 
 ### 窗格（Pane）操作
 
-先按 `Ctrl+O` 进入快捷键模式，然后：
+每次从 Normal 模式先按 `Ctrl+P`，然后：
 
-| 操作     | 按键                  |
-| -------- | --------------------- |
-| 向右分屏 | `R`                 |
-| 向下分屏 | `D`                 |
-| 移动焦点 | 方向键 或 `h/j/k/l` |
-| 关闭窗格 | `X`                 |
-| 全屏切换 | `F`                 |
-| 浮动窗格 | `W`                 |
-| 重命名   | `C`                 |
+| 操作 | 按键 |
+| --- | --- |
+| 向右 / 向下新建窗格 | `r` / `d` |
+| 移动焦点 | 方向键或 `h/j/k/l` |
+| 关闭当前窗格 | `x` |
+| 切换窗格全屏 | `f` |
+| 显示 / 隐藏浮动窗格 | `w` |
+| 当前窗格在浮动与嵌入间切换 | `e` |
+| 重命名窗格 | `c` → 输入名称 → `Enter` |
 
-分屏过程一目了然 —— 从单窗格到三窗格，只需几次按键：
+分屏等操作会返回 Normal 模式；连续执行时重新按 `Ctrl+P`。方向移动可在 Pane 模式中连续进行，完成后按 `Enter` 返回。
 
 <TutorialDiagram name="zellij-panes" />
 
 ### 标签页（Tab）操作
 
-| 操作          | 按键                        |
-| ------------- | --------------------------- |
-| 新建标签页    | `Ctrl+O` → `N`         |
-| 切换到第 N 个 | `Ctrl+O` → `1` ~ `9` |
-| 前后切换      | `Ctrl+O` → `H` / `L` |
-| 关闭          | `Ctrl+O` → `X`         |
-| 重命名        | `Ctrl+O` → `R`         |
+| 操作 | 快捷键 |
+| --- | --- |
+| 新建标签页 | `Ctrl+T` → `n` |
+| 切到第 1–9 个标签页 | `Ctrl+T` → `1`–`9` |
+| 前一个 / 后一个标签页 | `Ctrl+T` → `h` / `l` |
+| 关闭当前标签页及其窗格 | `Ctrl+T` → `x` |
+| 重命名标签页 | `Ctrl+T` → `r` → 名称 → `Enter` |
 
-### 其他实用功能
+### 回看、搜索与调整大小
 
-| 操作         | 快捷键                                         |
-| ------------ | ---------------------------------------------- |
-| 滚动回看输出 | `Ctrl+O` → `S`（scroll 模式），方向键滚动 |
-| 搜索历史输出 | 滚动模式下按 `/`                             |
-| 调整窗格大小 | `Ctrl+O` → `R`（resize 模式）             |
-| 锁定界面     | `Ctrl+G`（防误触）                           |
+| 操作 | 快捷键 |
+| --- | --- |
+| 回看输出 | `Ctrl+S` → `j/k` 或方向键 |
+| 搜索输出 | `Ctrl+S` → `s` → 关键词 → `Enter` |
+| 搜索下一个 / 上一个结果 | 搜索模式中 `n` / `p` |
+| 调整大小 | `Ctrl+N` → `+` / `-` 或方向键 |
+| 暂时将按键交给窗格程序 | `Ctrl+G` 进入 Locked；再按 `Ctrl+G` 返回 |
+
+这些表格对应[默认配置中的各模式](https://github.com/zellij-org/zellij/blob/v0.45.1/zellij-utils/assets/config/default.kdl)。Locked 是键盘输入模式，不能作为访问控制锁屏。
 
 ## 进阶配置
 
-Zellij 的配置文件是 `~/.config/zellij/config.kdl`，使用 KDL 格式。下面是一个推荐的 vim 式导航配置：
+先查看当前安装版本的默认配置：
+
+```bash
+zellij setup --dump-config
+```
+
+常用路径是 `~/.config/zellij/config.kdl`；首次启动可能已经创建配置，请先查看再修改。环境变量、命令行参数和 macOS 原生配置路径也会影响查找顺序，详见[配置文档](https://zellij.dev/documentation/configuration)。
+
+默认已经支持 Vim 式导航。若只想修改少量键位，保留默认值再添加覆盖，例如为 Normal 模式增加 `Alt+r` 向右分屏：
 
 ```kdl
-keybinds clear-defaults=true {
-    locked {
-        bind "Ctrl g" { SwitchToMode "normal"; }
-    }
-    pane {
-        bind "h" { MoveFocus "left"; }
-        bind "j" { MoveFocus "down"; }
-        bind "k" { MoveFocus "up"; }
-        bind "l" { MoveFocus "right"; }
-        bind "d" { NewPane "down"; SwitchToMode "normal"; }
-        bind "r" { NewPane "right"; SwitchToMode "normal"; }
-        bind "x" { ClosePane; SwitchToMode "normal"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
-    }
-    tab {
-        bind "n" { NewTab; SwitchToMode "normal"; }
-        bind "x" { CloseTab; SwitchToMode "normal"; }
-        bind "1" { GoToTab 1; SwitchToMode "normal"; }
-        bind "2" { GoToTab 2; SwitchToMode "normal"; }
-    }
+keybinds {
+  normal {
+    bind "Alt r" { NewPane "Right"; }
+  }
 }
 ```
 
-**布局模板**：在 `~/.config/zellij/layouts/` 下放置 `.kdl` 文件定义预设窗格布局：
+不要把不完整片段改成 `keybinds clear-defaults=true`：这会同时移除进入、退出各模式的默认绑定。
+
+**布局模板：** 创建 `~/.config/zellij/layouts/dev.kdl`，用两个左右并排的窗格和底部状态栏组织工作区。运行前需安装 `yazi`；也可以去掉 `command="yazi"`，改用普通 Shell。
 
 ```kdl
-// ~/.config/zellij/layouts/dev.kdl
 layout {
-    tab name="editor" {
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-        pane { command "yazi" }
-        pane split_direction="vertical" { pane }
+  tab name="editor" {
+    pane split_direction="vertical" {
+      pane command="yazi"
+      pane
     }
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
 }
 ```
 
-然后 `zellij --layout dev` 即可启动预设布局。
+```bash
+zellij --layout dev
+```
+
+`split_direction="vertical"` 创建左右排列的子窗格；默认方向是上下排列。[布局文档](https://zellij.dev/documentation/layouts)
 
 <TutorialDiagram name="zellij-layout" />
 
 ## 远程开发
 
-Zellij 在 SSH 远程开发时最大的优势是**会话持久化**——SSH 断开后 Zellij 会话仍在服务器运行，下次 `zellij attach` 即可恢复所有窗格状态。
+在**服务器上**启动 Zellij，SSH 客户端断开后，服务器与会话进程仍存活时任务才能继续。下次连接同一主机、同一用户的会话：
 
 ```bash
-# SSH 连接后自动 attach 或创建新会话
-ssh myserver -t "zellij attach --create"
+ssh -t myserver 'zellij attach --create project-name'
 ```
+
+服务器重启、作业被终止或主动退出会话后，不能继续原来的进程。Zellij 的 session resurrection 可以重建布局并提供重新运行命令的入口；它不会恢复训练进程的内存状态。[会话恢复说明](https://zellij.dev/documentation/session-resurrection)
 
 ## 常见问题
 
-- **状态栏图标乱码？** 安装 Nerd Font，或临时使用简化 UI：`zellij options --simplified-ui true`
-- **SSH 断开后会话丢失？** 正常不会。Zellij daemon 在后台维持所有会话。重新 SSH 后 `zellij attach` 即可。
-- **鼠标不好用？** 按住 `Shift` 临时禁用鼠标捕获，或永久禁用：`zellij options --disable-mouse-mode`
-- **`Ctrl+O` 冲突？** 在 `config.kdl` 中改前缀键，或按 `Ctrl+G` 锁定界面暂时禁用快捷键。
+- **状态栏箭头显示异常？** 在配置根级加入 `simplified_ui true`，或在本地终端选择支持相应字符的字体。
+- **鼠标选择与复制冲突？** 在配置根级加入 `mouse_mode false`，并新建会话使该选项生效。
+- **编辑器与快捷键冲突？** 用 `Ctrl+G` 进入 Locked 模式，完成后再次按 `Ctrl+G` 返回；也可以调整具体模式绑定。
 
-<div class="post-tags-section">
-  <span class="label">标签:</span>
-  <span class="tag-pill" v-for="tag in $frontmatter.tags" :key="tag">{{ tag }}</span>
-</div>
+选项含义见[官方配置选项](https://zellij.dev/documentation/options)。本文于 2026-09-07 核对官方文档与 0.45.1 配置源码，未在各平台执行安装或交互测试。
+
+<PostTags />

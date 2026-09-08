@@ -1,6 +1,6 @@
 flowchart TB
-  accTitle: 教程中的四组 Claude Code 插件与 Skills
-  accDescr: Superpowers 组织设计、实现和验证流程；Code Review 与 Simplifier 用于审查和简化；Karpathy Skills 强调最小改动与明确假设；Academic Research Skills 覆盖论文规划、写作、修订和引文检查。
+  accTitle: Claude Code 内置工作流与可选 Skills
+  accDescr: Superpowers 组织设计、实现和验证流程；Code Review 与 Simplifier 用于审查和简化；Karpathy Skills 强调最小改动与明确假设；研究类 Skills 需核对具体插件的来源与命令，没有统一的 ars 命令集。
   subgraph workflow["Superpowers · 开发流程"]
     direction LR
     design["构思需求<br/>编写实施计划"]
@@ -22,11 +22,11 @@ flowchart TB
     explicit["暴露假设<br/>定义可验证标准"]
     simple ~~~ scope ~~~ explicit
   end
-  subgraph research["Academic Research Skills · 论文工作"]
+  subgraph research["研究类 Skills · 先核对来源"]
     direction LR
-    plan["规划与大纲<br/>/ars-plan · /ars-outline"]
-    write["全文与摘要<br/>/ars-full · /ars-abstract"]
-    revise["/ars-revision<br/>/ars-citation-check"]
+    plan["核对仓库与维护者<br/>阅读 README 和安装说明"]
+    write["确认实际提供的命令<br/>按项目需求使用"]
+    revise["检查输出与来源<br/>保留人工核对"]
     plan --> write --> revise
   end
   workflow ~~~ quality ~~~ principles ~~~ research

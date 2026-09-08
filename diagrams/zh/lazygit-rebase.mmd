@@ -1,18 +1,18 @@
 flowchart TB
-  accTitle: 使用交互式变基整理提交历史
-  accDescr: 在 Commits 面板选中要合并的最早提交，按 i 进入交互式变基。后续提交可用 squash 合并并保留提交说明，或用 fixup 合并并丢弃提交说明。确认后得到整理后的历史，已发布的历史可能需要强制推送。
+  accTitle: 在 Lazygit 中整理当前分支历史
+  accDescr: 在提交面板按 i 对当前分支启动交互式变基。对 TODO 提交使用 s 或 f，再用 m 菜单继续。需要从选中提交开始编辑时使用 e；已共享的历史先与协作者确认。
   before["整理前<br/>功能提交与多个 WIP / 修复提交"]
-  select["在 Commits 面板中<br/>选中要合并的最早提交"]
-  rebase["i · 进入交互式变基"]
-  subgraph actions["对后续提交选择操作"]
+  select["进入 Commits 面板（4）<br/>先确认分支与历史范围"]
+  rebase["i · 变基当前分支<br/>e · 从所选提交开始编辑"]
+  subgraph actions["对 TODO 提交选择操作"]
     direction LR
     squash["s · squash<br/>合并提交<br/>保留提交说明"]
     fixup["f · fixup<br/>合并提交<br/>丢弃该提交的说明"]
     squash ~~~ fixup
   end
-  confirm["确认整理结果"]
+  confirm["m · 打开变基菜单<br/>选择 continue"]
   after["整理后<br/>相关修改合并为清晰的提交"]
-  published["如需更新已发布的历史<br/>再按需执行强制推送"]
+  published["检查最终历史与测试<br/>更新共享历史前先沟通"]
   before --> select --> rebase
   rebase --> actions
   actions --> confirm

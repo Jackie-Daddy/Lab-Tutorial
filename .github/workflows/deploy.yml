@@ -32,6 +32,9 @@ jobs:
       - name: Build with VitePress
         run: npm run build
 
+      - name: Check site interactions and diagram pages
+        run: npm run check:site && npm run check:pages
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

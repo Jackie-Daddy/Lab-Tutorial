@@ -1,11 +1,11 @@
 flowchart TB
   accTitle: Configure and Customize the Prompt in Coding Tools
-  accDescr: Add the same persona prompt to Cursor Rules for AI, Windsurf AI Rules, or the project's CLAUDE.md, then tailor it for research, production, or teaching. The settings paths follow the tutorial's examples.
+  accDescr: Add the same persona prompt to Cursor project rules, Windsurf rule files, or the project's CLAUDE.md, then tailor it for research, production, or teaching. Merge these instructions into existing project rules.
   prompt["Copy the persona prompt from the tutorial"]
   subgraph tools["Choose your coding tool"]
     direction LR
-    cursor["Cursor<br/>Settings → Rules for AI<br/>Paste the prompt"]
-    windsurf["Windsurf<br/>Settings → AI Rules<br/>Paste the prompt"]
+    cursor["Cursor<br/>AGENTS.md / .cursor/rules/*.mdc<br/>Paste the prompt"]
+    windsurf["Windsurf<br/>.windsurf/rules/*.md<br/>Paste the prompt"]
     claude["Claude Code<br/>CLAUDE.md in the project root<br/>Paste the prompt"]
     cursor ~~~ windsurf ~~~ claude
   end
@@ -14,7 +14,7 @@ flowchart TB
   tools --> customize
   subgraph projects["Adapt to the project's goals"]
     direction LR
-    research["Research and exploration<br/>Propose ideas more actively<br/>Prioritize iteration speed"]
+    research["Research and exploration<br/>Propose ideas more actively<br/>Keep reproducible steps and checks"]
     production["Production systems<br/>Prioritize compatibility<br/>Handle errors carefully"]
     teaching["Teaching projects<br/>Explain the reasons<br/>Help learners understand"]
     research ~~~ production ~~~ teaching

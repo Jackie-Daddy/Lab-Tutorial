@@ -8,18 +8,22 @@ tags:
   - ai
   - prompt-engineering
 description: A ready-to-use persona prompt for Cursor / Windsurf / Claude Code that shapes your AI into a senior engineer who reasons from first principles.
+reviewed: 2026-09-07
+scope: Cursor/Windsurf project rules and Claude Code project instructions
 ---
 ## Preface
 
-AI coding assistants tend to default to conservative, textbook-style answers — they give you "best practices" by the book rather than solutions weighed against real engineering constraints. If you want yours to behave more like an **experienced senior engineer** — someone who thinks from first principles, challenges your assumptions, and considers trade-offs — try feeding it the prompt below.
+If an AI coding assistant gives generic advice without considering your project’s constraints, explicit project instructions can guide its communication and workflow. If you want yours to behave more like an **experienced senior engineer** — someone who thinks from first principles, challenges your assumptions, and considers trade-offs — try adding the prompt below to its rules or project instructions. This does not change the underlying model or guarantee correct answers.
 
 ## Compatible Tools
 
-The following tools support custom system prompts via Rules / Instructions / System Prompt:
+The following instruction locations were checked against current documentation; their scope and activation differ:
 
-- **Cursor**: Settings → Rules for AI → paste the content
-- **Windsurf**: Settings → AI Rules → paste the content
-- **Claude Code**: Project root `CLAUDE.md` → paste the content
+- **Cursor**: A root `AGENTS.md` accepts plain Markdown instructions. Use `.cursor/rules/*.mdc` with an activation mode for conditional rules. [Rules documentation](https://cursor.com/docs/rules)
+- **Windsurf**: Global rules use `~/.codeium/windsurf/memories/global_rules.md`; project rules can use `.windsurf/rules/*.md` with an activation mode. The official documentation now redirects to Devin Desktop and still lists these compatible paths. [Rules documentation](https://docs.devin.ai/desktop/cascade/memories)
+- **Claude Code**: Project root `CLAUDE.md`; personal global instructions use `~/.claude/CLAUDE.md`. [Project memory documentation](https://code.claude.com/docs/en/memory)
+
+Merge into existing files and preserve project conventions. These instructions supply context; they do not override product permissions or replace immutable system instructions.
 
 ## The Prompt
 
@@ -51,7 +55,7 @@ Your tone: direct, respectful, slightly informal. Like a colleague in a
 code review, not a professor lecturing.
 ```
 
-## Why This Prompt Works
+## What This Prompt Tries to Encourage
 
 - **First-principles reasoning**: It pushes the AI to decompose problems before proposing solutions, rather than pattern-matching.
 - **Question assumptions**: Reduces wasted work — sometimes the solution you spent 30 minutes describing is the wrong one, and the AI should say so.
@@ -61,9 +65,11 @@ code review, not a professor lecturing.
 
 <TutorialDiagram name="cursor-principles" />
 
-## Before and After
+## Illustrative Responses
 
-| Scenario | Default Response | With the Prompt |
+These are examples, not measured outputs from a controlled model comparison. Judge usefulness through real project tasks and verification results.
+
+| Scenario | Response to Avoid | Response to Encourage |
 | --- | --- | --- |
 | "Write a singleton pattern for me" | Gives code directly | First asks: are you sure you need a singleton? Do you want global shared state or to limit instances? |
 | "Optimize this code's performance" | Suggests micro-optimizations | First asks: have you profiled it? Where's the bottleneck? Don't prematurely optimize. |
@@ -75,15 +81,12 @@ code review, not a professor lecturing.
 
 Different projects need different "personality" styles. For example, you can tune based on project type:
 
-- **Research/exploration projects**: Let the AI propose ideas more aggressively, prioritizing iteration speed over code quality
+- **Research/exploration projects**: Encourage quickly testable hypotheses while preserving reproducible steps and necessary checks
 - **Production systems**: Make the AI more conservative, prioritizing backward compatibility and error handling
 - **Teaching projects**: Have the AI explain the *why* more, not just give code
 
-Add these custom instructions to your project's `CLAUDE.md` or Cursor Rules.
+Merge custom instructions into your tool’s project rules. File scope, verification commands, and conditions that require clarification are more concrete than a senior-engineer persona alone.
 
 <TutorialDiagram name="cursor-tools" />
 
-<div class="post-tags-section">
-  <span class="label">Tags:</span>
-  <span class="tag-pill" v-for="tag in $frontmatter.tags" :key="tag">{{ tag }}</span>
-</div>
+<PostTags />

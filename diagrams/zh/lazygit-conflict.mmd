@@ -1,19 +1,19 @@
 flowchart TB
-  accTitle: 在 Lazygit 中解决合并冲突
-  accDescr: 合并出现冲突后，Lazygit 显示冲突文件。按 Enter 打开文件，对每个冲突块用 Space 选择保留当前版本、传入版本或两者；全部解决后按 a 暂存，再按 c 完成合并提交。
+  accTitle: 在 Lazygit 中检查并解决冲突
+  accDescr: 进入冲突文件后逐块检查实际代码，用 Space 选择当前块或 b 保留两侧。回到文件面板后用 Space 暂存解决结果，再继续原来的 merge、rebase 或 cherry-pick，并验证结果。
   conflict["1 · 合并时出现冲突<br/>Files 面板显示冲突文件"]
   open["Enter · 打开冲突文件"]
-  choose["2 · 逐个处理冲突块<br/>Space 选择要保留的内容"]
+  choose["2 · 逐块查看实际代码<br/>Space 选择当前块"]
   subgraph versions["可选择的版本"]
     direction LR
     ours["ours<br/>当前版本"]
     theirs["theirs<br/>传入版本"]
-    both["both<br/>保留两者"]
+    both["保留两侧内容<br/>b"]
     ours ~~~ theirs ~~~ both
   end
   resolved["所有冲突块均已解决"]
-  stage["3 · a 暂存解决后的文件"]
-  commit["c · 完成合并提交"]
+  stage["3 · 检查文件并用 Space 暂存"]
+  commit["继续原操作并验证<br/>变基 / cherry-pick：m → continue<br/>merge：按界面提示完成"]
   conflict --> open --> choose
   choose --> versions
   versions --> resolved

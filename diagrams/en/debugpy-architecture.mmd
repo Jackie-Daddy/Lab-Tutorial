@@ -1,15 +1,15 @@
 flowchart TB
   accTitle: Remote Python Debugging Through an SSH Tunnel
-  accDescr: The local editor connects to localhost:5678, forwarded through SSH to debugpy listening on the server's port 5678. When the Python program pauses at a breakpoint, the editor can inspect variables and the call stack and control stepping.
+  accDescr: The local editor connects to 127.0.0.1:5678, forwarded through SSH to debugpy listening on the server's port 5678. When the Python program pauses at a breakpoint, the editor can inspect variables and the call stack and control stepping.
   subgraph local["Local computer"]
     direction TB
     editor["VSCode / Cursor / Windsurf<br/>Python: Remote Attach"]
     controls["Set breakpoints · Step through code<br/>Inspect variables · View the call stack"]
-    endpoint["Local connection endpoint<br/>localhost:5678"]
+    endpoint["Local connection endpoint<br/>127.0.0.1:5678"]
     controls <--> editor
     editor <--> endpoint
   end
-  tunnel["SSH tunnel<br/>LocalForward 5678 localhost:5678"]
+  tunnel["SSH tunnel<br/>LocalForward 127.0.0.1:5678 127.0.0.1:5678"]
   subgraph remote["Remote server"]
     direction TB
     debugpy["debugpy<br/>Listen on server port 5678"]

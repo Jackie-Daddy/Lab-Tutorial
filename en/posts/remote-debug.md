@@ -9,6 +9,8 @@ tags:
   - remote
   - python
 description: Stop debugging with print(). Use debugpy to set breakpoints, step through, and inspect variables on remotely running code — right from your local editor.
+reviewed: 2026-09-07
+scope: Linux server and OpenSSH; VS Code Python Debugger
 ---
 ## Preface
 
@@ -20,7 +22,7 @@ With `debugpy` and your local VSCode / Cursor / Windsurf, you can set breakpoint
 
 ```
 Local Editor (VSCode/Cursor/Windsurf)    ←→    debugpy (running on server)
-     Awaits connection                              Listens on port 5678
+     Initiates connection                              Listens on port 5678
      Sets breakpoints                               Pauses at breakpoints
      Inspects variables                             Sends variable state back
 ```
@@ -31,11 +33,13 @@ debugpy starts a debug server on the remote machine. Your local editor connects 
 
 ## Step 1: Install debugpy on the Server
 
+Activate the virtual environment used for `train.py` so installation and launch use the same Python interpreter. This workflow uses a local editor window with a local checkout matching the code on the server.
+
 ```bash
-pip install debugpy
+python -m pip install debugpy
 ```
 
-## Step 2: Configure SSH Tunnel (Optional but Recommended)
+## Step 2: Establish an SSH Tunnel
 
 Add port forwarding to your **local** `~/.ssh/config`:
 
@@ -43,36 +47,41 @@ Add port forwarding to your **local** `~/.ssh/config`:
 Host myserver
     HostName your-server-ip
     User your-username
-    LocalForward 5678 localhost:5678
+    LocalForward 127.0.0.1:5678 127.0.0.1:5678
+    ExitOnForwardFailure yes
 ```
 
-Now `localhost:5678` on your machine maps to port `5678` on the server.
+Replace the host address and username, then run this locally and keep the terminal connected:
 
-If you don't set up an SSH tunnel, you can also connect directly using the server's IP:port.
+```bash
+ssh -N myserver
+```
+
+Saving the configuration does not start a tunnel. While SSH is connected, local `127.0.0.1:5678` forwards to `127.0.0.1:5678` on the server. Press `Ctrl+C` in this terminal when debugging is finished. [OpenSSH forwarding](https://man.openbsd.org/ssh_config#LocalForward)
 
 ## Step 3: Start the Debug Server
 
 Wrap your Python command with `debugpy`:
 
 ```bash
-python -m debugpy --listen 0.0.0.0:5678 --wait-for-client train.py
+python -m debugpy --listen 127.0.0.1:5678 --wait-for-client train.py
 ```
 
 Options:
-- `--listen 0.0.0.0:5678`: listen on port 5678 on all interfaces
+- `--listen 127.0.0.1:5678`: listen only on server loopback, reached through the SSH tunnel
 - `--wait-for-client`: wait for the editor to connect before executing (useful for debugging from the very start)
 
 To run without blocking, omit `--wait-for-client`:
 
 ```bash
-python -m debugpy --listen 0.0.0.0:5678 train.py
+python -m debugpy --listen 127.0.0.1:5678 train.py
 ```
 
 ## Step 4: Connect Your Local Editor
 
 ### VSCode
 
-Add to `.vscode/launch.json`:
+Install and enable the **Python Debugger** extension locally. Add this to `.vscode/launch.json`, replacing `remoteRoot` with the actual project path on the server:
 
 ```json
 {
@@ -83,7 +92,7 @@ Add to `.vscode/launch.json`:
             "type": "debugpy",
             "request": "attach",
             "connect": {
-                "host": "localhost",
+                "host": "127.0.0.1",
                 "port": 5678
             },
             "pathMappings": [
@@ -99,7 +108,7 @@ Add to `.vscode/launch.json`:
 
 ### Cursor / Windsurf
 
-Cursor and Windsurf are built on VSCode, so the configuration is identical. Use the same `launch.json`, or select "Python: Remote Attach" from the Run and Debug panel.
+First confirm your Cursor / Windsurf version supports an installed and enabled Python debugging extension, then use the same `debugpy` attach configuration. An unsupported `debugpy` type usually calls for checking the extension and where it runs; VSCode ancestry alone does not ensure extension compatibility. [VS Code debugging documentation](https://code.visualstudio.com/docs/python/debugging)
 
 <TutorialDiagram name="debugpy-vscode-config" />
 
@@ -114,12 +123,9 @@ Cursor and Windsurf are built on VSCode, so the configuration is identical. Use 
 
 ## FAQ
 
-- **Connection timeout?** Check if the server firewall allows port 5678, or verify your SSH tunnel configuration.
+- **Connection timeout?** Check that `ssh -N myserver` is still connected, both ends use the intended ports, and debugpy is running. This setup requires no public port 5678. A debugger can execute code, so keep it bound to loopback and access it through SSH. [debugpy documentation](https://github.com/microsoft/debugpy/blob/main/README.md)
 - **Breakpoints not hitting?** Make sure `pathMappings` `remoteRoot` matches the actual code path on the server.
-- **Can I use this with Jupyter Notebooks?** Yes, but `%debug` or `ipdb` are better suited for notebook environments.
-- **Multiple people debugging at once?** Assign different ports to each person — e.g., `5679`, `5680`.
+- **Can I use this with Jupyter Notebooks?** This tutorial covers Python scripts. Notebook kernels and debugging extensions need their own setup; the `train.py` launch command does not apply directly.
+- **Multiple people debugging at once?** Give each independent debugpy process an available server port and adjust the SSH forwarding and local `launch.json` port accordingly.
 
-<div class="post-tags-section">
-  <span class="label">Tags:</span>
-  <span class="tag-pill" v-for="tag in $frontmatter.tags" :key="tag">{{ tag }}</span>
-</div>
+<PostTags />

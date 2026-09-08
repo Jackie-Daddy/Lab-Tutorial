@@ -8,6 +8,8 @@ tags:
   - server
   - tutorial
 description: 用 Herdr 管理多个 AI 编程助手：从安装、分屏和状态追踪，到会话恢复、SSH 远程开发与命令行协作。
+reviewed: 2026-09-07
+scope: Herdr v0.8.2；Linux/macOS/Windows 客户端，Linux/macOS 远端
 ---
 ## 什么是 Herdr？
 
@@ -241,7 +243,4 @@ herdr server reload-config
 - **新开终端怎么还是旧项目？** `herdr` 默认重连原会话；通过工作区菜单新建项目，或在目标目录执行 `herdr workspace create --cwd "$PWD" --label my-project`。[CLI 参考](https://herdr.dev/docs/cli-reference/)
 - **怎样彻底停止？** 确认任务已结束后，默认会话用 `herdr server stop`；命名会话用 `herdr session stop lab`。这会停止会话中的窗格进程。[会话管理](https://herdr.dev/docs/persistence-remote/)
 
-<div class="post-tags-section">
-  <span class="label">标签:</span>
-  <span class="tag-pill" v-for="tag in $frontmatter.tags" :key="tag">{{ tag }}</span>
-</div>
+<PostTags />

@@ -18,7 +18,7 @@ subgraph network["连接与协议"]
     direction TB
     app["pip 或 git 仍无法连接"]
     variables["确认 http_proxy 和 https_proxy<br/>均已设置"]
-    git["git 可单独设置代理<br/>git config --global http.proxy $http_proxy"]
+    git["检查 git remote -v<br/>HTTP 代理不影响 SSH remote"]
     slow["内网服务访问变慢"]
     bypass["检查 no_proxy<br/>是否包含目标内网地址"]
     direct["补全内网排除项<br/>再验证内网服务"]

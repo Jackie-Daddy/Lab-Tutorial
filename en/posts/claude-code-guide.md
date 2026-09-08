@@ -10,230 +10,218 @@ tags:
   - plugins
   - tutorial
 description: Anthropic's CLI AI coding assistant. Understands your entire project, refactors across files, extends via MCP and plugins — turn your terminal into an AI-powered dev workstation.
+reviewed: 2026-09-07
+scope: Claude Code terminal CLI; official documentation as of 2026-09-07
 ---
 ## What is Claude Code?
 
-Claude Code is Anthropic's command-line AI coding assistant. Unlike GitHub Copilot's inline editor completions, Claude Code runs in your terminal and deeply interacts with your codebase:
+Claude Code is Anthropic’s AI coding assistant. This article covers its terminal CLI: reading project files, editing across files, running commands and tests, and connecting to external tools through MCP. Check the resulting diff and test output against your requirements. [Product overview](https://code.claude.com/docs/en/overview)
 
-- Understands your entire project structure, not just single files
-- Multi-file refactoring and batch modifications
-- Automatically runs tests and fixes failures
-- Connects to external tools via MCP (Model Context Protocol)
-- Plugin ecosystem with community-developed Skills
+**How do the tools fit into a workflow?**
 
-**Comparison:**
+| Tool | Common entry points | Distinction used here |
+| --- | --- | --- |
+| GitHub Copilot | Editor completions, IDE Agent, cloud agent | Completion is one of several modes |
+| Cursor | Agent and code editing inside the IDE | Agent can edit files and run commands |
+| Claude Code | Terminal CLI and other clients | This guide focuses on starting from a shell |
 
-| Feature       | GitHub Copilot      | Cursor         | Claude Code                 |
-| ------------- | ------------------- | -------------- | --------------------------- |
-| Interaction   | Inline completions  | IDE + Chat     | Terminal CLI                |
-| Context scope | Current file        | Current project| Entire repo + MCP tools     |
-| Batch edits   | Not supported       | Limited        | Native support              |
-| Run commands  | Not supported       | Limited        | Can execute shell commands  |
-| Plugin system | None                | None           | Skills + MCP dual-layer     |
-| Best for      | Writing new code    | Interactive dev| Complex refactors, debugging |
+Their agent capabilities evolve. Claims that Copilot only sees the current file or that Cursor cannot make batch edits do not describe the current products. [GitHub agent documentation](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) · [Cursor Agent documentation](https://cursor.com/docs/agent/overview)
 
 <TutorialDiagram name="claude-code-vs" />
 
 ## Installation
 
-```bash
-# Prerequisite: Node.js ≥ 18
-npm install -g @anthropic-ai/claude-code
+For macOS, Linux, or WSL, use the official native installer:
 
-# Launch
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+For Windows PowerShell:
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+Choose the method for your platform. Native installation does not require Node.js first. See the [installation documentation](https://code.claude.com/docs/en/setup) for alternatives and system requirements.
+
+```bash
+claude --version
+claude --help
+cd /path/to/project
 claude
 ```
 
-First launch requires an Anthropic API key, or configure a third-party compatible endpoint (DeepSeek, OpenRouter, etc.).
+Replace `/path/to/project` with your project directory. Follow the login flow for an account with Claude Code access, or use Anthropic Console API credentials. A manually configured API key is not required for every user. [Authentication](https://code.claude.com/docs/en/authentication)
 
 ## Basic Usage
 
+Run these commands from a shell in your project directory:
+
 ```bash
-# Interactive chat (most common)
+# Interactive session
 claude
 
-# One-shot task
+# Interactive session with an initial task
 claude "Refactor src/utils.py to extract duplicate code"
 
-# Launch in a specific project
-claude --project /path/to/project
+# Non-interactive output; exit when finished
+claude -p "Explain the responsibilities of src/utils.py without editing files"
 
-# In-session commands
-/add-dir src/        # Add directory to context
-/init                # Generate CLAUDE.md (project spec file)
-/config              # Modify settings
-/clear               # Clear conversation context
-/compact             # Compact context (save tokens)
-/mcp                 # Manage MCP servers
+# Enter a particular project, then launch
+cd /path/to/project
+claude
 ```
+
+`claude "task"` remains interactive; use `-p` when a script needs output followed by exit. The current directory determines the project; there is no `--project` launch flag as previously shown here. [CLI reference](https://code.claude.com/docs/en/cli-reference)
+
+Enter the following **inside a Claude Code session**, one command per message, rather than in Bash:
+
+```text
+/init
+/config
+/clear
+/compact
+/mcp
+```
+
+`/init` drafts project instructions for you to review. The remaining commands open settings, start a fresh conversation, compact context, and manage MCP. Type `/` to see the commands in your installation. `/add-dir /path/to/other-project` adds file access; it does not load every file into context immediately. [Command reference](https://code.claude.com/docs/en/commands)
 
 ## MCP Servers
 
-**MCP (Model Context Protocol)** is Claude Code's extension mechanism. Think of it as Claude's "plugin skills" — MCP servers let Claude call external tools.
+**MCP (Model Context Protocol)** lets Claude Code call tools exposed by servers. Code indexing, search, and remote mutations depend on the server implementation; MCP alone does not supply them.
 
 <TutorialDiagram name="claude-code-mcp" />
 
-### Codegraph — Code Intelligence Graph
+### Choose a Server and Configuration Scope
 
-Indexes your project into a knowledge graph, enabling Claude to search symbol definitions and references, trace call chains, and analyze change impact.
+Check the server’s maintainer, installation instructions, and official README before configuring a process command or HTTP URL. `claude mcp add` defaults to personal configuration for the current project. `--scope project` uses a shareable `.mcp.json`; `--scope user` applies across projects. Merge entries into an existing `mcpServers` object instead of overwriting other servers. [MCP configuration](https://code.claude.com/docs/en/mcp)
 
-```bash
-codegraph init /path/to/your/project
+### GitHub’s Official Remote MCP
 
-# Configure MCP server (create .mcp.json in project root)
-echo '{
-  "mcpServers": {
-    "codegraph": {
-      "command": "codegraph",
-      "args": ["serve", "--mcp", "--path", "/absolute/path/to/project"]
-    }
-  }
-}' > .mcp.json
-```
-
-### GitHub CLI MCP
-
-Let Claude operate on GitHub directly (create PRs, view Issues, reply to comments):
+This example uses GitHub’s HTTP service and does not require an npm package called “GitHub CLI MCP.” Merge this into the project’s `.mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "github": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-github"]
-    }
-  }
-}
-```
-
-## Plugin System (Skills & Plugins)
-
-### Superpowers — Development Workflow Meta-Plugin
-
-The most important plugin — defines a complete workflow specification for software development:
-
-| Skill                              | When it fires            | Effect                                        |
-| ---------------------------------- | ------------------------ | --------------------------------------------- |
-| `brainstorming`                  | Before any new feature   | Forces design before implementation            |
-| `test-driven-development`        | Before writing code      | Write tests first, then implement              |
-| `writing-plans`                  | Complex tasks            | Plan first, review, then execute               |
-| `verification-before-completion` | Before claiming "done"   | Must run verification, no empty "it's fixed"   |
-| `systematic-debugging`           | When encountering bugs   | Structured debugging, not trial-and-error      |
-
-Install:
-
-```bash
-/claude add plugin superpowers@claude-plugins-official
-```
-
-<TutorialDiagram name="claude-code-plugins" />
-
-### Code Review & Simplifier
-
-```bash
-/code-review           # Review current diff
-/code-review --fix     # Review and auto-fix issues
-/simplify              # Eliminate duplication, simplify logic
-```
-
-### Andrej Karpathy Skills — Coding Guidelines
-
-LLM coding best practices from Karpathy: avoid over-engineering, surgical changes, surface assumptions, define verifiable success criteria.
-
-Add custom marketplace first:
-
-```json
-// ~/.claude/settings.json
-{
-  "extraKnownMarketplaces": {
-    "karpathy-skills": {
-      "source": {
-        "source": "github",
-        "repo": "forrestchang/andrej-karpathy-skills"
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PAT}"
       }
     }
   }
 }
 ```
 
-Then:
+Before starting `claude`, supply a GitHub PAT through your credential management process as the shell environment variable `GITHUB_PAT`, limited to the repositories and operations needed. Claude Code expands environment variables in MCP headers, so the actual token need not enter the repository. [Variable expansion](https://code.claude.com/docs/en/mcp#environment-variable-expansion-in-mcpjson) · [GitHub installation guide](https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/install-claude.md)
 
 ```bash
-/claude add plugin andrej-karpathy-skills@karpathy-skills
+claude mcp list
+claude mcp get github
 ```
 
-### Academic Research Skills
+Then inspect the connection with `/mcp` inside the session. Private repository access, PR creation, and comments depend on token permissions and tool authorization.
 
-If your work involves paper writing:
+## Plugin System (Skills & Plugins)
 
-```bash
-/claude add plugin academic-research-skills@academic-research-skills
+### Superpowers — Development Workflow Plugin
+
+Superpowers is an optional community workflow plugin for design, planning, testing, debugging, and verification. Installing it does not prove those checks happened; inspect the actual results. [Project README](https://github.com/obra/superpowers)
+
+| Skill | Purpose |
+| --- | --- |
+| `brainstorming` | Clarify requirements and design |
+| `test-driven-development` | Confirm a failing test before implementation |
+| `writing-plans` | Break implementation into steps |
+| `verification-before-completion` | Check evidence before claiming completion |
+| `systematic-debugging` | Diagnose failures from evidence |
+
+Install inside a Claude Code session:
+
+```text
+/plugin marketplace add anthropics/claude-plugins-official
+/plugin install superpowers@claude-plugins-official
 ```
 
-Common commands:
+Skip the first command if the marketplace is already present. Follow any activation or restart instructions and check `/plugin` for status. [Plugin installation](https://code.claude.com/docs/en/discover-plugins)
 
-```bash
-/ars-plan          # Chapter planning
-/ars-outline       # Detailed outline
-/ars-full          # Full paper pipeline
-/ars-revision      # Revise per reviewer comments
-/ars-abstract      # Generate bilingual abstract
-/ars-citation-check # Check citation errors
+<TutorialDiagram name="claude-code-plugins" />
+
+### Bundled Code Review and Simplify
+
+The current official command reference lists these bundled workflows. Confirm availability in your `/` menu, then run them individually as needed:
+
+```text
+/code-review
+/code-review --fix
+/simplify
 ```
+
+`/code-review` checks correctness and cleanup opportunities; `--fix` edits files. `/simplify` applies cleanup changes and does not replace a correctness review. Inspect the diff and rerun validation afterward. [Bundled workflows](https://code.claude.com/docs/en/commands)
+
+The separately installed older `code-review` plugin reviews PRs and its script can publish comments with `gh pr comment`. Do not confuse it with a read-only local review; check the actual command source before use. [Plugin command source](https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-review/commands/code-review.md)
+
+### Karpathy Skills — Community Coding Guidelines
+
+This community project distills Karpathy’s public observations; it is not an official plugin maintained by Karpathy. It emphasizes stating assumptions, keeping implementations simple, limiting edits, and defining verification criteria. [Project description](https://github.com/multica-ai/andrej-karpathy-skills)
+
+```text
+/plugin marketplace add multica-ai/andrej-karpathy-skills
+/plugin install andrej-karpathy-skills@karpathy-skills
+```
+
+### Research Writing Skills
+
+Research plugins do not share a universal `/ars-*` command set. Choose one with an identified repository, maintainer, and installation guide, then check its actual commands in `/plugin` or its README. You can also encode experiment records, source requirements, and section workflows in a project Skill; see the [official Skills documentation](https://code.claude.com/docs/en/skills).
 
 ## Advanced Configuration
 
-### Using Third-Party API Endpoints
+### API Credentials and Gateways
 
-```json
-// ~/.claude/settings.json
-{
-  "env": {
-    "ANTHROPIC_AUTH_TOKEN": "sk-your-api-key",
-    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
-    "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]"
-  }
-}
-```
+- Use `ANTHROPIC_API_KEY` for direct Anthropic API access.
+- Use `ANTHROPIC_AUTH_TOKEN` when your gateway requires a Bearer token, following its documentation.
+- `ANTHROPIC_BASE_URL` selects a gateway endpoint; changing it alone does not establish correct authentication or API compatibility.
 
-### Project-Level Config (CLAUDE.md)
+Supply these through your shell or credential management process. Custom endpoints must support the API Claude Code requires; an arbitrary OpenAI-compatible endpoint is not necessarily compatible. Use model identifiers actually supported by the selected service. [Credential variables](https://code.claude.com/docs/en/authentication) · [Gateway documentation](https://code.claude.com/docs/en/llm-gateway)
 
-Create a `CLAUDE.md` in each project root — Claude Code loads it automatically on launch:
+### Project-Level Instructions (CLAUDE.md)
+
+Maintain a root `CLAUDE.md` with the environment, edit scope, and verification steps, merging with any existing instructions. It supplies session guidance; it does not install dependencies or guarantee compliance. [Project memory](https://code.claude.com/docs/en/memory)
 
 ```markdown
-# CLAUDE.md
+# Project Instructions
 
 ## Project Overview
 Video anomaly detection research project.
 
 ## Environment
-- Python 3.10, PyTorch 2.x
-- Conda env: avqa
-- Data in datasets/ directory
+- Use the Python version and dependencies specified by the project lockfile
+- Use the project’s prescribed virtual environment
+- Data lives in datasets/; do not modify raw data
 
 ## Coding Standards
-- Prefer Codegraph MCP for code search
-- Must run tests after every change
+- Find existing implementations first; limit edits to task-related files
+- Run relevant verification commands from README and report actual results
 - Commit format: type: short description
 ```
 
 ## Productivity Tips
 
-1. **Use `CLAUDE.md` for project conventions** — coding standards, common commands, architecture notes
-2. **Chain Slash Commands**: `/brainstorming` → `/plan` → TDD implement → `/code-review` → `/simplify`
-3. **Let Claude write commit messages**: `claude "Write a proper commit message for the current diff"`
-4. **Use MCP for code archaeology**: `claude "Trace how this bug was introduced, starting from the failing function"`
-5. **Batch edits with Claude**: `claude "Replace all print() calls with logging throughout the project"`
+1. **Use `CLAUDE.md` for project conventions**: record verifiable environment and validation commands.
+2. **Define scope before implementation**: use `/plan` for complex tasks and confirm plugin commands in the menu.
+3. **Draft commit messages**: `claude "Draft a commit message for the current diff without committing"`.
+4. **Investigate bugs with evidence**: provide errors, reproduction steps, and relevant commits.
+5. **Review batch edits in stages**: inspect diffs and run project checks instead of relying on a completion message.
 
 <TutorialDiagram name="claude-code-workflow" />
 
 ## FAQ
 
-- **Where's the API key configured?** `~/.claude/settings.json` under `env.ANTHROPIC_AUTH_TOKEN`, or via environment variable.
-- **How to switch to a cheaper model?** Change the `ANTHROPIC_MODEL` environment variable.
-- **MCP server connection failed?** Check: 1) is the command installed (`which <command>`); 2) is the `.mcp.json` path absolute; 3) run `claude mcp list` to check status.
+- **Command not found?** Open a fresh terminal, check that the install directory is on `PATH`, and consult installation troubleshooting.
+- **API key not taking effect?** Distinguish `ANTHROPIC_API_KEY` from gateway Bearer credentials. Check `/status` for the active authentication method without printing secrets.
+- **How do I switch models?** Use `/model` for options available to your account; see the CLI reference for flags and environment variables.
+- **MCP connection failed?** Inspect `claude mcp list` and `/mcp`. Check executable paths for local servers, or URL, network access, and authentication variables for HTTP servers.
 
-<div class="post-tags-section">
-  <span class="label">Tags:</span>
-  <span class="tag-pill" v-for="tag in $frontmatter.tags" :key="tag">{{ tag }}</span>
-</div>
+<PostTags />

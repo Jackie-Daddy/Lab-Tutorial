@@ -1,27 +1,15 @@
 flowchart TB
-  accTitle: How Claude Code Calls External Tools through MCP
-  accDescr: A project-root .mcp.json configures MCP servers. Claude Code selects server tools for the task. The tutorial shows Codegraph for code search and impact analysis, and GitHub for Issues, pull requests, and comments.
-  request["Describe a development task<br/>and its external needs"]
-  config["Configure project servers<br/>in the root .mcp.json"]
-  agent["Claude Code<br/>Select tools for the task"]
-  protocol["MCP<br/>Connect external tool servers"]
-  request --> agent
-  config -.-> agent
-  agent --> protocol
-  subgraph codegraph["Codegraph · Code intelligence"]
-    direction TB
-    index["Index project code<br/>codegraph init"]
-    search["Find symbol definitions<br/>and references"]
-    impact["Trace call chains<br/>and assess change impact"]
-    index --> search --> impact
-  end
-  subgraph github["GitHub · Repository collaboration"]
-    direction TB
-    server["Connect GitHub<br/>Expose repository tools"]
-    issues["Read Issues<br/>for problem context"]
-    changes["Create pull requests<br/>and reply to comments"]
-    server --> issues
-    server --> changes
-  end
-  protocol --> codegraph
-  protocol --> github
+  accTitle: Connect Claude Code to the official GitHub MCP
+  accDescr: Project .mcp.json configures the GitHub HTTP service, with a token supplied through an environment variable. Claude Code can read repositories or perform authorized actions. Check other MCP providers separately.
+
+config["Project .mcp.json<br/>GitHub HTTP MCP"]
+  token["GITHUB_PAT environment variable<br/>Grant the required repository access"]
+  claude["Claude Code<br/>Check the connection with /mcp"]
+  server["Official GitHub MCP<br/>api.githubcopilot.com/mcp/"]
+  read["Read repositories and Issues<br/>Gather task context"]
+  write["Write actions such as creating PRs<br/>Check permissions and authorization"]
+  config --> claude
+  token --> claude
+  claude --> server
+  server --> read
+  server --> write

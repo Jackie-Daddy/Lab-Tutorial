@@ -1,6 +1,6 @@
 ---
 title: Lab Tutorial
-description: Lab Tips for working on shared/remote lab servers
+description: Practical tutorials for terminal tools, remote development, and AI coding. Browse by topic and follow reproducible steps.
 layout: page
 ---
 
@@ -8,6 +8,6 @@ layout: page
 import { data } from '../.vitepress/theme/loaders/en-posts.data.ts'
 </script>
 
-<div class="home-container">
+<main class="home-container">
   <PostList :posts="data" lang="en" />
-</div>
+</main>

@@ -8,6 +8,8 @@ tags:
   - server
   - tutorial
 description: Manage multiple coding agents with Herdr, from installation, panes, and status tracking to session restore, remote SSH work, and CLI coordination.
+reviewed: 2026-09-07
+scope: Herdr v0.8.2; Linux/macOS/Windows clients and Linux/macOS remote hosts
 ---
 ## What is Herdr?
 
@@ -241,7 +243,4 @@ Update through your installation channel: `herdr update` for the official instal
 - **Why does a new terminal show the old project?** `herdr` reconnects to the existing session. Create a workspace from the menu, or run `herdr workspace create --cwd "$PWD" --label my-project` in the intended directory. [CLI reference](https://herdr.dev/docs/cli-reference/)
 - **How do I stop everything?** After tasks finish, use `herdr server stop` for the default session or `herdr session stop lab` for the named session. This stops its pane processes. [Session management](https://herdr.dev/docs/persistence-remote/)
 
-<div class="post-tags-section">
-  <span class="label">Tags:</span>
-  <span class="tag-pill" v-for="tag in $frontmatter.tags" :key="tag">{{ tag }}</span>
-</div>
+<PostTags />

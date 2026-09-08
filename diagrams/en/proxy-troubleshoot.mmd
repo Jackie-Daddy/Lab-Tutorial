@@ -18,7 +18,7 @@ subgraph network["Connection and protocol"]
     direction TB
     app["pip or git still cannot connect"]
     variables["Check that http_proxy and https_proxy<br/>are both set"]
-    git["Optional Git-specific proxy setting<br/>git config --global http.proxy $http_proxy"]
+    git["Check git remote -v<br/>HTTP proxies do not affect SSH remotes"]
     slow["Internal services become slow"]
     bypass["Check whether no_proxy<br/>includes the internal destination"]
     direct["Complete the internal bypass list<br/>Then test the internal service again"]

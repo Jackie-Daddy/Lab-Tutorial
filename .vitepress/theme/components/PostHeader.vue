@@ -20,7 +20,7 @@ const showHeader = computed(() => !!frontmatter.value.date)
 }
 
 .post-header .title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: var(--vp-font-family-base);
   font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.02em;

@@ -13,7 +13,7 @@ A team blog built with **VitePress**, hosting short, standalone tutorials ("一�
 ## Tech stack
 
 - **Static site generator**: VitePress 1.x (Vue 3 + Vite)
-- **Theme**: Custom Anthropic brand theme (Lora + Fira Code fonts, dark/light mode, bilingual support)
+- **Theme**: Custom warm theme (locally bundled Lora + Fira Code fonts, dark/light mode, bilingual support)
 - **Deployment**: GitHub Actions → `gh-pages` branch → GitHub Pages
 - **Build**: Mermaid sources → generated light/dark PNGs → VitePress. Diagram coverage checks run before production builds; no unit-test framework or lint tooling is configured.
 
@@ -44,7 +44,7 @@ A team blog built with **VitePress**, hosting short, standalone tutorials ("一�
 │   │   └── posts/                   ← English posts
 │   │       ├── claude-code-guide.md
 │   │       └── ...
-├── about.md                         ← About page
+├── about.md                         ← Legacy URL redirects to /zh/about
 ├── public/
 │   └── images/                      ← Static assets (SVGs, PNGs)
 ├── index.md                         ← Root → redirect to /zh/
@@ -59,7 +59,7 @@ A team blog built with **VitePress**, hosting short, standalone tutorials ("一�
 # Create the English version at en/posts/your-post-title.md
 ```
 
-Post front-matter:
+Post front-matter (reviewed records an official-documentation check, not a runtime test):
 ```yaml
 ---
 title: 中文标题
@@ -68,10 +68,12 @@ tags:
   - tag1
   - tag2
 description: 一句话描述
+reviewed: YYYY-MM-DD
+scope: 核对的版本与平台范围
 ---
 ```
 
-Posts are automatically picked up by the data loaders and appear on the homepage and archives. No slug or lang fields needed — language is determined by directory path (zh/ or en/).
+Posts are automatically picked up by the data loaders and appear on the homepage and archives. The homepage provides category, tag, and keyword filters. No slug or lang fields are needed — language is determined by directory path (zh/ or en/). End posts with `<PostTags />`; the theme adds review metadata, adjacent posts, and related tutorials. About pages live at `zh/about.md` and `en/about.md`.
 
 ## Building and previewing
 
@@ -84,13 +86,13 @@ npm run preview      # Preview built site locally
 
 ## Tutorial diagrams
 
-Edit matching Mermaid sources in `diagrams/zh/` and `diagrams/en/`. Each source needs localized `accTitle` and `accDescr`; `diagrams/catalog.json` maps names to article slugs. Articles use `<TutorialDiagram name="tmux-workflow" />`. The component selects the article language and site theme, includes alternative text, and supports horizontal scrolling and full-size links.
+Edit matching Mermaid sources in `diagrams/zh/` and `diagrams/en/`. Each source needs localized `accTitle` and `accDescr`; `diagrams/catalog.json` maps names to article slugs. Articles use `<TutorialDiagram name="tmux-workflow" />`. The component selects language and theme, includes alternative text, fits the preview to the content width, and opens an accessible zoom dialog with an original-image link.
 
 Run `npm run diagrams` after source edits, or `npm run build` to generate, validate, and build everything. Rendering uses the official Mermaid CLI API, Puppeteer, and bundled Noto Sans SC fonts. Generated PNGs under `public/images/diagrams/` and `.vitepress/theme/diagrams.generated.json` are ignored by Git and rebuilt in CI. Keep raw diagram sources and contributor/planning documents excluded from VitePress pages.
 
 ## Deployment
 
-Push to `main` triggers GitHub Actions (`deploy.yml`), which runs `npm run build` and pushes `.vitepress/dist/` to the `gh-pages` branch. GitHub Pages serves from that branch.
+Push to `main` triggers GitHub Actions (`deploy.yml`), which runs `npm run build`, `npm run check:site`, and `npm run check:pages` before pushing `.vitepress/dist/` to `gh-pages`. GitHub Pages serves from that branch. Internal dead links fail the build. Run `npm run check:links` separately for external URLs; inspect any reported HTTP failures or URLs requiring manual verification.
 
 To set up a new machine: go to repo Settings → Pages → Source: "Deploy from a branch" → Branch: `gh-pages`, `/ (root)`.
 

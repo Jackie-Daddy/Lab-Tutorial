@@ -76,6 +76,7 @@ try {
           const state = await page.evaluate(() => ({
             dark: document.documentElement.classList.contains('dark'),
             overflow: document.documentElement.scrollWidth > innerWidth + 1,
+            clippedDiagrams: [...document.querySelectorAll('.tutorial-diagram-scroll')].some(el => el.scrollWidth > el.clientWidth + 1),
             backgrounds: [...document.querySelectorAll('.tutorial-diagram')].map(figure => getComputedStyle(figure).backgroundColor),
             images: [...document.querySelectorAll('.tutorial-diagram img')].map(img => ({
               src: img.getAttribute('src'), href: img.closest('a').getAttribute('href'),
@@ -84,6 +85,7 @@ try {
           }))
           assert.equal(state.dark, theme === 'dark', `${lang}/${post}: saved theme was not applied`)
           assert(!state.overflow, `${lang}/${post}: page overflows viewport at ${width}px`)
+          assert(!state.clippedDiagrams, `${lang}/${post}: diagram preview is clipped`)
           assert(state.backgrounds.every(value => value === (theme === 'dark' ? 'rgb(30, 29, 28)' : 'rgb(250, 249, 245)')), `${lang}/${post}: figure background does not match the theme`)
           assert(state.images.every(img => img.loaded && img.alt && img.src.includes(`/diagrams/${lang}/`) && img.href === img.src), `${lang}/${post}: invalid image or full-size link`)
           if (['how-to-use-tmux', 'claude-code-guide'].includes(post)) {

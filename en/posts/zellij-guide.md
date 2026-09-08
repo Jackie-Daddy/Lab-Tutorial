@@ -9,58 +9,65 @@ tags:
   - server
   - tutorial
 description: A terminal multiplexer that works out of the box — better than tmux. Split panes, tabs, floating windows, session persistence, all in one tool.
+reviewed: 2026-09-07
+scope: Zellij 0.45.1 default bindings; Linux, macOS, and WSL
 ---
+
 ## What is Zellij?
 
-Zellij is a terminal multiplexer written in Rust. If you've used tmux, think of it as "tmux that works out of the box." If you haven't used tmux — Zellij lets you run multiple terminal sessions inside one window, and keeps them running in the background even when you disconnect.
+Zellij is a terminal multiplexer written in Rust. A session contains tabs and panes for editors, shells, and monitoring commands. Detaching a client can leave the session running on its host.
 
-**Zellij vs tmux:**
+**Working with tmux and Zellij:**
 
 <TutorialDiagram name="zellij-vs-tmux" />
 
-| Feature          | tmux                        | Zellij                              |
-| ---------------- | --------------------------- | ----------------------------------- |
-| Default config   | Needs lots of customization | Works out of the box, built-in hints |
-| Floating panes   | Not supported               | Native floating/embedded panes       |
-| Layout system    | Manual management           | Layout templates (KDL format)        |
-| Plugin system    | Third-party scripts         | Native WASM plugins                  |
-| Collaborative    | Not built-in                | Native multi-user session sharing    |
-| Status bar       | Needs configuration         | Looks great by default               |
-| Config language  | tmux.conf                   | KDL (more readable)                  |
+| Feature | tmux | Zellij |
+| --- | --- | --- |
+| Controls | Prefix keys, commands, binding help | Multiple modes with bottom-bar hints |
+| Floating UI | `display-popup` windows | Floating and embedded panes |
+| Layouts | Built-in arrangements, commands, scripts | KDL layout files |
+| Extensions | Commands, scripts, third-party plugins | WASM plugins |
+| Session sharing | Multiple clients on one session | Multiple clients on one session |
+| Configuration | `tmux.conf` | `config.kdl` |
+
+Both work with their defaults and support status bars and shared sessions. Choose according to your habits and workflow. See the [tmux introduction](https://github.com/tmux/tmux/wiki/Getting-Started) and [Zellij documentation](https://zellij.dev/documentation/).
 
 ## Installation
 
-**Linux**
+**Linux / WSL: this binary example is for x86_64 only.** Check `uname -m`; choose the matching asset for ARM64 or another architecture on the [0.45.1 release page](https://github.com/zellij-org/zellij/releases/tag/v0.45.1). You need `curl` and `tar` installed.
 
 ```bash
-# Option 1: Download prebuilt binary (recommended, no root needed)
-wget https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz
-tar -xzf zellij-x86_64-unknown-linux-musl.tar.gz
-mv zellij ~/.local/bin/
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-
-# Option 2: Package manager (requires sudo)
-sudo apt install zellij          # Ubuntu/Debian
-sudo dnf install zellij          # Fedora
+mkdir -p "$HOME/.local/bin"
+zellij_tmp=$(mktemp -d)
+curl -fL https://github.com/zellij-org/zellij/releases/download/v0.45.1/zellij-x86_64-unknown-linux-musl.tar.gz -o "$zellij_tmp/zellij.tar.gz"
+tar -xzf "$zellij_tmp/zellij.tar.gz" -C "$zellij_tmp"
+install -m 755 "$zellij_tmp/zellij" "$HOME/.local/bin/zellij"
+export PATH="$HOME/.local/bin:$PATH"
+zellij --version
 ```
 
-**macOS**
+The `export` affects this shell only. Add it to the startup file for the Bash/Zsh shell you actually use to persist it. Inside WSL, install the Linux program.
+
+**macOS, with Homebrew installed:**
 
 ```bash
 brew install zellij
+zellij --version
 ```
 
-**Windows (WSL)**: Use the Linux installation method inside WSL.
+With a Rust toolchain, `cargo install --locked zellij` is another option. Package-manager versions may differ from this tutorial; availability in Ubuntu/Debian repositories depends on the distribution release. See the [official installation guide](https://zellij.dev/documentation/installation).
 
 ## Core Concepts
 
-Zellij's layered structure:
+Zellij's hierarchy:
 
 <TutorialDiagram name="zellij-hierarchy" />
 
-Zellij uses **modal operation**, like vim. The default prefix key is `Ctrl+O` — press it to enter shortcut mode. The bottom status bar shows available actions.
+Zellij uses **modes**. This guide starts in **Normal mode with the 0.45.1 default bindings**: `Ctrl+P` opens Pane mode, `Ctrl+T` opens Tab mode, and `Ctrl+O` opens Session mode. Each controls a different group of actions.
 
-**The session lifecycle**: understand these four steps, and you understand Zellij's core value:
+`Ctrl+P` → `r` means press and release the combination, then press lowercase `r`. Case matters. Follow the current status bar when using custom bindings or another preset. [0.45.1 default bindings](https://github.com/zellij-org/zellij/blob/v0.45.1/zellij-utils/assets/config/default.kdl)
+
+**The session lifecycle:**
 
 <TutorialDiagram name="zellij-lifecycle" />
 
@@ -68,117 +75,121 @@ Zellij uses **modal operation**, like vim. The default prefix key is `Ctrl+O` �
 
 ### Session Management
 
-| Action                    | Command / Shortcut                |
-| ------------------------- | --------------------------------- |
-| New session               | `zellij`                        |
-| Named session             | `zellij -s project-name`        |
-| Detach (keep running)     | `Ctrl+O` → `D`               |
-| Reattach                  | `zellij attach` or `zellij a` |
-| List sessions             | `zellij list-sessions`          |
-| Delete session            | `zellij delete-session <name>`  |
-| Fully quit                | `Ctrl+O` → type `quit` Enter |
+| Action | Command / shortcut |
+| --- | --- |
+| New session | `zellij` |
+| Named session | `zellij -s project-name` |
+| Detach, keeping it running | `Ctrl+O` → `d` |
+| Attach to a named session | `zellij attach project-name` |
+| List sessions | `zellij list-sessions` |
+| End this session and its panes | `Ctrl+Q` (outside Locked mode) |
+| End a named running session | `zellij kill-session project-name` |
+| Delete an exited session's saved record | `zellij delete-session project-name` |
+
+Use **detach** when work should continue. `Ctrl+Q` and `kill-session` end the session; `delete-session` removes recovery data. With no name, `attach` behavior depends on how many sessions exist. [CLI commands](https://zellij.dev/documentation/commands), [resurrection and deletion](https://zellij.dev/documentation/session-resurrection)
 
 ### Pane Operations
 
-Press `Ctrl+O` first, then:
+Starting in Normal mode, press `Ctrl+P`, then:
 
-| Action           | Key                     |
-| ---------------- | ----------------------- |
-| Split right      | `R`                   |
-| Split down       | `D`                   |
-| Move focus       | Arrow keys or `h/j/k/l` |
-| Close pane       | `X`                   |
-| Toggle fullscreen | `F`                   |
-| Floating pane    | `W`                   |
-| Rename           | `C`                   |
+| Action | Key |
+| --- | --- |
+| New pane right / down | `r` / `d` |
+| Move focus | Arrows or `h/j/k/l` |
+| Close focused pane | `x` |
+| Toggle fullscreen | `f` |
+| Show / hide floating panes | `w` |
+| Toggle focused pane floating / embedded | `e` |
+| Rename pane | `c` → name → `Enter` |
 
-The splitting progression — from one pane to three in just a few keystrokes:
+Actions such as splitting return to Normal mode, so press `Ctrl+P` again for another action. Focus movement stays in Pane mode; press `Enter` when finished.
 
 <TutorialDiagram name="zellij-panes" />
 
 ### Tab Operations
 
-| Action        | Key                         |
-| ------------- | --------------------------- |
-| New tab       | `Ctrl+O` → `N`         |
-| Go to tab N   | `Ctrl+O` → `1` ~ `9` |
-| Previous/next | `Ctrl+O` → `H` / `L` |
-| Close tab     | `Ctrl+O` → `X`         |
-| Rename tab    | `Ctrl+O` → `R`         |
+| Action | Shortcut |
+| --- | --- |
+| New tab | `Ctrl+T` → `n` |
+| Select tab 1–9 | `Ctrl+T` → `1`–`9` |
+| Previous / next tab | `Ctrl+T` → `h` / `l` |
+| Close tab and its panes | `Ctrl+T` → `x` |
+| Rename tab | `Ctrl+T` → `r` → name → `Enter` |
 
-### Other Useful Features
+### Scrollback, Search, and Resize
 
-| Action          | Shortcut                                            |
-| --------------- | --------------------------------------------------- |
-| Scroll history  | `Ctrl+O` → `S` (scroll mode), arrow keys        |
-| Search history  | Press `/` in scroll mode                          |
-| Resize panes    | `Ctrl+O` → `R` (resize mode)                    |
-| Lock interface  | `Ctrl+G` (prevent accidental keystrokes)           |
+| Action | Shortcut |
+| --- | --- |
+| Scrollback | `Ctrl+S` → `j/k` or arrows |
+| Search output | `Ctrl+S` → `s` → query → `Enter` |
+| Next / previous result | `n` / `p` in Search mode |
+| Resize | `Ctrl+N` → `+` / `-` or arrows |
+| Pass keys through to the pane | `Ctrl+G` to enter Locked; `Ctrl+G` again to return |
+
+These tables follow the [default mode configuration](https://github.com/zellij-org/zellij/blob/v0.45.1/zellij-utils/assets/config/default.kdl). Locked controls keyboard input; it is not an access-control screen lock.
 
 ## Advanced Configuration
 
-Zellij's config file is `~/.config/zellij/config.kdl`. Here's a recommended vim-style keybinding config:
+Inspect the defaults from your installed version:
+
+```bash
+zellij setup --dump-config
+```
+
+A common config path is `~/.config/zellij/config.kdl`. First launch may already have created it, so inspect before editing. Environment variables, command-line options, and the native macOS config directory also affect lookup. See the [configuration guide](https://zellij.dev/documentation/configuration).
+
+Vim-style navigation is already included. Keep the defaults when adding a small override, such as `Alt+r` to split right from Normal mode:
 
 ```kdl
-keybinds clear-defaults=true {
-    locked {
-        bind "Ctrl g" { SwitchToMode "normal"; }
-    }
-    pane {
-        bind "h" { MoveFocus "left"; }
-        bind "j" { MoveFocus "down"; }
-        bind "k" { MoveFocus "up"; }
-        bind "l" { MoveFocus "right"; }
-        bind "d" { NewPane "down"; SwitchToMode "normal"; }
-        bind "r" { NewPane "right"; SwitchToMode "normal"; }
-        bind "x" { ClosePane; SwitchToMode "normal"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
-    }
-    tab {
-        bind "n" { NewTab; SwitchToMode "normal"; }
-        bind "x" { CloseTab; SwitchToMode "normal"; }
-        bind "1" { GoToTab 1; SwitchToMode "normal"; }
-        bind "2" { GoToTab 2; SwitchToMode "normal"; }
-    }
+keybinds {
+  normal {
+    bind "Alt r" { NewPane "Right"; }
+  }
 }
 ```
 
-**Layout templates**: Place `.kdl` files in `~/.config/zellij/layouts/` to define preset pane arrangements:
+Avoid applying `keybinds clear-defaults=true` to an incomplete snippet: it also removes the default bindings for entering and leaving modes.
+
+**Layout template:** create `~/.config/zellij/layouts/dev.kdl` for two side-by-side panes and a bottom status bar. Install `yazi` before starting, or remove `command="yazi"` to use a regular shell.
 
 ```kdl
-// ~/.config/zellij/layouts/dev.kdl
 layout {
-    tab name="editor" {
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-        pane { command "yazi" }
-        pane split_direction="vertical" { pane }
+  tab name="editor" {
+    pane split_direction="vertical" {
+      pane command="yazi"
+      pane
     }
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
 }
 ```
 
-Then launch with: `zellij --layout dev`
+```bash
+zellij --layout dev
+```
+
+`split_direction="vertical"` places child panes side by side; the default stacks them vertically. [Layout documentation](https://zellij.dev/documentation/layouts)
 
 <TutorialDiagram name="zellij-layout" />
 
 ## Remote Development
 
-Zellij's biggest advantage for SSH remote work is **session persistence** — if SSH drops, your Zellij session keeps running on the server. Next time you connect, `zellij attach` restores everything.
+Run Zellij **on the server**. After SSH disconnects, tasks can continue while the server and session processes remain alive. Reconnect to the same host and user account:
 
 ```bash
-# Auto-attach or create on SSH connection
-ssh myserver -t "zellij attach --create"
+ssh -t myserver 'zellij attach --create project-name'
 ```
+
+A server reboot, terminated job, or explicit session exit ends the original processes. Session resurrection can recreate the layout and offer to rerun commands; it cannot restore a training process's memory state. [Session resurrection](https://zellij.dev/documentation/session-resurrection)
 
 ## FAQ
 
-- **Status bar icons are garbled?** Install a Nerd Font, or use simplified UI: `zellij options --simplified-ui true`
-- **Session lost after SSH disconnect?** It shouldn't be. The Zellij daemon keeps all sessions alive. Re-SSH and `zellij attach`.
-- **Mouse not working well?** Hold `Shift` to temporarily bypass Zellij's mouse capture, or disable permanently: `zellij options --disable-mouse-mode`
-- **`Ctrl+O` conflicts?** Change the prefix key in `config.kdl`, or press `Ctrl+G` to lock the interface temporarily.
+- **Broken status-bar arrows?** Add `simplified_ui true` at the config root, or choose a suitable font in your local terminal.
+- **Mouse selection conflicts?** Add `mouse_mode false` at the config root and start a new session for this option to take effect.
+- **Editor shortcut conflicts?** Enter Locked mode with `Ctrl+G`, then press it again to return; alternatively change the relevant bindings.
 
-<div class="post-tags-section">
-  <span class="label">Tags:</span>
-  <span class="tag-pill" v-for="tag in $frontmatter.tags" :key="tag">{{ tag }}</span>
-</div>
+See the [official options reference](https://zellij.dev/documentation/options). Checked against official documentation and the 0.45.1 configuration source on 2026-09-07; installation and interactive behavior were not tested across platforms.
+
+<PostTags />

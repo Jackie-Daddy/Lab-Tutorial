@@ -1,17 +1,16 @@
 flowchart TB
-  accTitle: Load a Zellij layout from a KDL template
-  accDescr: The article’s dev.kdl example creates an editor tab containing a one-line borderless status bar, a pane running Yazi, and a shell pane inside a vertical container. Start it with zellij --layout dev.
+  accTitle: Create side-by-side panes and a status bar with KDL
+  accDescr: The editor tab has a vertical container holding Yazi and a shell side by side, followed by a status bar below. Start with zellij --layout dev.
 
-directory["Layout template directory<br/>~/.config/zellij/layouts/"]
-  file["Create dev.kdl<br/>Use the article's layout definition"]
-  launch["Start the preset layout<br/>zellij --layout dev"]
+file["~/.config/zellij/layouts/dev.kdl"]
+  start["zellij --layout dev"]
   tab["Tab: editor"]
-  status["Status-bar plugin<br/>zellij:status-bar<br/>One line, borderless"]
-  yazi["File browser pane<br/>Command: yazi"]
-  vertical["Pane container<br/>split_direction: vertical"]
-  shell["Pane inside the container<br/>Default shell"]
-  directory --> file --> launch --> tab
-  tab -->|"Contains"| status
-  tab -->|"Contains"| yazi
-  tab -->|"Contains"| vertical
-  vertical --> shell
+  split["Vertical container<br/>Two side-by-side panes"]
+  yazi["Yazi pane<br/>Install yazi first"]
+  shell["Shell pane"]
+  status["Bottom status bar<br/>zellij:status-bar, height 1"]
+  file --> start --> tab
+  tab --> split
+  split --> yazi
+  split --> shell
+  tab --> status

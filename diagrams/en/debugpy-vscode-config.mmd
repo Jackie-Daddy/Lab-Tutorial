@@ -1,11 +1,11 @@
 flowchart TB
   accTitle: Key Remote Attach Settings in launch.json
-  accDescr: VSCode, Cursor, and Windsurf share the same .vscode/launch.json. Remote attach selects debugpy, attach, and localhost:5678. The pathMappings setting matches the local workspace with the actual server code directory so breakpoints refer to the correct files.
-  config[".vscode/launch.json<br/>Shared by VSCode, Cursor, and Windsurf"]
+  accDescr: VS Code requires Python Debugger; other editors need compatible extensions. Remote attach selects debugpy, attach, and 127.0.0.1:5678. The pathMappings setting matches the local workspace with the actual server code directory so breakpoints refer to the correct files.
+  config[".vscode/launch.json<br/>VS Code Python Debugger"]
   subgraph connection["Connect to the debug server"]
     direction TB
     adapter["Debug configuration<br/>name: Python: Remote Attach<br/>type: debugpy · request: attach"]
-    target["connect<br/>host: localhost · port: 5678"]
+    target["connect<br/>host: 127.0.0.1 · port: 5678"]
     tunnel["SSH port forwarding<br/>Local 5678 → server 5678"]
     adapter --> target --> tunnel
   end

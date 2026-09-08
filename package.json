@@ -9,12 +9,16 @@
     "dev": "npm run diagrams && vitepress dev",
     "build": "npm run diagrams && npm run check:diagrams && vitepress build",
     "preview": "vitepress preview",
-    "check:pages": "node scripts/check-diagram-pages.mjs"
+    "check:pages": "node scripts/check-diagram-pages.mjs",
+    "check:site": "node scripts/check-site.mjs",
+    "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@fontsource-variable/fira-code": "5.3.0",
+    "@fontsource-variable/lora": "5.3.0",
     "@fontsource/noto-sans-sc": "5.3.0",
     "@mermaid-js/mermaid-cli": "11.17.0",
     "pngjs": "7.0.0",

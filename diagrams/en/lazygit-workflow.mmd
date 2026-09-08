@@ -1,6 +1,6 @@
 flowchart TB
-  accTitle: Daily Commit and Push Workflow in Lazygit
-  accDescr: Run lazygit in the repository and inspect changes. Stage selected files with Space or all changes with a, press c to enter and confirm a commit message, then push with uppercase P. For partial staging, enter the diff and select hunks with Space.
+  accTitle: Stage, commit, and push with Lazygit
+  accDescr: Inspect diffs and stage selected files with Space, or toggle all files with a. Press c, write the message, submit with the editor shortcut, inspect the commit, and push with P.
   open["1 · Open the repository<br/>Run lazygit in the repository directory"]
   inspect["Inspect changes in the Files panel"]
   subgraph staging["2 · Choose what to stage"]
@@ -9,7 +9,7 @@ flowchart TB
     all["Stage all changes<br/>a"]
     selected ~~~ all
   end
-  commit["3 · Create the commit<br/>c → enter a commit message → Enter"]
+  commit["3 · Create the commit<br/>c → write message → Ctrl+S"]
   push["4 · Push to the remote<br/>P (uppercase)"]
   open --> inspect
   inspect --> staging
@@ -18,7 +18,7 @@ flowchart TB
   subgraph optional["Use when needed"]
     direction LR
     partial["Commit only part of a change<br/>Enter to open the diff<br/>Space to select a hunk"]
-    amend["Amend the previous commit<br/>Shift+A"]
+    amend["Amend the previous commit<br/>A (Shift+A)"]
     partial ~~~ amend
   end
   push ~~~ optional

@@ -1,6 +1,6 @@
 flowchart TB
-  accTitle: Lazygit 日常提交与推送流程
-  accDescr: 在仓库目录运行 lazygit，先查看修改，再用 Space 暂存所选文件或 a 暂存全部。按 c 输入提交说明并确认，最后按大写 P 推送。需要部分暂存时，可先 Enter 进入 diff，再用 Space 选择修改块。
+  accTitle: Lazygit 暂存、提交与推送
+  accDescr: 检查差异后用 Space 暂存所选文件，或用 a 切换全部文件的暂存状态。按 c 填写提交说明并用编辑器提示的提交键确认，检查提交后按 P 推送。
   open["1 · 打开仓库<br/>在仓库目录运行 lazygit"]
   inspect["在 Files 面板查看修改"]
   subgraph staging["2 · 选择暂存范围"]
@@ -9,7 +9,7 @@ flowchart TB
     all["暂存全部修改<br/>a"]
     selected ~~~ all
   end
-  commit["3 · 创建提交<br/>c → 输入提交说明 → Enter"]
+  commit["3 · 创建提交<br/>c → 填写说明 → Ctrl+S"]
   push["4 · 推送到远程<br/>P（大写）"]
   open --> inspect
   inspect --> staging
@@ -18,7 +18,7 @@ flowchart TB
   subgraph optional["按需使用"]
     direction LR
     partial["只提交部分修改<br/>Enter 进入 diff<br/>Space 选择修改块"]
-    amend["修订上一次提交<br/>Shift+A"]
+    amend["修订上一次提交<br/>A（Shift+A）"]
     partial ~~~ amend
   end
   push ~~~ optional

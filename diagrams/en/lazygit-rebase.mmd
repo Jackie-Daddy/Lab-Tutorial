@@ -1,18 +1,18 @@
 flowchart TB
-  accTitle: Clean Up Commit History with Interactive Rebase
-  accDescr: In the Commits panel, select the earliest commit to combine and press i for interactive rebase. Squash subsequent commits while keeping their messages, or use fixup to combine changes and discard those messages. Confirm the result and force push only if needed to update published history.
+  accTitle: Organize current-branch history in Lazygit
+  accDescr: Press i in Commits to start a current-branch interactive rebase. Use s or f on TODO commits, then continue through m. Use e to start editing from a selected commit. Coordinate changes to shared history.
   before["Before cleanup<br/>A feature commit plus WIP and fix commits"]
-  select["In the Commits panel<br/>Select the earliest commit to combine"]
-  rebase["i · Start interactive rebase"]
-  subgraph actions["Choose an action for subsequent commits"]
+  select["Open Commits (4)<br/>Confirm the branch and history scope"]
+  rebase["i · Rebase the current branch<br/>e · Edit from selected commit"]
+  subgraph actions["Choose actions for TODO commits"]
     direction LR
     squash["s · squash<br/>Combine changes<br/>Keep commit messages"]
     fixup["f · fixup<br/>Combine changes<br/>Discard that commit's message"]
     squash ~~~ fixup
   end
-  confirm["Confirm the history cleanup"]
+  confirm["m · Open rebase options<br/>Select continue"]
   after["After cleanup<br/>Related changes form clear commits"]
-  published["If updating already published history<br/>Force push only when needed"]
+  published["Inspect final history and tests<br/>Coordinate before updating shared history"]
   before --> select --> rebase
   rebase --> actions
   actions --> confirm

@@ -1,6 +1,6 @@
 flowchart TB
-  accTitle: Four Claude Code Plugin and Skill Groups in the Tutorial
-  accDescr: Superpowers organizes design, implementation, and verification. Code Review and Simplifier inspect and simplify code. Karpathy Skills emphasize small changes and explicit assumptions. Academic Research Skills support planning, writing, revision, and citation checking.
+  accTitle: Claude Code built-in workflows and optional skills
+  accDescr: Superpowers organizes design, implementation, and verification. Code Review and Simplifier inspect and simplify code. Karpathy Skills emphasize small changes and explicit assumptions. Research skills require checking each plugin and its commands; there is no universal ars command set.
   subgraph workflow["Superpowers · Development workflow"]
     direction LR
     design["Explore requirements<br/>and write a plan"]
@@ -22,11 +22,11 @@ flowchart TB
     explicit["Surface assumptions<br/>and define verifiable criteria"]
     simple ~~~ scope ~~~ explicit
   end
-  subgraph research["Academic Research Skills · Paper workflow"]
+  subgraph research["Research skills · Verify the provider"]
     direction LR
-    plan["Plan and outline<br/>/ars-plan · /ars-outline"]
-    write["Draft papers and abstracts<br/>/ars-full · /ars-abstract"]
-    revise["/ars-revision<br/>/ars-citation-check"]
+    plan["Check repository and maintainer<br/>Read the installation instructions"]
+    write["Confirm available commands<br/>Use them for project needs"]
+    revise["Check output and sources<br/>Keep human review"]
     plan --> write --> revise
   end
   workflow ~~~ quality ~~~ principles ~~~ research

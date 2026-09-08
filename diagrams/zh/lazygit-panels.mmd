@@ -1,23 +1,23 @@
 flowchart TB
-  accTitle: Lazygit 面板与常用快捷键
-  accDescr: Lazygit 在同一界面中展示文件、分支、提交、储藏和 diff。文件面板可暂存并查看差异，分支和提交面板用于管理历史，储藏面板保存临时修改；全局快捷键用于切换面板、移动、撤销、刷新和退出。
+  accTitle: Lazygit 0.65.0 面板与常用键位
+  accDescr: 数字 1 到 5 分别聚焦状态、文件、分支、提交和储藏。Space 切换暂存状态，C 与 V 复制和粘贴提交，储藏用 Space 应用或 g 弹出；z 撤销，Z 重做。
   subgraph working["查看工作区修改"]
     direction LR
-    files["Files · 文件状态<br/>Space 暂存 · a 暂存全部<br/>c 提交 · Shift+A 修订上次提交"]
+    files["2 · Files 文件<br/>Space 暂存 / 取消暂存<br/>c 提交 · A 修订上次提交"]
     diff["Diff · 差异预览<br/>查看增加与删除的内容<br/>进入 diff 后用 Space 选块暂存"]
     files -->|"Enter 查看差异"| diff
   end
   subgraph history["管理仓库历史"]
     direction LR
-    branches["Branches · 分支<br/>Space 切换 · n 新建<br/>M 合并 · r 变基"]
-    commits["Commits · 提交<br/>Enter 查看 · i 交互式变基<br/>c 复制提交 · v 粘贴"]
-    stash["Stash · 储藏<br/>s 储藏 · g 应用<br/>P 弹出 · d 删除"]
+    branches["3 · Branches 分支<br/>Space 切换 · n 新建<br/>M 合并 · r 变基"]
+    commits["4 · Commits 提交<br/>i 变基当前分支<br/>C 复制 · V cherry-pick"]
+    stash["5 · Stash 储藏<br/>Space 应用 · g 弹出<br/>d 删除"]
     branches ~~~ commits ~~~ stash
   end
   subgraph global["全局操作"]
     direction LR
-    navigation["面板与移动<br/>Tab / Shift+Tab 切换<br/>j / k 或方向键移动"]
-    undo["恢复操作<br/>z 撤销<br/>Ctrl+Z 重做"]
+    navigation["面板与移动<br/>1 状态，2–5 各面板<br/>Tab 切换 · j / k 移动"]
+    undo["恢复支持的 Git 操作<br/>z 撤销 · Z 重做<br/>不能恢复所有未提交文件"]
     session["会话操作<br/>R 刷新<br/>q 退出"]
     navigation ~~~ undo ~~~ session
   end

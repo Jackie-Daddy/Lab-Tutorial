@@ -1,10 +1,10 @@
 flowchart TB
   accTitle: Five Steps to Configure Remote Python Debugging
   accDescr: Install debugpy on the server, configure local SSH port forwarding and connect, then start a debug process waiting for the client. Configure the editor's attach connection and path mappings, set a breakpoint, and press F5 to connect and inspect execution.
-  install["1 · Install on the server<br/>pip install debugpy"]
-  ssh["2 · Configure the local SSH tunnel<br/>Add to ~/.ssh/config<br/>LocalForward 5678 localhost:5678"]
-  start["3 · Start the server debug process<br/>python -m debugpy<br/>--listen 0.0.0.0:5678<br/>--wait-for-client train.py"]
-  config["4 · Configure .vscode/launch.json<br/>type: debugpy · request: attach<br/>connect: localhost:5678<br/>Check localRoot and remoteRoot"]
+  install["1 · Install on the server<br/>python -m python -m pip install debugpy"]
+  ssh["2 · Configure and start SSH<br/>Local 127.0.0.1:5678<br/>to remote 127.0.0.1:5678<br/>Run ssh -N myserver"]
+  start["3 · Start the server debug process<br/>python -m debugpy<br/>--listen 127.0.0.1:5678<br/>--wait-for-client train.py"]
+  config["4 · Configure .vscode/launch.json<br/>type: debugpy · request: attach<br/>connect: 127.0.0.1:5678<br/>Check localRoot and remoteRoot"]
   attach["5 · Set a breakpoint and connect<br/>F5 → Python: Remote Attach"]
   install --> ssh --> start --> config --> attach
   subgraph inspection["When execution pauses"]

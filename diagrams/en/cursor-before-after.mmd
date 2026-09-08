@@ -1,27 +1,27 @@
 flowchart TB
-  accTitle: Example Responses Before and After the Prompt
+  accTitle: Communication patterns the prompt aims to encourage
   accDescr: Three examples illustrate the intended change in responses: clarify shared state versus instance limits before a singleton, ask for profiling before optimization, and evaluate access patterns, memory caching, and operational costs before Redis. These are examples, not guaranteed outcomes.
   subgraph singleton["Scenario 1 · Write a singleton"]
     direction TB
     singletonTask["Write a singleton pattern for me"]
-    singletonDefault["Default example<br/>Provide singleton code immediately"]
-    singletonPrompt["Example with the prompt<br/>Shared state or a limit on instances?"]
+    singletonDefault["Example to avoid<br/>Provide singleton code immediately"]
+    singletonPrompt["Desired example<br/>Shared state or a limit on instances?"]
     singletonTask --> singletonDefault
     singletonTask --> singletonPrompt
   end
   subgraph performance["Scenario 2 · Optimize performance"]
     direction TB
     performanceTask["Optimize this code's performance"]
-    performanceDefault["Default example<br/>Suggest several micro-optimizations"]
-    performancePrompt["Example with the prompt<br/>Have you profiled it? Where is the bottleneck?"]
+    performanceDefault["Example to avoid<br/>Suggest several micro-optimizations"]
+    performancePrompt["Desired example<br/>Have you profiled it? Where is the bottleneck?"]
     performanceTask --> performanceDefault
     performanceTask --> performancePrompt
   end
   subgraph caching["Scenario 3 · Add Redis caching"]
     direction TB
     cachingTask["Use Redis for caching"]
-    cachingDefault["Default example<br/>Provide Redis integration code"]
-    cachingPrompt["Example with the prompt<br/>What is the access pattern? Is memory enough?<br/>Can you accept the operational costs?"]
+    cachingDefault["Example to avoid<br/>Provide Redis integration code"]
+    cachingPrompt["Desired example<br/>What is the access pattern? Is memory enough?<br/>Can you accept the operational costs?"]
     cachingTask --> cachingDefault
     cachingTask --> cachingPrompt
   end

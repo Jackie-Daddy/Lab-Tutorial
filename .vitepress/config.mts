@@ -1,17 +1,25 @@
 import { defineConfig } from 'vitepress'
+import { pageHead, siteUrl } from './seo'
 
 export default defineConfig({
   title: 'Lab Tutorial',
+  lang: 'zh-CN',
   description: '一些小技巧 · Lab Tips',
   base: '/Lab-Tutorial/',
   cleanUrls: true,
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: false,
   lastUpdated: false,
+  sitemap: {
+    hostname: siteUrl,
+    transformItems: items => items
+      .filter(item => !['index.html', 'about.html', '404.html'].includes(item.url.replace(/^\//, '')))
+      .map(item => ({ ...item, url: item.url.replace(/index\.html$/, '').replace(/\.html$/, '') })),
+  },
+  transformPageData(pageData) {
+    pageData.frontmatter.head = [...(pageData.frontmatter.head || []), ...pageHead(pageData)]
+  },
 
   head: [
-    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
-    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#141413"/><circle cx="16" cy="16" r="6" fill="#d97757"/></svg>')}` }],
   ],
 
@@ -27,7 +35,7 @@ export default defineConfig({
         nav: [
           { text: '首页', link: '/zh/' },
           { text: '归档', link: '/zh/archives' },
-          { text: '关于', link: '/about' },
+          { text: '关于', link: '/zh/about' },
         ],
         outline: { label: '目录', level: [2, 3] },
         docFooter: { prev: '上一篇', next: '下一篇' },
@@ -56,7 +64,7 @@ export default defineConfig({
         nav: [
           { text: 'Home', link: '/en/' },
           { text: 'Archives', link: '/en/archives' },
-          { text: 'About', link: '/about' },
+          { text: 'About', link: '/en/about' },
         ],
         outline: { label: 'On this page', level: [2, 3] },
         docFooter: { prev: 'Previous', next: 'Next' },
@@ -82,6 +90,22 @@ export default defineConfig({
     logo: '/images/logo.svg',
     search: {
       provider: 'local',
+      options: {
+        locales: {
+          zh: {
+            translations: {
+              button: { buttonText: '搜索', buttonAriaLabel: '搜索全文' },
+              modal: {
+                displayDetails: '显示详细结果',
+                resetButtonTitle: '清除搜索',
+                backButtonTitle: '返回',
+                noResultsText: '没有找到相关结果',
+                footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' },
+              },
+            },
+          },
+        },
+      },
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Dual-Pointers/Lab-Tutorial' },
